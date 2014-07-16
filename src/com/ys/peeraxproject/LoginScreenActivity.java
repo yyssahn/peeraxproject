@@ -67,11 +67,10 @@ public class LoginScreenActivity extends Activity {
 				
 				String password = passwordInput.getText().toString();
 //				new LoginUser().execute();   
-				
-		        }
 				Intent i = new Intent(LoginScreenActivity.this, FirstChoiceActivity.class);
 				startActivity(i);
 				finish();
+		        }
 			}
         	
         });
