@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+    
+    <TextView
+        android:id="@+id/starttext1"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Welcome to"/>
+    
+        
+    <TextView
+        android:id="@+id/starttext2"
+        android:layout_below="@+id/starttext1"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="PeerAX"/>
+    
+    <TextView
+        android:id="@+id/starttext3"
+        android:layout_below="@+id/starttext2"
+        android:layout_width="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="The Interactive Peer Assistance Exchanging platform"/>
+    
+	<Button
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/starttext3"
+		android:id="@+id/tologinbtn"
+		android:text="Log In"
+		android:layout_centerHorizontal="true"
+		/>
+	<Button
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/tologinbtn"
+		android:id="@+id/tosignupbtn"
+		android:text="Sign Up"
+		android:layout_centerHorizontal="true"
+		/>
+	
+	
+ 	
+
+</RelativeLayout>
