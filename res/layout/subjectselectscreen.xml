@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Sign Up"
+        android:text="Select the general area\nfor your help session"
         android:gravity="center"
         android:textSize="20dp"
         android:id="@+id/criteriastring1"/>
@@ -44,7 +44,7 @@
             android:textSize="20dp"
             android:text="Science"
             android:id="@+id/criteriascience"
-            />
+            />"
         <Button
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -84,6 +84,6 @@
         
     </LinearLayout>
    
-
+"
     
 </RelativeLayout>

@@ -30,6 +30,10 @@
             android:name=".LoginScreenActivity" />
           <activity
             android:name=".FirstChoiceActivity" />
+           <activity
+            android:name=".CirteriaSelectActivity" />
+             <activity
+            android:name=".SubjectSelectActivity" />
 
     </application>
 

@@ -14,23 +14,39 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int LoginIdInput=0x7f06000b;
-        public static final int LoginPWInput=0x7f06000c;
-        public static final int LogonButton=0x7f06000d;
-        public static final int RegisterButton=0x7f060010;
-        public static final int SignUpString=0x7f06000a;
-        public static final int SignupId=0x7f06000e;
-        public static final int SignupPW=0x7f06000f;
-        public static final int choicetext1=0x7f060007;
-        public static final int choicetext2=0x7f060008;
+        public static final int LoginIdInput=0x7f060014;
+        public static final int LoginPWInput=0x7f060015;
+        public static final int LogonButton=0x7f060016;
+        public static final int RegisterButton=0x7f060019;
+        public static final int SignUpString=0x7f060013;
+        public static final int SignupId=0x7f060017;
+        public static final int SignupPW=0x7f060018;
+        public static final int choicetext1=0x7f060010;
+        public static final int choicetext2=0x7f060011;
+        public static final int criteriaarts=0x7f060006;
+        public static final int criteriabusiness=0x7f060007;
+        public static final int criteriaengineering=0x7f06000a;
+        public static final int criteriagame=0x7f06000e;
+        public static final int criteriainstrument=0x7f06000d;
+        public static final int criterialanguage=0x7f060008;
+        public static final int criteriamath=0x7f06000b;
+        public static final int criteriascience=0x7f060009;
+        public static final int criteriasports=0x7f06000c;
         public static final int criteriastring1=0x7f060005;
-        public static final int homebutton=0x7f060009;
+        public static final int homebutton=0x7f060012;
+        public static final int priceinput=0x7f06001f;
+        public static final int pricetext1=0x7f06001e;
+        public static final int sessionconfirmbtn=0x7f060020;
         public static final int starttext1=0x7f060000;
         public static final int starttext2=0x7f060001;
         public static final int starttext3=0x7f060002;
+        public static final int subject1=0x7f06001a;
+        public static final int subject2=0x7f06001b;
+        public static final int subject3=0x7f06001c;
+        public static final int subject4=0x7f06001d;
         public static final int tologinbtn=0x7f060003;
         public static final int tosignupbtn=0x7f060004;
-        public static final int tutorbutton=0x7f060006;
+        public static final int tutorbutton=0x7f06000f;
     }
     public static final class layout {
         public static final int activity_start_screen=0x7f030000;
@@ -38,6 +54,9 @@ public final class R {
         public static final int firstchoicescreen=0x7f030002;
         public static final int loginscreen=0x7f030003;
         public static final int signupscreen=0x7f030004;
+        public static final int subjectchoicescreen=0x7f030005;
+        public static final int subjectpricescreen=0x7f030006;
+        public static final int subjectselectscreen=0x7f030007;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
