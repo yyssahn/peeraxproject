@@ -1,5 +1,8 @@
 package com.ys.peeraxproject;
 
+
+import com.ys.peeraxproject.helper.DatabaseHandler;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +16,7 @@ public class HomePageActivity extends Activity {
 	Button conBtn;
 	Button sesBtn;
 	Button usrBtn;
-	
+	DatabaseHandler db;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -24,7 +27,14 @@ public class HomePageActivity extends Activity {
 		conBtn = (Button) findViewById(R.id.tempconversationbtn);
 		sesBtn = (Button) findViewById(R.id.tempsessionbtn);
 		usrBtn = (Button) findViewById(R.id.tempuserbtn);
-		
+		db = new DatabaseHandler(getApplicationContext());
+		if (db.getRowCount()==0){
+        	Intent i = new Intent(HomePageActivity.this, StartScreenActivity.class);
+        	startActivity(i);
+        	
+        	finish();
+        	
+        }
 		homeBtn.setOnClickListener(new OnClickListener(){
 
 			@Override

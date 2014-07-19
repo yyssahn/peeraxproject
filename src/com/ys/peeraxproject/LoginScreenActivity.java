@@ -1,11 +1,21 @@
 package com.ys.peeraxproject;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.ys.peeraxproject.helper.DatabaseHandler;
 import com.ys.peeraxproject.helper.JSONParser;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
@@ -56,30 +66,30 @@ public class LoginScreenActivity extends Activity {
 				String email = idInput.getText().toString();
 				
 				String password = passwordInput.getText().toString();
+				new LoginUser().execute();
 //				new LoginUser().execute();   
-				Intent i = new Intent(LoginScreenActivity.this, FirstChoiceActivity.class);
-				startActivity(i);
-				finish();
+				//Intent i = new Intent(LoginScreenActivity.this, FirstChoiceActivity.class);
+				//startActivity(i);
+				//finish();
 		        }
 			}
         	
         });
         
 	}
-/*
 	class LoginUser extends AsyncTask<String, String, String> {
 		 
-        //
-        // * Before starting background thread Show Progress Dialog
-        //
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
          }
  
-        
-        //
-          
+        /**
+         * Creating product
+         * */
         @Override
 		protected String doInBackground(String... args) {
         	Log.d("some error", "place 1");
@@ -98,20 +108,21 @@ public class LoginScreenActivity extends Activity {
             
             // getting JSON Object
             // Note that create product url accepts POST method
-//            JSONObject json = jsonParser.makeHttpRequest(loginURL,
-//                    "POST", params);
+            JSONObject json = jsonParser.makeHttpRequest(loginURL,
+                    "POST", params);
+            Log.d("some error", "place 3");
             
             // check log cat fro response
-//            Log.d("Create Response", json.toString());
+            Log.d("Create Response", json.toString());
  
             // check for success tag
             try {
-//                int success = json.getInt(TAG_SUCCESS);
+                int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-//                	db.addUser(json.getString("email"));
-//                	Intent i = new Intent(getApplicationContext(), ChoiceActivity.class);
-//                    startActivity(i);
+                	db.addUser(json.getString("email"));
+                	Intent i = new Intent(getApplicationContext(), FirstChoiceActivity.class);
+                    startActivity(i);
  
                     //finish();
                 	
@@ -125,9 +136,9 @@ public class LoginScreenActivity extends Activity {
             return null;
         }
  
-        
-     //    * After completing background task Dismiss the progress dialog
-         * 
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
         @Override
 		protected void onPostExecute(String file_url) {
             // dismiss the dialog once done
@@ -135,5 +146,4 @@ public class LoginScreenActivity extends Activity {
         }
 
 	}
-	*/
 }
