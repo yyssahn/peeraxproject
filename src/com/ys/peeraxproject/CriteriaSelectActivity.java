@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.Button;
 
 public class CriteriaSelectActivity extends Activity {
@@ -38,7 +37,9 @@ public class CriteriaSelectActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				startSubject();
+				Intent i = new Intent(CriteriaSelectActivity.this, SubjectSelectActivity.class);
+				startActivity(i);
+				finish();
 			}
 			
 		});

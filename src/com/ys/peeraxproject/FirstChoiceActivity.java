@@ -27,9 +27,9 @@ public class FirstChoiceActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-//				Intent i = new Intent(FirstChoiceActivity.this, CreateTutorSession.class);
-//				startActivity(i);
-//				finish();
+				Intent i = new Intent(FirstChoiceActivity.this, CriteriaSelectActivity.class);
+				startActivity(i);
+				finish();
 			}
         	
         });
@@ -38,10 +38,10 @@ public class FirstChoiceActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-//				Intent i = new Intent(ChoiceActivity.this, MainPageActivity.class);
-//				startActivity(i);
-//				finish();
+				
+				Intent i = new Intent(FirstChoiceActivity.this, HomePageActivity.class);
+				startActivity(i);
+				finish();
 			}
         	
         });
