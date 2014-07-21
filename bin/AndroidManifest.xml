@@ -33,9 +33,10 @@
         <activity android:name=".PriceSelectScreen" />
         <activity android:name=".HomePageActivity" />
         <activity android:name=".ProfilePageActivity" />
+        <activity android:name=".ViewSubjectsActivity" />
+        <activity android:name=".ProfileDegreeActivity" />
         
         <activity android:name=".ProfileAboutActivity" />
-        <activity android:name=".ViewSubjectsActivity" />
         
     </application>
 

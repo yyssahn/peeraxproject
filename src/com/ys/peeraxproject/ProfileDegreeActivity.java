@@ -21,11 +21,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class PriceSelectScreen extends Activity {
-	Button confirmbtn;
-	EditText priceinput;
-	JSONParser jsonParser = new JSONParser();
+public class ProfileDegreeActivity extends Activity {
+	EditText input;
+	Button confirmBtn;
 	DatabaseHandler db;
+	JSONParser jsonParser = new JSONParser();
+	String id;
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
 	
@@ -35,67 +36,59 @@ public class PriceSelectScreen extends Activity {
     private static String KEY_UID = "unique_id";
     private static String KEY_NAME = "name";
     private static String KEY_EMAIL = "email";
-    private static final String KEY_ID = "uid";
-    private static final String KEY_ABOUT = "about";;
-    private static final String KEY_DEGREE = "degree";;
-    private static String register_tag = "register";
+    private static String KEY_about = "about";
     
-    private static String createsubjectURL = "http://104.131.141.54/lny_project/create_subject.php";
-
+    private static final String KEY_ABOUT = "about";
+    private static final String KEY_DEGREE = "degree";
+    private static String about_tag = "about";
+    
+    private static String loginURL = "http://104.131.141.54/lny_project/change_info.php";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.subjectpricescreen);
+		setContentView(R.layout.profiledegreescreen);
+		//id = (String)savedInstanceState.get(KEY_ID);
+		//Log.d("something", id);
 		db = new DatabaseHandler(getApplicationContext());
-		confirmbtn = (Button) findViewById(R.id.sessionconfirmbtn);
-		priceinput = (EditText) findViewById(R.id.priceinput);
-		confirmbtn.setOnClickListener(new OnClickListener(){
+		input = (EditText) findViewById(R.id.degreeinput);
+		confirmBtn = (Button) findViewById(R.id.degreeconfirmbtn);
+		
+		confirmBtn.setOnClickListener(new OnClickListener(){
 
 			@Override
-			public void onClick(View v) {
+			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				new CreateSubject().execute();
-				/*
-				Intent i = new Intent(PriceSelectScreen.this, ProfilePageActivity.class);
-				startActivity(i);
-				finish();
-			*/
+				new UpdateUser().execute();
 			}
 			
 		});
+		
 	}
-	class CreateSubject extends AsyncTask<String, String, String> {
+	
+	class UpdateUser extends AsyncTask<String, String, String> {
 		 
-        /**
-         * Before starting background thread Show Progress Dialog
-         * */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
          }
  
-        /**
-         * Creating product
-         * */
-        @Override
+          @Override
 		protected String doInBackground(String... args) {
-//        	 Log.d("some error", email);
-//            Log.d("some error", password);
-            
-            
+        	String degree= input.getText().toString();
+        	String email= db.getUserid();
+        	
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            String email = db.getUserid();
-            String price = priceinput.getText().toString();
+            
+            params.add(new BasicNameValuePair("degree", degree));
             params.add(new BasicNameValuePair("email", email));
-            params.add(new BasicNameValuePair("price", price));
-            params.add(new BasicNameValuePair("criteria", "criteria"));
-            params.add(new BasicNameValuePair("subject", "subject"));
+            params.add(new BasicNameValuePair("tag", KEY_DEGREE));
+           
             // getting JSON Object
-            JSONObject json = jsonParser.makeHttpRequest(createsubjectURL,
-                    "POST", params);
+            // Note that create product url accepts POST method
+            JSONObject json = jsonParser.makeHttpRequest(loginURL, "POST", params);
             // check log cat fro response
             Log.d("Create Response", json.toString());
  
@@ -104,10 +97,11 @@ public class PriceSelectScreen extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
+                //	db.updateAbout(email, about);
                 	Intent i = new Intent(getApplicationContext(), ProfilePageActivity.class);
                     startActivity(i);
  
-                    //finish();
+                    finish();
                 	
                 } else {
                     // failed to create product
@@ -119,14 +113,12 @@ public class PriceSelectScreen extends Activity {
             return null;
         }
  
-        /**
-         * After completing background task Dismiss the progress dialog
-         * **/
         @Override
 		protected void onPostExecute(String file_url) {
             // dismiss the dialog once done
         //    pDialog.dismiss();
         }
+        
 
 	}
 

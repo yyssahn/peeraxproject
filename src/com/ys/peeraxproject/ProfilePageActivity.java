@@ -32,7 +32,8 @@ public class ProfilePageActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				
+				Intent i = new Intent(getApplicationContext(),ViewSubjectsActivity.class);
+				startActivity(i);
 			}
 			
 			
@@ -44,9 +45,9 @@ public class ProfilePageActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(getApplicationContext(), ProfileAboutActivity.class);
-				i.putExtra(KEY_ID, db.getUserid());
+				
 				startActivity(i);
-				finish();
+				
 			}
 			
 			
@@ -57,6 +58,8 @@ public class ProfilePageActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
+				Intent i = new Intent(getApplicationContext(), ProfileDegreeActivity.class);
+				startActivity(i);
 				
 			}
 		}

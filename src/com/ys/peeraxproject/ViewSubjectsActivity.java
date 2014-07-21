@@ -14,8 +14,8 @@ public class ViewSubjectsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.viewsubjects);
-		
+		setContentView(R.layout.subjectviewscreen);
+		addBtn = (Button) findViewById(R.id.subjectaddbtn);
 		addBtn.setOnClickListener(new OnClickListener(){
 
 			@Override
@@ -23,7 +23,6 @@ public class ViewSubjectsActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(getApplicationContext(), CriteriaSelectActivity.class);
 				startActivity(i);
-				finish();
 			}
 			
 		});
