@@ -45,5 +45,11 @@
    	    android:text="User Settings"
    	    android:id="@+id/tempuserbtn"
    	    />
+ 	<Button 
+   	    android:layout_width="fill_parent"
+   	    android:layout_height="wrap_content"
+   	    android:text="log out"
+   	    android:id="@+id/templogout"
+   	    />
 
 </LinearLayout>

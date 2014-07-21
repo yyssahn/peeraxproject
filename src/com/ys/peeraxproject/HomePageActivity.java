@@ -16,6 +16,7 @@ public class HomePageActivity extends Activity {
 	Button conBtn;
 	Button sesBtn;
 	Button usrBtn;
+	Button logoutBtn;
 	DatabaseHandler db;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class HomePageActivity extends Activity {
 		conBtn = (Button) findViewById(R.id.tempconversationbtn);
 		sesBtn = (Button) findViewById(R.id.tempsessionbtn);
 		usrBtn = (Button) findViewById(R.id.tempuserbtn);
+		logoutBtn = (Button) findViewById(R.id.templogout);
 		db = new DatabaseHandler(getApplicationContext());
 		if (db.getRowCount()==0){
         	Intent i = new Intent(HomePageActivity.this, StartScreenActivity.class);
@@ -59,6 +61,18 @@ public class HomePageActivity extends Activity {
 			
 		});
 		
+		logoutBtn.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				db.resetTables();
+				Intent i = new Intent(HomePageActivity.this, LoginScreenActivity.class);
+				startActivity(i);
+				finish();
+			}
+			
+		});
 	}
 
 }

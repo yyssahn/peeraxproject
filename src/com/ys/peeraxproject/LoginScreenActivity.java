@@ -27,17 +27,21 @@ public class LoginScreenActivity extends Activity {
 	Button loginButton;
   
 	JSONParser jsonParser = new JSONParser();
-	private static final String TAG_SUCCESS = "success";
-	private static final String TAG_MESSAGE = "message";
 	DatabaseHandler db;
 	private EditText idInput;
 		private EditText passwordInput;
+		private static final String TAG_SUCCESS = "success";
+		private static final String TAG_MESSAGE = "message";
+		
 		private static String KEY_SUCCESS = "success";
 	    private static String KEY_ERROR = "error";
 	    private static String KEY_ERROR_MSG = "error_msg";
-	    private static String KEY_UID = "uid";
+	    private static String KEY_UID = "unique_id";
 	    private static String KEY_NAME = "name";
 	    private static String KEY_EMAIL = "email";
+	    private static final String KEY_ID = "uid";
+	    private static final String KEY_ABOUT = "about";;
+	    private static final String KEY_DEGREE = "degree";;
 	    private static String register_tag = "register";
 	    
 	    private static String loginURL = "http://104.131.141.54/lny_project/login_user.php";
@@ -63,10 +67,7 @@ public class LoginScreenActivity extends Activity {
 		            
 		        }else{
 
-				String email = idInput.getText().toString();
-				
-				String password = passwordInput.getText().toString();
-				new LoginUser().execute();
+					new LoginUser().execute();
 //				new LoginUser().execute();   
 				//Intent i = new Intent(LoginScreenActivity.this, FirstChoiceActivity.class);
 				//startActivity(i);
@@ -92,8 +93,7 @@ public class LoginScreenActivity extends Activity {
          * */
         @Override
 		protected String doInBackground(String... args) {
-        	Log.d("some error", "place 1");
-            String email = idInput.getText().toString();
+        	 String email = idInput.getText().toString();
             String password = passwordInput.getText().toString();
             Log.d("some error", email);
             Log.d("some error", password);
@@ -104,14 +104,10 @@ public class LoginScreenActivity extends Activity {
             
             params.add(new BasicNameValuePair("email", email));
             params.add(new BasicNameValuePair("password", password));
-            Log.d("some error", params.toString());
-            
+           
             // getting JSON Object
-            // Note that create product url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(loginURL,
                     "POST", params);
-            Log.d("some error", "place 3");
-            
             // check log cat fro response
             Log.d("Create Response", json.toString());
  
@@ -120,7 +116,7 @@ public class LoginScreenActivity extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-                	db.addUser(json.getString("email"));
+                	db.addUser(json.getInt(KEY_ID), json.getString(KEY_UID), json.getString(KEY_NAME),json.getString("email"), json.getString(KEY_ABOUT), json.getString(KEY_DEGREE));
                 	Intent i = new Intent(getApplicationContext(), FirstChoiceActivity.class);
                     startActivity(i);
  

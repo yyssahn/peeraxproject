@@ -26,7 +26,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_NAME = "name";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_UID = "uid";
-    private static final String KEY_CREATED_AT = "created_at";
+    private static final String KEY_ABOUT = "userabout";
+    private static final String KEY_DEGREE = "userdegree";
  
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -37,10 +38,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_LOGIN + "("
                 + KEY_ID + " INTEGER PRIMARY KEY,"
-                + KEY_NAME + " TEXT,"
-                + KEY_EMAIL + " TEXT UNIQUE,"
                 + KEY_UID + " TEXT,"
-                + KEY_CREATED_AT + " TEXT" + ")";
+                + KEY_NAME + " TEXT,"
+                + KEY_ABOUT + " TEXT,"
+                + KEY_DEGREE + " TEXT,"
+                + KEY_EMAIL + " TEXT UNIQUE" + ")";
+                
+                
+                
         db.execSQL(CREATE_LOGIN_TABLE);
     }
  
@@ -57,17 +62,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(String email) {
+    public void addUser(int uid, String uuid, String name, String email, String about, String degree) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Log.d("db", email);
+        Log.d("error","place 1");
         ContentValues values = new ContentValues();
-//        values.put(KEY_NAME, name); // Name
+        values.put(KEY_ID, uid); // Email
+        values.put(KEY_UID, uuid);
+        values.put(KEY_NAME, name); // Name
+        values.put(KEY_ABOUT, about); 
         values.put(KEY_EMAIL, email); // Email
-//        values.put(KEY_UID, uid); // Email
-//        values.put(KEY_CREATED_AT, created_at); // Created At
- 
+       // Name
+        values.put(KEY_DEGREE, degree); // Email
+        
+         // Created At
+        Log.d("error","place 2");
         // Inserting Row
         db.insert(TABLE_LOGIN, null, values);
+        Log.d("error","place 3");
         db.close(); // Closing database connection
     }
      
@@ -102,7 +113,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery, null);
         // Move to first row
         cursor.moveToFirst();
-        user = cursor.getString(1);
+        
+        user = cursor.getString(5) + cursor.getString(4) + cursor.getString(3) +cursor.getString(2);
         cursor.close();
         db.close();
         // return user
@@ -134,4 +146,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.delete(TABLE_LOGIN, null, null);
         db.close();
     }
+    public void updateAbout(String email, String about) {
+    	Log.d("db", about);
+        SQLiteDatabase db = this.getWritableDatabase();
+
+    ContentValues args = new ContentValues();
+    args.put(KEY_ABOUT, about);
+
+    db.update(TABLE_LOGIN, args, "id=" + email, null);
+}
 }
