@@ -10,6 +10,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.ys.peeraxproject.helper.DatabaseHandler;
 import com.ys.peeraxproject.helper.JSONParser;
 
 import android.app.Activity;
@@ -28,7 +29,7 @@ public class SignUpActivity extends Activity {
 	JSONParser jsonParser = new JSONParser();
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
-	
+	DatabaseHandler db;
 	private static String TAG = "SignUpActivity";
     private EditText idInput;
 	private EditText passwordInput;
@@ -48,6 +49,7 @@ public class SignUpActivity extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.signupscreen);
         idInput = (EditText) findViewById(R.id.SignupId);
+        db= new DatabaseHandler(getApplicationContext());
         passwordInput=(EditText) findViewById(R.id.SignupPW);
         registerButton = (Button) findViewById(R.id.RegisterButton);
  
@@ -62,9 +64,6 @@ public class SignUpActivity extends Activity {
 		            
 		        }else{
 
-				String email = idInput.getText().toString();
-				
-				String password = passwordInput.getText().toString();
 				new CreateNewUser().execute();
 				/*
 				Intent i = new Intent(SignUpActivity.this, LoginScreenActivity.class);
@@ -112,7 +111,7 @@ public class SignUpActivity extends Activity {
             String name = idInput.getText().toString();
             String phonenumber = passwordInput.getText().toString();
             //Log.d("some error", email);
-            //Log.d("some error", password);
+            Log.d("some error", phonenumber);
             
             
             // Building Parameters
@@ -134,11 +133,22 @@ public class SignUpActivity extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-                    Intent i = new Intent(getApplicationContext(), LoginScreenActivity.class);
+                	db.addUser(json.getInt("uid"), json.getString("unique_id"), json.getString("name"), json.getInt("phonenumber"), json.getString("about"), json.getString("degree"));
+                    if(json.getInt("seen")== 0)
+                    {
+                	Intent i = new Intent(getApplicationContext(), FirstChoiceActivity.class);
                     startActivity(i);
  
                     finish();
-                	
+                    }else{
+                    	Intent i = new Intent(getApplicationContext(), HomePageActivity.class);
+                        startActivity(i);
+     
+                        finish();
+                        	
+                    	
+                    }
+                    
                 } else {
                     // failed to create product
                 }

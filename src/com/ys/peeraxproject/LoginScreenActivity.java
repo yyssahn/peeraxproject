@@ -116,7 +116,7 @@ public class LoginScreenActivity extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-                	db.addUser(json.getInt(KEY_ID), json.getString(KEY_UID), json.getString(KEY_NAME),json.getString("email"), json.getString(KEY_ABOUT), json.getString(KEY_DEGREE));
+//                	db.addUser(json.getInt(KEY_ID), json.getString(KEY_UID), json.getString(KEY_NAME),json.getString("email"), json.getString(KEY_ABOUT), json.getString(KEY_DEGREE));
                 	Intent i = new Intent(getApplicationContext(), FirstChoiceActivity.class);
                     startActivity(i);
  

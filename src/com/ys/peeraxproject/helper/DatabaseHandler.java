@@ -24,7 +24,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // Login Table Columns names
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
-    private static final String KEY_EMAIL = "email";
+    private static final String KEY_PHONE = "phone";
     private static final String KEY_UID = "uid";
     private static final String KEY_ABOUT = "userabout";
     private static final String KEY_DEGREE = "userdegree";
@@ -39,10 +39,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_LOGIN + "("
                 + KEY_ID + " INTEGER PRIMARY KEY,"
                 + KEY_UID + " TEXT,"
+               
                 + KEY_NAME + " TEXT,"
                 + KEY_ABOUT + " TEXT,"
                 + KEY_DEGREE + " TEXT,"
-                + KEY_EMAIL + " TEXT UNIQUE" + ")";
+                + KEY_PHONE + " INTEGER UNIQUE" + ")";
                 
                 
                 
@@ -62,7 +63,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(int uid, String uuid, String name, String email, String about, String degree) {
+    public void addUser(int uid, String uuid, String name, int phone, String about, String degree) {
         SQLiteDatabase db = this.getWritableDatabase();
         Log.d("error","place 1");
         ContentValues values = new ContentValues();
@@ -70,15 +71,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_UID, uuid);
         values.put(KEY_NAME, name); // Name
         values.put(KEY_ABOUT, about); 
-        values.put(KEY_EMAIL, email); // Email
+        values.put(KEY_PHONE, phone); // Email
        // Name
         values.put(KEY_DEGREE, degree); // Email
         
          // Created At
-        Log.d("error","place 2");
         // Inserting Row
         db.insert(TABLE_LOGIN, null, values);
-        Log.d("error","place 3");
+
         db.close(); // Closing database connection
     }
      
