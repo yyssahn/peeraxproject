@@ -109,24 +109,22 @@ public class SignUpActivity extends Activity {
         @Override
 		protected String doInBackground(String... args) {
         	Log.d("some error", "place 1");
-            String email = idInput.getText().toString();
-            String password = passwordInput.getText().toString();
-            Log.d("some error", email);
-            Log.d("some error", password);
+            String name = idInput.getText().toString();
+            String phonenumber = passwordInput.getText().toString();
+            //Log.d("some error", email);
+            //Log.d("some error", password);
             
             
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             
-            params.add(new BasicNameValuePair("email", email));
-            params.add(new BasicNameValuePair("password", password));
-            Log.d("some error", params.toString());
+            params.add(new BasicNameValuePair("name", name));
+            params.add(new BasicNameValuePair("phonenumber", phonenumber));
             
             // getting JSON Object
             // Note that create product url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(registerURL,
                     "POST", params);
-            Log.d("some error", "place 3");
             
             // check log cat fro response
             Log.d("Create Response", json.toString());

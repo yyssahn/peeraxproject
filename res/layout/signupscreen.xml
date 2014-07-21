@@ -19,7 +19,7 @@
         android:layout_width="200dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/SignUpString"
-        android:hint="id"
+        android:hint="name"
         android:inputType="textEmailAddress"
         android:maxLength="10"
         />
@@ -30,7 +30,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/SignupId"
         android:hint="password"
-        android:inputType="textPassword"
+        android:inputType="number"
         android:maxLength="10"
         />
 

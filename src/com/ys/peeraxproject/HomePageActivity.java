@@ -30,13 +30,14 @@ public class HomePageActivity extends Activity {
 		usrBtn = (Button) findViewById(R.id.tempuserbtn);
 		logoutBtn = (Button) findViewById(R.id.templogout);
 		db = new DatabaseHandler(getApplicationContext());
+		/*
 		if (db.getRowCount()==0){
         	Intent i = new Intent(HomePageActivity.this, StartScreenActivity.class);
         	startActivity(i);
         	
-        	finish();
         	
         }
+		 */
 		homeBtn.setOnClickListener(new OnClickListener(){
 
 			@Override
@@ -44,7 +45,6 @@ public class HomePageActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(HomePageActivity.this, HomePageActivity.class);
 				startActivity(i);
-				finish();
 			}
 			
 		});
@@ -56,10 +56,11 @@ public class HomePageActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(HomePageActivity.this, ProfilePageActivity.class);
 				startActivity(i);
-				finish();
+			//	finish();
 			}
 			
 		});
+		
 		
 		logoutBtn.setOnClickListener(new OnClickListener(){
 
@@ -67,12 +68,13 @@ public class HomePageActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				db.resetTables();
-				Intent i = new Intent(HomePageActivity.this, LoginScreenActivity.class);
+				Intent i = new Intent(HomePageActivity.this, StartScreenActivity.class);
 				startActivity(i);
-				finish();
+			//	finish();
 			}
 			
 		});
+		
 	}
 
 }
