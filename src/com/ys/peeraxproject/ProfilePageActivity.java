@@ -26,7 +26,7 @@ public class ProfilePageActivity extends Activity {
 		db = new DatabaseHandler(getApplicationContext());
 		subjectsBtn = (Button) findViewById(R.id.profilesubjectbtn);
 		username = (TextView) findViewById(R.id.profilename);
-		username.setText(db.getUserid());
+		username.setText(db.getPhoneNumber());
 		subjectsBtn.setOnClickListener(new OnClickListener(){
 
 			@Override

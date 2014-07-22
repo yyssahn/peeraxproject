@@ -77,7 +77,7 @@ public class ProfileAboutActivity extends Activity {
           @Override
 		protected String doInBackground(String... args) {
         	String about= input.getText().toString();
-        	String email= db.getUserid();
+        	String email= db.getPhoneNumber();
         	
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();

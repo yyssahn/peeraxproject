@@ -77,7 +77,7 @@ public class ProfileDegreeActivity extends Activity {
           @Override
 		protected String doInBackground(String... args) {
         	String degree= input.getText().toString();
-        	String email= db.getUserid();
+        	String email= db.getPhoneNumber();
         	
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();

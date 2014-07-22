@@ -87,9 +87,9 @@ public class PriceSelectScreen extends Activity {
             
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            String email = db.getUserid();
+            String phonenumber = db.getPhoneNumber();
             String price = priceinput.getText().toString();
-            params.add(new BasicNameValuePair("email", email));
+            params.add(new BasicNameValuePair("phonenumber", phonenumber));
             params.add(new BasicNameValuePair("price", price));
             params.add(new BasicNameValuePair("criteria", "criteria"));
             params.add(new BasicNameValuePair("subject", "subject"));

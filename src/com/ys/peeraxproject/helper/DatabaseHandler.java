@@ -105,7 +105,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // return user
         return user;
     }
-    public String getUserid(){
+    public String getPhoneNumber(){
         String user;
         String selectQuery = "SELECT  * FROM " + TABLE_LOGIN;
           
@@ -114,7 +114,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Move to first row
         cursor.moveToFirst();
         
-        user = cursor.getString(5) + cursor.getString(4) + cursor.getString(3) +cursor.getString(2);
+        user = cursor.getString(5);
         cursor.close();
         db.close();
         // return user
@@ -147,8 +147,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
     public void updateAbout(String email, String about) {
-    	Log.d("db", about);
-        SQLiteDatabase db = this.getWritableDatabase();
+    	SQLiteDatabase db = this.getWritableDatabase();
 
     ContentValues args = new ContentValues();
     args.put(KEY_ABOUT, about);
