@@ -35,7 +35,7 @@ public class ProfileDegreeActivity extends Activity {
     private static String KEY_ERROR_MSG = "error_msg";
     private static String KEY_UID = "unique_id";
     private static String KEY_NAME = "name";
-    private static String KEY_EMAIL = "email";
+    private static String KEY_phonenumber = "phonenumber";
     private static String KEY_about = "about";
     
     private static final String KEY_ABOUT = "about";
@@ -77,13 +77,13 @@ public class ProfileDegreeActivity extends Activity {
           @Override
 		protected String doInBackground(String... args) {
         	String degree= input.getText().toString();
-        	String email= db.getPhoneNumber();
+        	String phonenumber= db.getPhoneNumber();
         	
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             
             params.add(new BasicNameValuePair("degree", degree));
-            params.add(new BasicNameValuePair("email", email));
+            params.add(new BasicNameValuePair("phonenumber", phonenumber));
             params.add(new BasicNameValuePair("tag", KEY_DEGREE));
            
             // getting JSON Object
@@ -97,7 +97,7 @@ public class ProfileDegreeActivity extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-                //	db.updateAbout(email, about);
+                //	db.updateAbout(phonenumber, about);
                 	Intent i = new Intent(getApplicationContext(), ProfilePageActivity.class);
                     startActivity(i);
  

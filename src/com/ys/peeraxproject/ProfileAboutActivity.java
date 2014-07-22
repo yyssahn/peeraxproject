@@ -77,13 +77,13 @@ public class ProfileAboutActivity extends Activity {
           @Override
 		protected String doInBackground(String... args) {
         	String about= input.getText().toString();
-        	String email= db.getPhoneNumber();
+        	String phonenumber= db.getPhoneNumber();
         	
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             
             params.add(new BasicNameValuePair("about", about));
-            params.add(new BasicNameValuePair("email", email));
+            params.add(new BasicNameValuePair("phonenumber", phonenumber));
             params.add(new BasicNameValuePair("tag",about_tag));
            
             // getting JSON Object
@@ -97,7 +97,7 @@ public class ProfileAboutActivity extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-                //	db.updateAbout(email, about);
+                //	db.updateAbout(phonenumber, about);
                 	Intent i = new Intent(getApplicationContext(), ProfilePageActivity.class);
                     startActivity(i);
  
