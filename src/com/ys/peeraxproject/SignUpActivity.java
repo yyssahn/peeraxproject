@@ -32,7 +32,9 @@ public class SignUpActivity extends Activity {
 	DatabaseHandler db;
 	private static String TAG = "SignUpActivity";
     private EditText idInput;
-	private EditText passwordInput;
+    private EditText pwInput;
+	
+    private EditText pnInput;
 	private static String KEY_SUCCESS = "success";
     private static String KEY_ERROR = "error";
     private static String KEY_ERROR_MSG = "error_msg";
@@ -50,7 +52,8 @@ public class SignUpActivity extends Activity {
         setContentView(R.layout.signupscreen);
         idInput = (EditText) findViewById(R.id.SignupId);
         db= new DatabaseHandler(getApplicationContext());
-        passwordInput=(EditText) findViewById(R.id.SignupPW);
+        pwInput  = (EditText) findViewById(R.id.SignupPW);
+        pnInput=(EditText) findViewById(R.id.signupphonenumber);
         registerButton = (Button) findViewById(R.id.RegisterButton);
  
         registerButton.setOnClickListener(new OnClickListener(){
@@ -59,7 +62,7 @@ public class SignUpActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 
-		        if (idInput.getText().toString().length()==0 || passwordInput.getText().toString().length()==0){
+		        if (idInput.getText().toString().length()==0 || pnInput.getText().toString().length()==0 || pwInput.getText().toString().length()==0){
 		        	Toast.makeText(getApplicationContext(), "id or password is not inputted", Toast.LENGTH_SHORT).show();
 		            
 		        }else{
@@ -109,7 +112,8 @@ public class SignUpActivity extends Activity {
 		protected String doInBackground(String... args) {
         	Log.d("some error", "place 1");
             String name = idInput.getText().toString();
-            String phonenumber = passwordInput.getText().toString();
+            String phonenumber = pnInput.getText().toString();
+            String password = pwInput.getText().toString();
             //Log.d("some error", email);
             Log.d("some error", phonenumber);
             
@@ -119,7 +123,9 @@ public class SignUpActivity extends Activity {
             
             params.add(new BasicNameValuePair("name", name));
             params.add(new BasicNameValuePair("phonenumber", phonenumber));
-            
+            params.add(new BasicNameValuePair("password", password));
+            Log.d("signup", name);
+            Log.d("signup", phonenumber);
             // getting JSON Object
             // Note that create product url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(registerURL,

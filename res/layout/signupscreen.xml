@@ -28,8 +28,18 @@
         android:layout_height="50dp"
         android:layout_width="200dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/SignupId"
+        android:layout_below="@+id/signupphonenumber"
         android:hint="password"
+        android:inputType="textPassword"
+        android:maxLength="10"
+        />
+	<EditText
+	    android:id="@+id/signupphonenumber"
+	    android:layout_height="50dp"
+        android:layout_width="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/SignupId"
+        android:hint="phone number"
         android:inputType="number"
         android:maxLength="10"
         />
@@ -40,9 +50,9 @@
 	    android:layout_height="wrap_content"
 	    android:layout_below="@+id/SignupPW"
 	    android:layout_centerHorizontal="true"
-	    android:layout_marginTop="60dp"
+	    android:layout_marginTop="30dp"
 	    android:text="Register" />
 	
-"
+
     
 </RelativeLayout>

@@ -93,16 +93,16 @@ public class LoginScreenActivity extends Activity {
          * */
         @Override
 		protected String doInBackground(String... args) {
-        	 String email = idInput.getText().toString();
+        	 String phonenumber = idInput.getText().toString();
             String password = passwordInput.getText().toString();
-            Log.d("some error", email);
+            Log.d("some error", phonenumber);
             Log.d("some error", password);
             
             
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             
-            params.add(new BasicNameValuePair("email", email));
+            params.add(new BasicNameValuePair("phonenumber", phonenumber));
             params.add(new BasicNameValuePair("password", password));
            
             // getting JSON Object
@@ -116,13 +116,15 @@ public class LoginScreenActivity extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-//                	db.addUser(json.getInt(KEY_ID), json.getString(KEY_UID), json.getString(KEY_NAME),json.getString("email"), json.getString(KEY_ABOUT), json.getString(KEY_DEGREE));
+                	db.addUser(json.getInt("uid"), json.getString("unique_id"), json.getString("name"), json.getInt("phonenumber"), json.getString("about"), json.getString("degree"));                    
                 	Intent i = new Intent(getApplicationContext(), FirstChoiceActivity.class);
                     startActivity(i);
  
-                    //finish();
+                    finish();
                 	
                 } else {
+                	String message = json.getString(TAG_MESSAGE);
+                	Log.d("login", message);
                     // failed to create product
                 }
             } catch (JSONException e) {
