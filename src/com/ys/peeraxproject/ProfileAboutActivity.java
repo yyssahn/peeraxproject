@@ -78,7 +78,7 @@ public class ProfileAboutActivity extends Activity {
 		protected String doInBackground(String... args) {
         	String about= input.getText().toString();
         	String phonenumber= db.getPhoneNumber();
-        	
+        	Log.d("debug", phonenumber);
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             
