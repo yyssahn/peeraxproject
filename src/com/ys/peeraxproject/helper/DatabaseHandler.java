@@ -120,6 +120,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // return user
         return user;
     }
+    
     /**
      * Getting user login status
      * return true if rows are there in table

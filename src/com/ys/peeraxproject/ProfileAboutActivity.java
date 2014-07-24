@@ -38,8 +38,8 @@ public class ProfileAboutActivity extends Activity {
     private static String KEY_EMAIL = "email";
     private static String KEY_about = "about";
     
-    private static final String KEY_ABOUT = "about";;
-    private static final String KEY_DEGREE = "degree";;
+    private static final String KEY_ABOUT = "about";
+    private static final String KEY_DEGREE = "degree";
     private static String about_tag = "about";
     
     private static String loginURL = "http://104.131.141.54/lny_project/change_info.php";
@@ -89,7 +89,7 @@ public class ProfileAboutActivity extends Activity {
             // getting JSON Object
             // Note that create product url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(loginURL, "POST", params);
-            // check log cat fro response
+            // check log cat for response
             Log.d("Create Response", json.toString());
  
             // check for success tag
