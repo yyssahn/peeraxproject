@@ -117,10 +117,21 @@ public class LoginScreenActivity extends Activity {
  
                 if (success == 1) {
                 	db.addUser(json.getInt("uid"), json.getString("unique_id"), json.getString("name"), json.getInt("phonenumber"), json.getString("about"), json.getString("degree"));                    
+                	if (json.getInt("seen") == 0){
+                	
                 	Intent i = new Intent(getApplicationContext(), FirstChoiceActivity.class);
                     startActivity(i);
- 
+                    
                     finish();
+                	}else{
+
+                    	Intent i = new Intent(getApplicationContext(), HomePageActivity.class);
+                        startActivity(i);
+                        
+                        finish();	
+                		
+                	}
+                	
                 	
                 } else {
                 	String message = json.getString(TAG_MESSAGE);
