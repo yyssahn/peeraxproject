@@ -39,6 +39,11 @@ public class PriceSelectScreen extends Activity {
     private static final String KEY_ABOUT = "about";;
     private static final String KEY_DEGREE = "degree";;
     private static String register_tag = "register";
+
+	private static final String TAG_CRITERIA = "criteria";
+	private static final String TAG_SUBJECT = "subject";
+	private String criteria;
+	private String subject;
     
     private static String createsubjectURL = "http://104.131.141.54/lny_project/create_subject.php";
 
@@ -49,6 +54,11 @@ public class PriceSelectScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.subjectpricescreen);
 		db = new DatabaseHandler(getApplicationContext());
+		Intent i = getIntent();
+		criteria = i.getStringExtra(TAG_CRITERIA);
+		subject = i.getStringExtra(TAG_SUBJECT);
+		Log.d("",criteria);
+		Log.d("",subject);
 		confirmbtn = (Button) findViewById(R.id.sessionconfirmbtn);
 		priceinput = (EditText) findViewById(R.id.priceinput);
 		confirmbtn.setOnClickListener(new OnClickListener(){
@@ -91,8 +101,8 @@ public class PriceSelectScreen extends Activity {
             String price = priceinput.getText().toString();
             params.add(new BasicNameValuePair("phonenumber", phonenumber));
             params.add(new BasicNameValuePair("price", price));
-            params.add(new BasicNameValuePair("criteria", "criteria"));
-            params.add(new BasicNameValuePair("subject", "subject"));
+            params.add(new BasicNameValuePair("criteria", criteria));
+            params.add(new BasicNameValuePair("subject", subject));
             // getting JSON Object
             JSONObject json = jsonParser.makeHttpRequest(createsubjectURL,
                     "POST", params);

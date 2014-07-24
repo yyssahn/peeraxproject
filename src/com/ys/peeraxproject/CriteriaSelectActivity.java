@@ -17,6 +17,8 @@ public class CriteriaSelectActivity extends Activity {
 	Button sportBtn;
 	Button instBtn;
 	Button gameBtn;
+	private static final String TAG_CRITERIA = "criteria";
+	private static final String TAG_SUBJECT = "subject";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -38,6 +40,7 @@ public class CriteriaSelectActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(CriteriaSelectActivity.this, SubjectSelectActivity.class);
+				i.putExtra(TAG_CRITERIA, "arts");
 				startActivity(i);
 				finish();
 			}
@@ -48,7 +51,7 @@ public class CriteriaSelectActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				startSubject();
+				startSubject("bus");
 			}
 			
 		});
@@ -57,7 +60,7 @@ public class CriteriaSelectActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				startSubject();
+				startSubject("lang");
 			}
 			
 		});
@@ -66,7 +69,7 @@ public class CriteriaSelectActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				startSubject();
+				startSubject("sci");
 			}
 			
 		});
@@ -75,7 +78,7 @@ public class CriteriaSelectActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				startSubject();
+				startSubject("engl");
 			}
 			
 		});
@@ -84,7 +87,7 @@ public class CriteriaSelectActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				startSubject();
+				startSubject("math");
 			}
 			
 		});
@@ -93,7 +96,7 @@ public class CriteriaSelectActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				startSubject();
+				startSubject("sport");
 			}
 			
 		});
@@ -102,7 +105,9 @@ public class CriteriaSelectActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				startSubject();
+				startSubject("instrum");
+				
+				
 			}
 			
 		});
@@ -111,15 +116,16 @@ public class CriteriaSelectActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				startSubject();
+				startSubject("game");
 			}
 			
 		});
        
 	}
 	
-	public void startSubject(){		
+	public void startSubject(String criteria){		
 		Intent i = new Intent(CriteriaSelectActivity.this, SubjectSelectActivity.class);
+		i.putExtra(TAG_CRITERIA,criteria);
 		startActivity(i);
 		finish();
 	}
