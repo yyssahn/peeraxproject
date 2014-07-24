@@ -29,6 +29,7 @@ public class ProfileDegreeActivity extends Activity {
 	String id;
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
+	private static final String TAG_DEGREE = "degree";
 	
 	private static String KEY_SUCCESS = "success";
     private static String KEY_ERROR = "error";
@@ -52,7 +53,10 @@ public class ProfileDegreeActivity extends Activity {
 		//id = (String)savedInstanceState.get(KEY_ID);
 		//Log.d("something", id);
 		db = new DatabaseHandler(getApplicationContext());
+		Intent i = getIntent();
+		String about_text = i.getStringExtra(TAG_DEGREE);
 		input = (EditText) findViewById(R.id.degreeinput);
+        input.setText(about_text);
 		confirmBtn = (Button) findViewById(R.id.degreeconfirmbtn);
 		
 		confirmBtn.setOnClickListener(new OnClickListener(){

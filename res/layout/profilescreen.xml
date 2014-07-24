@@ -60,19 +60,21 @@
 	        <TextView
 	        android:layout_width="200dp"
 	        android:layout_height="wrap_content"
-			android:text="about you"
+	        android:textStyle="bold"
+			android:text="About You"
 	        />
 	    <Button
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:background="@drawable/profilebutton2"
 	        
-	        android:text="edit"
+	        android:text="Edit"
 	        android:id="@+id/profileaboutbtn"/>
 	    </LinearLayout>
 	<TextView
 	    android:layout_width="match_parent"
 		android:layout_height="50dp"
+		android:layout_marginLeft="5dp"
 		android:id="@+id/profileabouttext"
 	    />
 	</LinearLayout>
@@ -93,12 +95,13 @@
 	        <TextView
 	        android:layout_width="200dp"
 	        android:layout_height="wrap_content"
-			android:text="subjects"
+	        android:textStyle="bold"
+			android:text="Subjects"
 	        />
 	    <Button
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:text="edit"
+	        android:text="Edit"
 	        
 	        android:background="@drawable/profilebutton2"
 	        android:id="@+id/profilesubjectbtn"/>
@@ -107,6 +110,7 @@
 	       android:id="@+id/profilesubject"
 	       android:layout_height="50dp"
 	       android:layout_width="fill_parent"
+	       android:layout_marginLeft="5dp"
 	       
 	       />
 	   
@@ -128,12 +132,13 @@
 	        <TextView
 	        android:layout_width="200dp"
 	        android:layout_height="wrap_content"
-			android:text="education"
+	        android:textStyle="bold"
+			android:text="Education"
 	        />
 	    <Button
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:text="edit"
+	        android:text="Edit"
 	        android:background="@drawable/profilebutton2"
 	        android:id="@+id/profileeducationbtn"/>
 	    
@@ -141,6 +146,7 @@
 	    <TextView
 	       android:id="@+id/profileeducation"
 	       android:layout_height="50dp"
+	       android:layout_marginLeft="5dp"
 	       android:layout_width="fill_parent"
 	       
 	       />
