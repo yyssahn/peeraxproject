@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    
+    android:background="@drawable/background3"
     android:layout_height="match_parent" >
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Sign Up"
+        android:text="Select the Specific Area\n for your help session"
         android:gravity="center"
         android:textSize="20dp"
+        android:background="@drawable/subjecttextbg1"
         android:id="@+id/criteriastring1"/>
     <LinearLayout
         android:layout_below="@+id/criteriastring1"
@@ -21,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="20dp"
+            android:background="@drawable/subjectbutton2"
             android:text="subject1"
             android:id="@+id/subject1"
             />
@@ -30,19 +34,25 @@
             android:textSize="20dp"
             android:text="subject2"
             android:id="@+id/subject2"
-            />
+            android:layout_margin="1dp"
+
+            android:background="@drawable/subjectbutton2"            />
         <Button
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="20dp"
             android:text="subject3"
             android:id="@+id/subject3"
+            
+            android:background="@drawable/subjectbutton2"
             />
         <Button
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="20dp"
             android:text="subject4"
+            
+            android:background="@drawable/subjectbutton2"
             android:id="@+id/subject4"
             />
 

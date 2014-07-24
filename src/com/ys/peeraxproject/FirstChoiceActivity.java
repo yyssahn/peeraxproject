@@ -62,6 +62,7 @@ public class FirstChoiceActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
+				new UpdateUser().execute();
 				Intent i = new Intent(FirstChoiceActivity.this, CriteriaSelectActivity.class);
 				startActivity(i);
 				finish();
@@ -73,7 +74,7 @@ public class FirstChoiceActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				
+				new UpdateUser().execute();
 				Intent i = new Intent(FirstChoiceActivity.this, HomePageActivity.class);
 				startActivity(i);
 				finish();
@@ -93,8 +94,9 @@ public class FirstChoiceActivity extends Activity {
         	
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("tag", ""));
-            
+            params.add(new BasicNameValuePair("tag", "seen"));
+            params.add(new BasicNameValuePair("phonenumber",db.getPhoneNumber()));
+            Log.d("firstchoice",db.getPhoneNumber());
             // getting JSON Object
             // Note that create product url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(loginURL, "POST", params);

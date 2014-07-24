@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    
+    android:background="@drawable/background3"
     android:layout_height="match_parent" >
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Sign Up"
+        android:text="Select the general area\n for your help session"
         android:gravity="center"
+        android:layout_margin="5dp"
+        android:background="@drawable/subjecttextbg1"
         android:textSize="20dp"
         android:id="@+id/criteriastring1"/>
     <LinearLayout
@@ -22,12 +26,15 @@
             android:layout_width="match_parent"
             android:textSize="20dp"
             android:text="Arts"
+            android:background="@drawable/subjectbutton1"
             android:id="@+id/criteriaarts"
             />
         <Button
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="20dp"
+            
+            android:background="@drawable/subjectbutton1"
             android:text="Business"
             android:id="@+id/criteriabusiness"
             />
@@ -37,12 +44,16 @@
             android:textSize="20dp"
             android:text="Languages"
             android:id="@+id/criterialanguage"
+            
+            android:background="@drawable/subjectbutton1"
             />
         <Button
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="20dp"
             android:text="Science"
+            
+            android:background="@drawable/subjectbutton1"
             android:id="@+id/criteriascience"
             />
         <Button
@@ -50,6 +61,8 @@
             android:layout_width="match_parent"
             android:textSize="20dp"
             android:text="Engineering"
+            
+            android:background="@drawable/subjectbutton1"
             android:id="@+id/criteriaengineering"
             />
         <Button
@@ -57,12 +70,16 @@
             android:layout_width="match_parent"
             android:textSize="20dp"
             android:text="Math"
+            
+            android:background="@drawable/subjectbutton1"
             android:id="@+id/criteriamath"
             />
         <Button
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="20dp"
+            
+            android:background="@drawable/subjectbutton1"
             android:text="Sports"
             android:id="@+id/criteriasports"
             />
@@ -72,10 +89,14 @@
             android:textSize="20dp"
             android:text="/Instrument lessons"
             android:id="@+id/criteriainstrument"
+            
+            android:background="@drawable/subjectbutton1"
             />
         <Button
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            
+            android:background="@drawable/subjectbutton1"
             android:textSize="20dp"
             android:text="Game"
             android:id="@+id/criteriagame"
