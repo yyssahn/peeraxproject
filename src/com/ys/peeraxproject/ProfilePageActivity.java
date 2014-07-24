@@ -32,10 +32,12 @@ public class ProfilePageActivity extends Activity {
 	DatabaseHandler db;
 	String KEY_ID= "id";
 	static String about_text;
+	static String subject_text;
 	static String degree_text;
 
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_ABOUT = "about";
+	private static final String TAG_SUBJECT = "subject";
 	private static final String TAG_DEGREE = "degree";
 	private static String loginURL = "http://104.131.141.54/lny_project/change_info.php";
 	private static String info_tag = "info";
@@ -120,6 +122,7 @@ public class ProfilePageActivity extends Activity {
  
                 if (success == 1) {
                 	about_text = json.getString(TAG_ABOUT);
+                	subject_text = json.getString(TAG_SUBJECT);
                 	degree_text = json.getString(TAG_DEGREE);
                 } else {
                     // failed to create product
@@ -135,6 +138,9 @@ public class ProfilePageActivity extends Activity {
 		protected void onPostExecute(String file_url) {
         	TextView about = (TextView) findViewById(R.id.profileabouttext);
     		about.setText(about_text);
+    		
+    		TextView subject = (TextView) findViewById(R.id.profilesubject);
+    		subject.setText(subject_text);
     		
     		TextView degree = (TextView) findViewById(R.id.profileeducation);
     		degree.setText(degree_text);
