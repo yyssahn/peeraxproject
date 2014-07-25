@@ -27,8 +27,10 @@ public class ProfileAboutActivity extends Activity {
 	DatabaseHandler db;
 	JSONParser jsonParser = new JSONParser();
 	String id;
+	static String about_text;
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
+	private static final String TAG_ABOUT = "about";
 	
 	private static String KEY_SUCCESS = "success";
     private static String KEY_ERROR = "error";
@@ -41,6 +43,7 @@ public class ProfileAboutActivity extends Activity {
     private static final String KEY_ABOUT = "about";
     private static final String KEY_DEGREE = "degree";
     private static String about_tag = "about";
+    private static String get_about_tag = "get_about";
     
     private static String loginURL = "http://104.131.141.54/lny_project/change_info.php";
 	
@@ -52,7 +55,10 @@ public class ProfileAboutActivity extends Activity {
 		//id = (String)savedInstanceState.get(KEY_ID);
 		//Log.d("something", id);
 		db = new DatabaseHandler(getApplicationContext());
+		Intent i = getIntent();
+		String about_text = i.getStringExtra(TAG_ABOUT);
 		input = (EditText) findViewById(R.id.aboutinput);
+        input.setText(about_text);
 		confirmBtn = (Button) findViewById(R.id.aboutconfirmbtn);
 		
 		confirmBtn.setOnClickListener(new OnClickListener(){
@@ -68,13 +74,13 @@ public class ProfileAboutActivity extends Activity {
 	}
 	
 	class UpdateUser extends AsyncTask<String, String, String> {
-		 
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
          }
  
-          @Override
+        @Override
 		protected String doInBackground(String... args) {
         	String about= input.getText().toString();
         	String phonenumber= db.getPhoneNumber();
@@ -97,12 +103,10 @@ public class ProfileAboutActivity extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-                //	db.updateAbout(phonenumber, about);
                 	Intent i = new Intent(getApplicationContext(), ProfilePageActivity.class);
                     startActivity(i);
  
                     finish();
-                	
                 } else {
                     // failed to create product
                 }
@@ -115,11 +119,7 @@ public class ProfileAboutActivity extends Activity {
  
         @Override
 		protected void onPostExecute(String file_url) {
-            // dismiss the dialog once done
-        //    pDialog.dismiss();
+
         }
-        
-
 	}
-
 }
