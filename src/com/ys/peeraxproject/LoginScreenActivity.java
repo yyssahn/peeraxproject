@@ -25,7 +25,6 @@ import android.widget.Toast;
 
 public class LoginScreenActivity extends Activity {
 	Button loginButton;
-  
 	JSONParser jsonParser = new JSONParser();
 	DatabaseHandler db;
 	private EditText idInput;

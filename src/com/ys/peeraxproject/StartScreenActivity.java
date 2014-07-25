@@ -18,6 +18,7 @@ public class StartScreenActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         db = new DatabaseHandler(getApplicationContext());
         if (db.getRowCount()==1){
         	Intent i = new Intent(StartScreenActivity.this, HomePageActivity.class);
