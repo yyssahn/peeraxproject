@@ -133,18 +133,17 @@ public class ProfilePageActivity extends Activity {
                 ByteArrayOutputStream bos = new ByteArrayOutputStream();
                 bitmap = android.provider.MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
 
-                if(bitmap.getWidth() >= 640 || bitmap.getHeight() >= 640){
-                    if(bitmap.getWidth() == bitmap.getHeight()){
-                        bitmap = Bitmap.createScaledBitmap(bitmap, 640, 640, true);
-                    }
-                    else if(bitmap.getWidth() > bitmap.getHeight()){
-                        float ratio = (float)bitmap.getWidth()/bitmap.getHeight();
-                        bitmap = Bitmap.createScaledBitmap(bitmap, 640, Math.round(640/ratio), true);
-                    }
-                    else{
-                        float ratio = (float)bitmap.getHeight() / bitmap.getWidth();
-                        bitmap = Bitmap.createScaledBitmap(bitmap, Math.round(640/ratio), 640, true);
-                    }
+                if(bitmap.getWidth() > bitmap.getHeight()){
+                    int halfDifference = Math.round((bitmap.getWidth()-bitmap.getHeight())/2);
+                    bitmap = Bitmap.createBitmap(bitmap, halfDifference, 0, bitmap.getWidth()-halfDifference, bitmap.getHeight());
+                }
+                else if (bitmap.getWidth() < bitmap.getHeight()){
+                    int halfDifference = Math.round((bitmap.getHeight()-bitmap.getWidth())/2);
+                    bitmap = Bitmap.createBitmap(bitmap, 0, halfDifference, bitmap.getWidth(), bitmap.getHeight()-(halfDifference*2));
+                }
+
+                if(bitmap.getWidth() >= 640 && bitmap.getHeight() >= 640){
+                    bitmap = Bitmap.createScaledBitmap(bitmap, 640, 640, true);
                 }
 
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 25, bos);
