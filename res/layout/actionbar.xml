@@ -1,28 +1,43 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"	android:id="@+id/actionbar"	android:enabled="false"
- 	android:orientation="horizontal"
-    android:paddingEnd="8dip" >
+    android:layout_height="wrap_content"
+	android:id="@+id/actionbar"
+	android:enabled="false"
+ 	android:orientation="horizontal">
 
     <Button
         android:id="@+id/optionbackbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-         />
+        android:textColor="#ffffffff"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_alignParentLeft="true" />
 
 <TextView 
     android:id="@+id/optiontitle"
     android:layout_width="match_parent"
-    android:gravity="center"
+    android:gravity="center_vertical|center_horizontal"
     android:layout_height="match_parent"
-    
-    />
+
+    android:textColor="#ffffffff"
+    android:textSize="20dp"
+    android:layout_alignParentRight="false"
+    android:layout_alignParentEnd="false" />
 
 <Button
     android:id="@+id/createoptionbutton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentRight="true"
-    android:layout_alignParentTop="true" />
+    android:layout_alignParentTop="false"
+    android:textColor="#ffffffff"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="5dp"
+    android:singleLine="false"
+    android:gravity="center_vertical|center_horizontal" />
 
 </RelativeLayout>

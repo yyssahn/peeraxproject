@@ -9,7 +9,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -174,7 +176,8 @@ public class HomePageActivity extends Activity {
 		final RelativeLayout layout = (RelativeLayout) findViewById(R.id.actionbar);
 		layout.setBackgroundResource(R.drawable.optionbar1);
 		final Button actionBarBack = (Button) findViewById(R.id.optionbackbutton);
-		actionBarBack.setText("Refresh");
+        actionBarBack.setBackgroundResource(R.drawable.optionpillbg);
+        actionBarBack.setText("Refresh");
 		
 		actionBarBack.setOnClickListener(new OnClickListener(){
 
@@ -190,7 +193,8 @@ public class HomePageActivity extends Activity {
 		});
 
 		final Button actionBarInflate = (Button) findViewById(R.id.createoptionbutton);
-		actionBarInflate.setText("Menu");
+        actionBarInflate.setBackgroundResource(R.drawable.optionpillbg);
+        actionBarInflate.setText("Menu");
 
 		actionBarInflate.setOnClickListener(new OnClickListener(){
 
@@ -199,7 +203,7 @@ public class HomePageActivity extends Activity {
 				// TODO Auto-generated method stub
 			dil = new Dialog(HomePageActivity.this);
 			dil.setTitle(null);
-            dil.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            dil.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
 			dil.requestWindowFeature(Window.FEATURE_NO_TITLE);
 			dil.setContentView(R.layout.optionbar);
@@ -264,13 +268,12 @@ public class HomePageActivity extends Activity {
             DisplayMetrics dimension = new DisplayMetrics();
             getWindowManager().getDefaultDisplay().getMetrics(dimension);
             int height = dimension.heightPixels - actionBar.getHeight();
-            int actionBarHeight = actionBar.getHeight() + 75;
+            int actionBarHeight = actionBar.getHeight() + 30;
 
             wlp.y = actionBarHeight;
             wlp.gravity=Gravity.TOP | Gravity.RIGHT;
-            wlp.height = height - (actionBarHeight/2);
+            wlp.height = height - actionBar.getHeight();
 
-            Log.d("yoffset: ", ""+actionBar.getHeight());
             window.setAttributes(wlp);
             }
 
