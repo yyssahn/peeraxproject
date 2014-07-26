@@ -253,7 +253,7 @@ public class ProfilePageActivity extends Activity {
             super.onPreExecute();
          }
  
-          @Override
+        @Override
 		protected String doInBackground(String... args) {
         	String phonenumber= db.getPhoneNumber();
         	Log.d("debug", phonenumber);
@@ -262,7 +262,6 @@ public class ProfilePageActivity extends Activity {
             
             params.add(new BasicNameValuePair("phonenumber", phonenumber));
             params.add(new BasicNameValuePair("tag",info_tag));
-
 
             try {
                 profile_picture = BitmapFactory.decodeStream((InputStream) new URL("http://104.131.141.54/lny_project/" + db.getPhoneNumber() + ".jpg").getContent());
@@ -298,8 +297,10 @@ public class ProfilePageActivity extends Activity {
  
         @Override
 		protected void onPostExecute(String file_url) {
-            ImageView picture = (ImageView) findViewById(R.id.userpicture);
-            picture.setImageBitmap(profile_picture);
+            if(profile_picture != null){
+                ImageView picture = (ImageView) findViewById(R.id.userpicture);
+                picture.setImageBitmap(profile_picture);
+            }
 
         	TextView about = (TextView) findViewById(R.id.profileabouttext);
     		about.setText(about_text);

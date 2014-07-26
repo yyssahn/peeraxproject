@@ -1,9 +1,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="120dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00ffffff">
+
+    <LinearLayout android:id="@+id/optionbar"
+    android:layout_width="160dp"
     android:layout_height="match_parent"
     android:orientation="vertical"
-        android:layout_alignParentRight="true"
+    android:layout_alignParentRight="true"
     android:layout_alignParentTop="true"
     android:background="@drawable/optionbg1"
     tools:context="${relativePackage}.${activityClass}" >
@@ -14,67 +19,76 @@
         android:layout_gravity="center_horizontal"
         android:id="@+id/optionpicture"
         android:src="@drawable/noimage"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="10dp" />
 
    	<TextView
    	    android:layout_width="fill_parent"
    	    android:layout_height="wrap_content"
    	    android:id="@+id/optionid"
-   	    android:textSize="15dp"
-   	    />
+   	    android:textSize="18dp"
+        android:text="Your Name"
+        android:singleLine="true"
+        android:textIsSelectable="true"
+        android:typeface="sans"
+        android:textColor="#ffffffff"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp" />
    	<Button 
    	    android:layout_width="fill_parent"
-   	    android:layout_height="wrap_content"
-   	    android:text="homepage"
-   	    
-android:background="@drawable/optionbutton3"
-   	    android:textSize="15dp"
+   	    android:layout_height="45dp"
+   	    android:text="Home Page"
+
+        android:textSize="18dp"
    	    android:layout_marginTop="5dp"
    	    android:layout_marginBottom="5dp"
    	    android:id="@+id/optionhomebtn"
-   	    />
+        android:textColor="#ffffffff"
+        android:typeface="sans"
+        android:background="@drawable/optionbutton3" />
    	
    	<Button 
    	    android:layout_width="fill_parent"
-   	    android:layout_height="wrap_content"
+   	    android:layout_height="45dp"
    	    android:text="Your Profile"
    	    android:layout_marginTop="5dp"
    	    android:layout_marginBottom="5dp"
-   	    android:textSize="15dp"
+   	    android:textSize="18dp"
 android:background="@drawable/optionbutton6"
    	    android:id="@+id/optionprofilebtn"
-   	    />
+        android:textColor="#ffffffff" />
    	<Button 
    	    android:layout_width="fill_parent"
-   	    android:layout_height="wrap_content"
+   	    android:layout_height="45dp"
    	    android:text="Conversation"
-android:textSize="15dp"
+android:textSize="18dp"
    	    android:layout_marginTop="5dp"
    	    android:layout_marginBottom="5dp"
 
 android:background="@drawable/optionbutton5"
    	    android:id="@+id/optionconversationbtn"
-   	    />
+        android:textColor="#ffffffff" />
    	<Button 
    	    android:layout_width="fill_parent"
-   	    android:layout_height="wrap_content"
+   	    android:layout_height="45dp"
    	    android:text="Session History"
-   	    android:textSize="15dp"
+   	    android:textSize="18dp"
    	    
    	    android:layout_marginTop="5dp"
    	    android:layout_marginBottom="5dp"
-android:background="@drawable/optionbutton3"
+android:background="@drawable/optionbutton4"
    	    android:id="@+id/optionsessionbtn"
-   	    />
+        android:textColor="#ffffffff" />
 	<Button 
    	    android:layout_width="fill_parent"
-   	    android:layout_height="wrap_content"
+   	    android:layout_height="45dp"
    	    android:text="User Settings"
-   	    android:textSize="15dp"
+   	    android:textSize="18dp"
    	    android:layout_marginTop="5dp"
    	    android:layout_marginBottom="5dp"
    	    android:background="@drawable/optionbutton2"
    	    android:id="@+id/optionsetting"
-   	    />
+        android:textColor="#ffffffff" />
 
+    </LinearLayout>
 </LinearLayout>
