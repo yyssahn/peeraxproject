@@ -1,9 +1,20 @@
 package com.ys.peeraxproject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,13 +25,19 @@ import com.ys.peeraxproject.helper.JSONParser;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 public class ProfilePageActivity extends Activity {
 	JSONParser jsonParser = new JSONParser();
@@ -34,6 +51,9 @@ public class ProfilePageActivity extends Activity {
 	static String about_text;
 	static String subject_text;
 	static String degree_text;
+    static Bitmap profile_picture;
+
+    InputStream inputStream;
 
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_ABOUT = "about";
@@ -41,6 +61,7 @@ public class ProfilePageActivity extends Activity {
 	private static final String TAG_DEGREE = "degree";
 	private static String loginURL = "http://104.131.141.54/lny_project/change_info.php";
 	private static String info_tag = "info";
+    private static final int GET_LOCAL_IMAGE = 8;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +74,18 @@ public class ProfilePageActivity extends Activity {
 		username.setText(db.getPhoneNumber());
 		
 		new GetInfo().execute();
-		
+
+        pictureBtn = (Button)findViewById(R.id.profilepicturebtn);
+        pictureBtn.setOnClickListener(new OnClickListener(){
+
+            @Override
+            public void onClick(View arg0) {
+                Intent i = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, GET_LOCAL_IMAGE);
+            }
+
+        });
+
 		aboutBtn = (Button)findViewById(R.id.profileaboutbtn);
 		aboutBtn.setOnClickListener(new OnClickListener(){
 
@@ -88,11 +120,137 @@ public class ProfilePageActivity extends Activity {
 				Intent i = new Intent(getApplicationContext(), ProfileDegreeActivity.class);
 				i.putExtra(TAG_DEGREE,degree_text);
 				startActivity(i);
-				
 			}
-		}
-		);
+		});
 	}
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == GET_LOCAL_IMAGE && resultCode == Activity.RESULT_OK) {
+            Uri selectedImage = data.getData();
+            Bitmap bitmap = null;
+            try {
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                bitmap = android.provider.MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+
+                if(bitmap.getWidth() >= 640 || bitmap.getHeight() >= 640){
+                    if(bitmap.getWidth() == bitmap.getHeight()){
+                        Log.d("yes", "yes");
+                        bitmap = Bitmap.createScaledBitmap(bitmap, 640, 640, true);
+                    }
+                    else if(bitmap.getWidth() > bitmap.getHeight()){
+                        float ratio = (float)bitmap.getWidth()/bitmap.getHeight();
+                        Log.d("yes", "no");
+                        bitmap = Bitmap.createScaledBitmap(bitmap, 640, Math.round(640/ratio), true);
+                    }
+                    else{
+                        float ratio = (float)bitmap.getHeight() / bitmap.getWidth();
+                        Log.d("no", "ratio: " + ratio + " height: "+bitmap.getHeight() + " width: " + bitmap.getWidth());
+                        bitmap = Bitmap.createScaledBitmap(bitmap, Math.round(640/ratio), 640, true);
+                    }
+                }
+
+                bitmap.compress(Bitmap.CompressFormat.WEBP, 25, bos);
+
+                byte[] byte_arr = bos.toByteArray();
+                final String image_str = Base64.encodeToString(byte_arr, 0);
+
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try{
+                            ArrayList<NameValuePair> nameValuePairs = new  ArrayList<NameValuePair>();
+                            nameValuePairs.add(new BasicNameValuePair("image", image_str));
+                            nameValuePairs.add(new BasicNameValuePair("phonenumber",db.getPhoneNumber()));
+
+                            Log.d("test", image_str);
+
+                            HttpClient httpclient = new DefaultHttpClient();
+                            HttpPost httppost = new HttpPost("http://104.131.141.54/lny_project/upload_image.php");
+                            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                            HttpResponse response = httpclient.execute(httppost);
+                            final String the_string_response = convertResponseToString(response);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(ProfilePageActivity.this, the_string_response, Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+                        }catch(Exception e){
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+//                                    Toast.makeText(ProfilePageActivity.this, "ERROR ", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                            System.out.println("Error in http connection "+e.toString());
+                        }
+                    }
+                });
+                t.start();
+
+            } catch (java.io.FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (java.io.IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public String convertResponseToString(HttpResponse response) throws IllegalStateException, IOException {
+
+        String res = "";
+        StringBuffer buffer = new StringBuffer();
+        inputStream = response.getEntity().getContent();
+        int contentLength = (int) response.getEntity().getContentLength(); //getting content length…..
+        runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+//                Toast.makeText(ProfilePageActivity.this, "contentLength : ", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        if (contentLength < 0){
+        }
+        else{
+            byte[] data = new byte[512];
+            int len = 0;
+            try
+            {
+                while (-1 != (len = inputStream.read(data)) )
+                {
+                    buffer.append(new String(data, 0, len)); //converting to string and appending  to stringbuffer…..
+                }
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            try
+            {
+                inputStream.close(); // closing the stream…..
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            res = buffer.toString();     // converting stringbuffer to string…..
+
+            runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+//                    Toast.makeText(ProfilePageActivity.this, "Result : " , Toast.LENGTH_LONG).show();
+                }
+            });
+            //System.out.println("Response => " +  EntityUtils.toString(response.getEntity()));
+        }
+        return res;
+    }
 	
 	class GetInfo extends AsyncTask<String, String, String> {
 		
@@ -131,12 +289,23 @@ public class ProfilePageActivity extends Activity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+            try {
+                profile_picture = BitmapFactory.decodeStream((InputStream) new URL("http://104.131.141.54/lny_project/" + db.getPhoneNumber() + ".webp").getContent());
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
  
             return null;
         }
  
         @Override
 		protected void onPostExecute(String file_url) {
+            ImageView picture = (ImageView) findViewById(R.id.userpicture);
+            picture.setImageBitmap(profile_picture);
+
         	TextView about = (TextView) findViewById(R.id.profileabouttext);
     		about.setText(about_text);
     		

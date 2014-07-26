@@ -35,7 +35,6 @@
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".ViewSubjectsActivity" />
         <activity android:name=".ProfileDegreeActivity" />
-        
         <activity android:name=".ProfileAboutActivity" />
         
     </application>
