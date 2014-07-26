@@ -135,22 +135,19 @@ public class ProfilePageActivity extends Activity {
 
                 if(bitmap.getWidth() >= 640 || bitmap.getHeight() >= 640){
                     if(bitmap.getWidth() == bitmap.getHeight()){
-                        Log.d("yes", "yes");
                         bitmap = Bitmap.createScaledBitmap(bitmap, 640, 640, true);
                     }
                     else if(bitmap.getWidth() > bitmap.getHeight()){
                         float ratio = (float)bitmap.getWidth()/bitmap.getHeight();
-                        Log.d("yes", "no");
                         bitmap = Bitmap.createScaledBitmap(bitmap, 640, Math.round(640/ratio), true);
                     }
                     else{
                         float ratio = (float)bitmap.getHeight() / bitmap.getWidth();
-                        Log.d("no", "ratio: " + ratio + " height: "+bitmap.getHeight() + " width: " + bitmap.getWidth());
                         bitmap = Bitmap.createScaledBitmap(bitmap, Math.round(640/ratio), 640, true);
                     }
                 }
 
-                bitmap.compress(Bitmap.CompressFormat.WEBP, 25, bos);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 25, bos);
 
                 byte[] byte_arr = bos.toByteArray();
                 final String image_str = Base64.encodeToString(byte_arr, 0);
@@ -162,8 +159,6 @@ public class ProfilePageActivity extends Activity {
                             ArrayList<NameValuePair> nameValuePairs = new  ArrayList<NameValuePair>();
                             nameValuePairs.add(new BasicNameValuePair("image", image_str));
                             nameValuePairs.add(new BasicNameValuePair("phonenumber",db.getPhoneNumber()));
-
-                            Log.d("test", image_str);
 
                             HttpClient httpclient = new DefaultHttpClient();
                             HttpPost httppost = new HttpPost("http://104.131.141.54/lny_project/upload_image.php");
@@ -268,7 +263,16 @@ public class ProfilePageActivity extends Activity {
             
             params.add(new BasicNameValuePair("phonenumber", phonenumber));
             params.add(new BasicNameValuePair("tag",info_tag));
-           
+
+
+            try {
+                profile_picture = BitmapFactory.decodeStream((InputStream) new URL("http://104.131.141.54/lny_project/" + db.getPhoneNumber() + ".jpg").getContent());
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             // getting JSON Object
             // Note that create product url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(loginURL, "POST", params);
@@ -287,14 +291,6 @@ public class ProfilePageActivity extends Activity {
                     // failed to create product
                 }
             } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                profile_picture = BitmapFactory.decodeStream((InputStream) new URL("http://104.131.141.54/lny_project/" + db.getPhoneNumber() + ".webp").getContent());
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
                 e.printStackTrace();
             }
  
