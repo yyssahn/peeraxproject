@@ -3,6 +3,9 @@
     android:layout_width="120dp"
     android:layout_height="match_parent"
     android:orientation="vertical"
+        android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:background="@drawable/optionbg1"
     tools:context="${relativePackage}.${activityClass}" >
     
     <ImageView
@@ -15,39 +18,61 @@
    	    android:layout_width="fill_parent"
    	    android:layout_height="wrap_content"
    	    android:id="@+id/optionid"
-   	    
+   	    android:textSize="15dp"
    	    />
    	<Button 
    	    android:layout_width="fill_parent"
    	    android:layout_height="wrap_content"
    	    android:text="homepage"
+   	    
+android:background="@drawable/optionbutton3"
+   	    android:textSize="15dp"
+   	    android:layout_marginTop="5dp"
+   	    android:layout_marginBottom="5dp"
    	    android:id="@+id/optionhomebtn"
    	    />
    	
    	<Button 
    	    android:layout_width="fill_parent"
    	    android:layout_height="wrap_content"
-   	    android:text="profile"
+   	    android:text="Your Profile"
+   	    android:layout_marginTop="5dp"
+   	    android:layout_marginBottom="5dp"
+   	    android:textSize="15dp"
+android:background="@drawable/optionbutton6"
    	    android:id="@+id/optionprofilebtn"
    	    />
    	<Button 
    	    android:layout_width="fill_parent"
    	    android:layout_height="wrap_content"
-   	    android:text="conversation"
+   	    android:text="Conversation"
+android:textSize="15dp"
+   	    android:layout_marginTop="5dp"
+   	    android:layout_marginBottom="5dp"
+
+android:background="@drawable/optionbutton5"
    	    android:id="@+id/optionconversationbtn"
    	    />
    	<Button 
    	    android:layout_width="fill_parent"
    	    android:layout_height="wrap_content"
-   	    android:text="homepage"
+   	    android:text="Session History"
+   	    android:textSize="15dp"
+   	    
+   	    android:layout_marginTop="5dp"
+   	    android:layout_marginBottom="5dp"
+android:background="@drawable/optionbutton3"
    	    android:id="@+id/optionsessionbtn"
    	    />
-	
- 	<Button 
+	<Button 
    	    android:layout_width="fill_parent"
    	    android:layout_height="wrap_content"
-   	    android:text="homepage"
-   	    android:id="@+id/optionuserbtn"
+   	    android:text="User Settings"
+   	    android:textSize="15dp"
+   	    android:layout_marginTop="5dp"
+   	    android:layout_marginBottom="5dp"
+   	    android:background="@drawable/optionbutton2"
+   	    android:id="@+id/optionsetting"
    	    />
 
 </LinearLayout>
