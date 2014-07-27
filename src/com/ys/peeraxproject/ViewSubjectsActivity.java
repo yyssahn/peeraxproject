@@ -14,11 +14,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import view.SubjectListItem;
-
 import com.ys.peeraxproject.ProfilePageActivity.GetInfo;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 import com.ys.peeraxproject.helper.JSONParser;
+import com.ys.peeraxproject.view.SubjectListItem;
 
 import android.app.ActionBar;
 import android.app.Activity;

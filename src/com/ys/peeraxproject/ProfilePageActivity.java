@@ -457,6 +457,13 @@ public class ProfilePageActivity extends Activity {
                 	about_text = json.getString(TAG_ABOUT);
                 	subject_text = json.getString(TAG_SUBJECT);
                 	degree_text = json.getString(TAG_DEGREE);
+                	
+                	if(about_text == "null")
+                		about_text = "";
+                	if(subject_text == "null")
+                		subject_text = "";
+                	if(degree_text == "null")
+                		degree_text = "";
                 } else {
                     // failed to create product
                 }
