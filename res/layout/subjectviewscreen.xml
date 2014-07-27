@@ -1,25 +1,39 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
+    android:background="@drawable/background3"
     tools:context="${relativePackage}.${activityClass}" >
-        
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFFFF"
+            android:gravity="center_horizontal"
+            android:text= "The help Sessions you offer\n and their pricing"
+            android:id="@+id/subjectviewtext"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/subjecttextbg1"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            />
     <Button
         android:id="@+id/subjectaddbtn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="add more"
+        android:text="add more shit"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         />
 
     <ListView
         android:layout_above="@+id/subjectaddbtn"
-        android:id="@android:id/list"
+        android:id="@+id/subjectlist"
+		android:background="#00000000"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/subjectviewtext">
     </ListView>
 
 </RelativeLayout>

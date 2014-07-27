@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_margin="10dp"
+    android:gravity="center_vertical"
+    android:background="@drawable/profiletextbg"
+    android:orientation="horizontal" >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/subjecttext"
+        android:layout_marginLeft="5dp"
+        android:textColor="#FFFFFFFF"
+        android:layout_weight="2"
+        />
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/subjecttext2"
+        android:layout_weight="2"
+        android:textColor="#FFFFFFFF"
+        />
+    
+    <Button
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:id="@+id/subjectbutton1"
+        android:background="@drawable/xbutton"
+ 
+        
+        />
+
+</LinearLayout>

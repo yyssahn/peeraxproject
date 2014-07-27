@@ -40,6 +40,7 @@ public final class R {
         public static final int subjectbutton1=0x7f02001a;
         public static final int subjectbutton2=0x7f02001b;
         public static final int subjecttextbg1=0x7f02001c;
+        public static final int xbutton=0x7f02001d;
     }
     public static final class id {
         public static final int LoginIdInput=0x7f07001d;
@@ -68,9 +69,9 @@ public final class R {
         public static final int degreeconfirmbtn=0x7f07002b;
         public static final int degreeinput=0x7f07002a;
         public static final int homebutton=0x7f070019;
-        public static final int item_comedy=0x7f07004a;
-        public static final int item_movies=0x7f070048;
-        public static final int item_music=0x7f070049;
+        public static final int item_comedy=0x7f07004f;
+        public static final int item_movies=0x7f07004d;
+        public static final int item_music=0x7f07004e;
         public static final int msg_edit=0x7f07000b;
         public static final int msg_list=0x7f070009;
         public static final int optionbackbutton=0x7f070001;
@@ -83,8 +84,8 @@ public final class R {
         public static final int optionsessionbtn=0x7f070026;
         public static final int optionsetting=0x7f070027;
         public static final int optiontitle=0x7f070002;
-        public static final int priceinput=0x7f07003e;
-        public static final int pricetext1=0x7f07003d;
+        public static final int priceinput=0x7f070041;
+        public static final int pricetext1=0x7f070040;
         public static final int profileaboutbtn=0x7f07002f;
         public static final int profileabouttext=0x7f070030;
         public static final int profileeducation=0x7f070034;
@@ -94,23 +95,28 @@ public final class R {
         public static final int profilesubject=0x7f070032;
         public static final int profilesubjectbtn=0x7f070031;
         public static final int send_btn=0x7f07000a;
-        public static final int sessionconfirmbtn=0x7f07003f;
+        public static final int sessionconfirmbtn=0x7f070042;
         public static final int signupphonenumber=0x7f070037;
         public static final int starttext1=0x7f070004;
         public static final int starttext2=0x7f070005;
         public static final int starttext3=0x7f070006;
-        public static final int subject1=0x7f070039;
-        public static final int subject2=0x7f07003a;
-        public static final int subject3=0x7f07003b;
-        public static final int subject4=0x7f07003c;
-        public static final int subjectaddbtn=0x7f070040;
-        public static final int tempconversationbtn=0x7f070044;
-        public static final int temphomebtn=0x7f070042;
-        public static final int templogout=0x7f070047;
-        public static final int tempmainscreen=0x7f070041;
-        public static final int tempprofilebtn=0x7f070043;
-        public static final int tempsessionbtn=0x7f070045;
-        public static final int tempuserbtn=0x7f070046;
+        public static final int subject1=0x7f07003c;
+        public static final int subject2=0x7f07003d;
+        public static final int subject3=0x7f07003e;
+        public static final int subject4=0x7f07003f;
+        public static final int subjectaddbtn=0x7f070044;
+        public static final int subjectbutton1=0x7f07003b;
+        public static final int subjectlist=0x7f070045;
+        public static final int subjecttext=0x7f070039;
+        public static final int subjecttext2=0x7f07003a;
+        public static final int subjectviewtext=0x7f070043;
+        public static final int tempconversationbtn=0x7f070049;
+        public static final int temphomebtn=0x7f070047;
+        public static final int templogout=0x7f07004c;
+        public static final int tempmainscreen=0x7f070046;
+        public static final int tempprofilebtn=0x7f070048;
+        public static final int tempsessionbtn=0x7f07004a;
+        public static final int tempuserbtn=0x7f07004b;
         public static final int tologinbtn=0x7f070007;
         public static final int tosignupbtn=0x7f070008;
         public static final int tutorbutton=0x7f070016;
@@ -131,11 +137,12 @@ public final class R {
         public static final int profiledegreescreen=0x7f030009;
         public static final int profilescreen=0x7f03000a;
         public static final int signupscreen=0x7f03000b;
-        public static final int subjectchoicescreen=0x7f03000c;
-        public static final int subjectpricescreen=0x7f03000d;
-        public static final int subjectselectscreen=0x7f03000e;
-        public static final int subjectviewscreen=0x7f03000f;
-        public static final int tempmainscreen=0x7f030010;
+        public static final int subject=0x7f03000c;
+        public static final int subjectchoicescreen=0x7f03000d;
+        public static final int subjectpricescreen=0x7f03000e;
+        public static final int subjectselectscreen=0x7f03000f;
+        public static final int subjectviewscreen=0x7f030010;
+        public static final int tempmainscreen=0x7f030011;
     }
     public static final class menu {
         public static final int popupmenu=0x7f060000;
