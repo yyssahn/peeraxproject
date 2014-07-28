@@ -4,6 +4,8 @@ package com.ys.peeraxproject;
 import com.ys.peeraxproject.ViewSubjectsActivity.SubjectAdapter;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 import com.ys.peeraxproject.helper.JSONParser;
+import com.ys.peeraxproject.view.PeopleListItem;
+import com.ys.peeraxproject.view.SubjectListItem;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -45,8 +47,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import view.PeopleListItem;
-import view.SubjectListItem;
 
 import java.io.IOException;
 import java.io.InputStream;

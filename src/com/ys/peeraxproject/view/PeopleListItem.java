@@ -1,4 +1,4 @@
-package view;
+package com.ys.peeraxproject.view;
 
 import java.io.IOException;
 import java.io.InputStream;
