@@ -21,7 +21,7 @@
         android:id="@+id/subjectaddbtn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="add more shit"
+        android:text="add more"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         />
@@ -30,6 +30,7 @@
         android:layout_above="@+id/subjectaddbtn"
         android:id="@+id/subjectlist"
 		android:background="#00000000"
+		android:divider="@null"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

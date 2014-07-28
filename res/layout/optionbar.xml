@@ -45,7 +45,8 @@
             android:textColor="#ffffffff"
             android:typeface="sans"
             android:background="@drawable/optionbutton3"
-            android:drawableLeft="@drawable/arrowleft"
+            
+            android:drawableLeft="@drawable/arrowleft2" 
             />
         <Button
             android:layout_width="match_parent"
@@ -56,7 +57,7 @@
             android:background="@drawable/optionbutton6"
             android:id="@+id/optionprofilebtn"
             android:textColor="#ffffffff"
-            android:drawableLeft="@drawable/arrowleft" />
+            android:drawableLeft="@drawable/arrowleft2" />
         <Button
             android:layout_width="fill_parent"
             android:layout_height="40dp"
@@ -66,7 +67,7 @@
             android:background="@drawable/optionbutton5"
             android:id="@+id/optionconversationbtn"
             android:textColor="#ffffffff"
-            android:drawableLeft="@drawable/arrowleft"
+            android:drawableLeft="@drawable/arrowleft2"
             />
         <Button
             android:layout_width="fill_parent"
@@ -77,7 +78,7 @@
             android:background="@drawable/optionbutton4"
             android:id="@+id/optionsessionbtn"
             android:textColor="#ffffffff"
-            android:drawableLeft="@drawable/arrowleft"
+            android:drawableLeft="@drawable/arrowleft2"
             />
         <Button
             android:layout_width="fill_parent"
@@ -87,7 +88,7 @@
             android:background="@drawable/optionbutton2"
             android:id="@+id/optionsetting"
             android:textColor="#ffffffff"
-            android:drawableLeft="@drawable/arrowleft"
+            android:drawableLeft="@drawable/arrowleft2"
             />
     </LinearLayout>
 </LinearLayout>

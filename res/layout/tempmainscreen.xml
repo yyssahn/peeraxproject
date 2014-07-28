@@ -8,50 +8,10 @@
     tools:context="${relativePackage}.${activityClass}" >
     
 
-    
-   	<TextView
-   	    android:layout_width="fill_parent"
-   	    android:layout_height="wrap_content"
-   	    android:text="temp main"
-   	    
-   	    />
-   	<Button 
-   	    android:layout_width="fill_parent"
-   	    android:layout_height="wrap_content"
-   	    android:text="homepage"
-   	    android:id="@+id/temphomebtn"
-   	    />
-   	
-   	<Button 
-   	    android:layout_width="fill_parent"
-   	    android:layout_height="wrap_content"
-   	    android:text="profile"
-   	    android:id="@+id/tempprofilebtn"
-   	    />
-   	<Button 
-   	    android:layout_width="fill_parent"
-   	    android:layout_height="wrap_content"
-   	    android:text="conversation"
-   	    android:id="@+id/tempconversationbtn"
-   	    />
-   	<Button 
-   	    android:layout_width="fill_parent"
-   	    android:layout_height="wrap_content"
-   	    android:text="Session History"
-   	    android:id="@+id/tempsessionbtn"
-   	    />
-	
- 	<Button 
-   	    android:layout_width="fill_parent"
-   	    android:layout_height="wrap_content"
-   	    android:text="User Settings"
-   	    android:id="@+id/tempuserbtn"
-   	    />
- 	<Button 
-   	    android:layout_width="fill_parent"
-   	    android:layout_height="wrap_content"
-   	    android:text="log out"
-   	    android:id="@+id/templogout"
-   	    />
-
+  <ListView
+      android:id="@+id/peoplelist"
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:divider="@null"
+      android:layout_margin="10dp"/>
 </LinearLayout>
