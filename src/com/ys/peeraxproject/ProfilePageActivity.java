@@ -305,14 +305,14 @@ public class ProfilePageActivity extends Activity {
 
                 if(bitmap.getWidth() > bitmap.getHeight()){
                     int halfDifference = Math.round((bitmap.getWidth()-bitmap.getHeight())/2);
-                    bitmap = Bitmap.createBitmap(bitmap, halfDifference, 0, bitmap.getWidth()-halfDifference, bitmap.getHeight());
+                    bitmap = Bitmap.createBitmap(bitmap, halfDifference, 0, bitmap.getWidth()-(halfDifference*2), bitmap.getHeight()-1);
                 }
                 else if (bitmap.getWidth() < bitmap.getHeight()){
                     int halfDifference = Math.round((bitmap.getHeight()-bitmap.getWidth())/2);
-                    bitmap = Bitmap.createBitmap(bitmap, 0, halfDifference, bitmap.getWidth(), bitmap.getHeight()-(halfDifference*2));
+                    bitmap = Bitmap.createBitmap(bitmap, 0, halfDifference, bitmap.getWidth()-1, bitmap.getHeight()-(halfDifference*2));
                 }
 
-                bitmap = Bitmap.createScaledBitmap(bitmap, 640, 640, true);
+                bitmap = Bitmap.createScaledBitmap(bitmap, 1280, 1280, true);
 
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 25, bos);
 
