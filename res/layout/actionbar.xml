@@ -3,7 +3,9 @@
     android:layout_height="wrap_content"
 	android:id="@+id/actionbar"
 	android:enabled="false"
- 	android:orientation="horizontal">
+ 	android:orientation="horizontal"
+    android:clickable="false"
+    android:background="@android:color/transparent">
 
     <Button
         android:id="@+id/optionbackbutton"

@@ -167,12 +167,12 @@ public class ProfileAboutActivity extends Activity {
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setCustomView(actionBarLayout);
-		final RelativeLayout layout = (RelativeLayout) findViewById(R.id.actionbar);
-		layout.setBackgroundResource(R.drawable.optionbg2);
+        actionBar.setBackgroundDrawable(new ColorDrawable(00000000));
+        actionBarLayout.setBackgroundResource(R.drawable.optionbg2);
 		final Button actionBarBack = (Button) findViewById(R.id.optionbackbutton);
-        actionBarBack.setBackgroundResource(R.drawable.optionbutton7);
-       
-        actionBarBack.setText("Refresh");
+        actionBarBack.setBackgroundResource(R.drawable.pillplainalt);
+        actionBarBack.setText("Back");
+
         final Context con = ProfileAboutActivity.this;
 		
 		actionBarBack.setOnClickListener(new OnClickListener(){
@@ -181,7 +181,7 @@ public class ProfileAboutActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 
-	        	Toast.makeText(con, "Refresh", Toast.LENGTH_SHORT).show();
+	        	Toast.makeText(con, "Back", Toast.LENGTH_SHORT).show();
 	           
 			}
 			
@@ -189,8 +189,7 @@ public class ProfileAboutActivity extends Activity {
 		});
 
 		final Button actionBarInflate = (Button) findViewById(R.id.createoptionbutton);
-        actionBarInflate.setBackgroundResource(R.drawable.optionbutton7);
-        actionBarInflate.setText("Menu");
+        actionBarInflate.setBackgroundResource(R.drawable.pillalt);
 
 		actionBarInflate.setOnClickListener(new OnClickListener(){
 
@@ -282,7 +281,7 @@ public class ProfileAboutActivity extends Activity {
         });
 
 		final TextView actionBarStaff = (TextView) findViewById(R.id.optiontitle);
-		actionBarStaff.setText("Home Page");
+		actionBarStaff.setText("Your Profile");
 
 		return super.onCreateOptionsMenu(menu);
 	}

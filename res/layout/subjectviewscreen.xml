@@ -4,19 +4,22 @@
 
     android:layout_height="match_parent"
     android:background="@drawable/background3"
-    tools:context="${relativePackage}.${activityClass}" >
+    tools:context="${relativePackage}.${activityClass}"
+    android:paddingTop="40dp">
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFFFF"
             android:gravity="center_horizontal"
-            android:text= "The help Sessions you offer\n and their pricing"
+            android:text= "The help sessions you offer\n and their pricing"
             android:id="@+id/subjectviewtext"
         android:layout_alignParentTop="true"
         android:background="@drawable/subjecttextbg1"
             android:layout_centerHorizontal="true"
             android:layout_margin="20dp"
-            />
+            android:textSize="18dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp" />
     <Button
         android:id="@+id/subjectaddbtn"
         android:layout_width="fill_parent"

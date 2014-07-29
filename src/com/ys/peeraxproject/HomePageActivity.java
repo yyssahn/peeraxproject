@@ -153,16 +153,16 @@ public class HomePageActivity extends Activity {
         inflater = getLayoutInflater();
 		final LinearLayout mainpage = (LinearLayout)findViewById(R.id.tempmainscreen);
 		final ActionBar actionBar = getActionBar();
-		actionBar.setDisplayShowHomeEnabled(false);
+
+        actionBar.setDisplayShowHomeEnabled(false);
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setCustomView(actionBarLayout);
-		final RelativeLayout layout = (RelativeLayout) findViewById(R.id.actionbar);
-		layout.setBackgroundResource(R.drawable.optionbar1);
-		final Button actionBarBack = (Button) findViewById(R.id.optionbackbutton);
+        actionBar.setBackgroundDrawable(new ColorDrawable(00000000));
+        actionBarLayout.setBackgroundResource(R.drawable.optionbar1);
+        final Button actionBarBack = (Button) findViewById(R.id.optionbackbutton);
         actionBarBack.setBackgroundResource(R.drawable.pill2);
-       
-		
+
 		actionBarBack.setOnClickListener(new OnClickListener(){
 
 			@Override
