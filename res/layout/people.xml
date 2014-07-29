@@ -16,8 +16,8 @@
         
         >
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:id="@+id/pid"
             android:background="@drawable/noimage"
             />
@@ -30,16 +30,19 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
+                android:textSize="15sp"
                 android:id="@+id/peoplename"
                 android:textColor="#FFFFFFFF"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
                 />
             
             <TextView 
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/peopleabout"
-                
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"
                 android:textColor="#FFFFFFFF"
                 android:layout_marginLeft="10dp"
                 />
@@ -50,6 +53,8 @@
         
     </LinearLayout>
     <RelativeLayout
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
    
