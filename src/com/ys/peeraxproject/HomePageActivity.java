@@ -18,6 +18,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -47,7 +49,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -56,11 +57,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class HomePageActivity extends Activity {
+public class HomePageActivity extends FragmentActivity {
 
     LayoutInflater inflater;
     DatabaseHandler db;
     Dialog dil;
+    Button locationBtn;
     ListView peopleList;
     static Bitmap profile_picture;
     static String user_name;
@@ -74,6 +76,7 @@ public class HomePageActivity extends Activity {
     private static final String KEY_ABOUT = "about";;
     private static final String KEY_DEGREE = "degree";;
     private static String register_tag = "register";
+    private final static String LOCATION = "location";
 
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
@@ -91,11 +94,21 @@ public class HomePageActivity extends Activity {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tempmainscreen);
-         db = new DatabaseHandler(getApplicationContext());
-         peopleList = (ListView) findViewById(R.id.peoplelist);
-         pList = new ArrayList<HashMap<String, String>>();
-         Log.d("shit","eat");
-         new GetPeople().execute();
+        db = new DatabaseHandler(getApplicationContext());
+        
+        // Temporary for location
+        locationBtn = (Button)findViewById(R.id.locationbutton);
+		locationBtn.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+        peopleList = (ListView) findViewById(R.id.peoplelist);
+        pList = new ArrayList<HashMap<String, String>>();
+        Log.d("shit","eat");
+        new GetPeople().execute();
 		/*
 		if (db.getRowCount()==0){
         	Intent i = new Intent(HomePageActivity.this, StartScreenActivity.class);

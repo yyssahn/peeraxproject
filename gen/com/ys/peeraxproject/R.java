@@ -74,9 +74,10 @@ public final class R {
         public static final int degreeconfirmbtn=0x7f07002f;
         public static final int degreeinput=0x7f07002e;
         public static final int homebutton=0x7f070019;
-        public static final int item_comedy=0x7f07004e;
-        public static final int item_movies=0x7f07004c;
-        public static final int item_music=0x7f07004d;
+        public static final int item_comedy=0x7f07004f;
+        public static final int item_movies=0x7f07004d;
+        public static final int item_music=0x7f07004e;
+        public static final int locationbutton=0x7f07004b;
         public static final int msg_edit=0x7f07000b;
         public static final int msg_list=0x7f070009;
         public static final int optionbackbutton=0x7f070001;
@@ -90,7 +91,7 @@ public final class R {
         public static final int optionsetting=0x7f070027;
         public static final int optiontitle=0x7f070002;
         public static final int peopleabout=0x7f07002a;
-        public static final int peoplelist=0x7f07004b;
+        public static final int peoplelist=0x7f07004c;
         public static final int peoplename=0x7f070029;
         public static final int peoplenumber=0x7f07002b;
         public static final int pid=0x7f070028;

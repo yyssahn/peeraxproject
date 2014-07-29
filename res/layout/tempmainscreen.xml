@@ -7,7 +7,13 @@
     android:background="@drawable/background2"
     tools:context="${relativePackage}.${activityClass}" >
     
-
+  <Button
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/profilebutton2"
+	        android:text="Temp. Location Button"
+	        android:id="@+id/locationbutton"/>
+  
   <ListView
       android:id="@+id/peoplelist"
       android:layout_height="wrap_content"
