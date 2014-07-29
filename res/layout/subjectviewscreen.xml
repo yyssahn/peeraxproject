@@ -22,9 +22,12 @@
             android:paddingBottom="5dp" />
     <Button
         android:id="@+id/subjectaddbtn"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="add more"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:text="add"
+        android:layout_marginBottom="50dp"
+        android:textColor="#FFFFFFFF"
+        android:background="@drawable/profilebutton3"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         />
@@ -37,6 +40,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+     
         android:layout_below="@+id/subjectviewtext">
     </ListView>
 

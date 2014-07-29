@@ -293,7 +293,7 @@ public class CriteriaSelectActivity extends Activity {
         });
 
 		final TextView actionBarStaff = (TextView) findViewById(R.id.optiontitle);
-		actionBarStaff.setText("Home Page");
+		actionBarStaff.setText("Add Session");
 
 		return super.onCreateOptionsMenu(menu);
 	}
