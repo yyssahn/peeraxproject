@@ -8,6 +8,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 
 public class LocationService extends Service{
 	private LocationManager locationManager;
@@ -42,26 +43,22 @@ public class LocationService extends Service{
 	private class MyLocationListener implements LocationListener{
 
 		@Override
-		public void onLocationChanged(Location arg0) {
-			// TODO Auto-generated method stub
-			
+		public void onLocationChanged(Location location) {
+			Log.d("GPS", "location changed: lat="+location.getLatitude()+", lon="+location.getLongitude());
 		}
 
 		@Override
-		public void onProviderDisabled(String arg0) {
-			// TODO Auto-generated method stub
-			
+		public void onProviderDisabled(String provider) {
+			Log.d("GPS", "GPS diabled");
 		}
 
 		@Override
-		public void onProviderEnabled(String arg0) {
-			// TODO Auto-generated method stub
-			
+		public void onProviderEnabled(String provider) {
+			Log.d("GPS", "GPS enabled");
 		}
 
 		@Override
-		public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
-			// TODO Auto-generated method stub
+		public void onStatusChanged(String provider, int status, Bundle extras) {
 			
 		}
 	}

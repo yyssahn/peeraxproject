@@ -4,6 +4,7 @@ package com.ys.peeraxproject;
 import com.ys.peeraxproject.ViewSubjectsActivity.SubjectAdapter;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 import com.ys.peeraxproject.helper.JSONParser;
+import com.ys.peeraxproject.location.LocationService;
 import com.ys.peeraxproject.view.PeopleListItem;
 import com.ys.peeraxproject.view.SubjectListItem;
 
@@ -63,6 +64,7 @@ public class HomePageActivity extends FragmentActivity {
     DatabaseHandler db;
     Dialog dil;
     Button locationBtn;
+    Button stopLocationBtn;
     ListView peopleList;
     static Bitmap profile_picture;
     static String user_name;
@@ -102,7 +104,15 @@ public class HomePageActivity extends FragmentActivity {
 
 			@Override
 			public void onClick(View v) {
-				
+				startService(new Intent(getApplicationContext(), LocationService.class));
+			}
+		});
+		stopLocationBtn = (Button)findViewById(R.id.stoplocationbutton);
+		stopLocationBtn.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				stopService(new Intent(getApplicationContext(), LocationService.class));
 			}
 		});
         peopleList = (ListView) findViewById(R.id.peoplelist);
@@ -164,7 +174,7 @@ public class HomePageActivity extends FragmentActivity {
 		// Set up your ActionBar
 
         inflater = getLayoutInflater();
-		final LinearLayout mainpage = (LinearLayout)findViewById(R.id.tempmainscreen);
+		final RelativeLayout mainpage = (RelativeLayout)findViewById(R.id.tempmainscreen);
 		final ActionBar actionBar = getActionBar();
 		actionBar.setDisplayShowHomeEnabled(false);
 		actionBar.setDisplayShowTitleEnabled(false);
