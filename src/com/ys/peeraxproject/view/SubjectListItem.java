@@ -14,7 +14,9 @@ import com.ys.peeraxproject.ViewSubjectsActivity;
 import com.ys.peeraxproject.helper.JSONParser;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -46,7 +48,10 @@ public class SubjectListItem extends LinearLayout {
 	public SubjectListItem(Context context, String cri, String sub,  String pri, String phone) {
 		super(context);
 		criteria = cri;
+		
 		cont = context;
+		
+		
 		subject = sub;
 		price = pri;
 		phonenumber = phone;
@@ -70,9 +75,32 @@ public class SubjectListItem extends LinearLayout {
 
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Toast.makeText(cont, price, Toast.LENGTH_SHORT).show();
-				new DeleteSubject().execute();
+				//adialog.show();
+				AlertDialog.Builder abuilder = new AlertDialog.Builder(cont);
+				abuilder.setTitle("Delete Confirmation");
+				abuilder.setMessage("You sure about deleting thig course?");
+				abuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						new DeleteSubject().execute();
+						Intent i = new Intent(cont, ViewSubjectsActivity.class);
+						i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NO_ANIMATION);
+						cont.startActivity(i);
+					}
+				});
+				abuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						dialog.cancel();
+					}
+				});
+				AlertDialog adialog = abuilder.create();
+				
+				adialog.show();
 			}
 
 
