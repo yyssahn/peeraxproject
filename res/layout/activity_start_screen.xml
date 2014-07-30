@@ -19,18 +19,21 @@
 		android:id="@+id/tosignupbtn"
 		android:layout_below="@+id/tologinbtn"
 		android:text="Sign Up"
+		android:layout_marginBottom="10dp"
 		android:layout_centerHorizontal="true"
 		/>
+	
 
 	<TextView
 	    android:id="@+id/starttext"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_alignParentTop="true"
+	    
 	    android:layout_centerHorizontal="true"
-	    android:layout_marginTop="50dp"
+	    android:layout_marginTop="100dp"
 	    android:gravity="center_horizontal"
 	    android:text="Welcome to\n\nPeerAX\n\nThe Interactive Peer\nAssistance\nExchanging Program"
-	    android:textSize="30sp" />
+	    android:textSize="33sp" />
 
 </RelativeLayout>

@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
+            android:textColor="#FFFFFFFF"
             android:drawableRight="@drawable/rightwhitearrow"
             android:textSize="20dp"
             android:background="@drawable/subjectbutton2"
@@ -43,7 +44,7 @@
             android:text="subject2"
             android:id="@+id/subject2"
              android:drawableRight="@drawable/rightwhitearrow"
-
+android:textColor="#FFFFFFFF"
             android:background="@drawable/subjectbutton2"            />
         <Button
             android:layout_height="wrap_content"
@@ -53,7 +54,7 @@
             android:textSize="20dp"
             android:text="subject3"
             android:id="@+id/subject3"
-            
+            android:textColor="#FFFFFFFF"
             android:background="@drawable/subjectbutton2"
             />
         <Button
@@ -63,7 +64,7 @@
             android:layout_marginBottom="5dp"
              android:drawableRight="@drawable/rightwhitearrow"
             android:text="subject4"
-            
+            android:textColor="#FFFFFFFF"
             android:background="@drawable/subjectbutton2"
             android:id="@+id/subject4"
             />

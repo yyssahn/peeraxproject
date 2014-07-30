@@ -64,9 +64,10 @@
     
         android:id="@+id/sessionconfirmbtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:background="@drawable/profilebutton3"
         android:text="done"
+        android:textColor="#FFFFFFFF"
         android:layout_marginBottom="20dp"
         android:layout_centerHorizontal="true"
         />
