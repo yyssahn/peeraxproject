@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
-    android:background="@drawable/background3"
+    android:background="@drawable/bgyellow"
     tools:context="${relativePackage}.${activityClass}"
     android:paddingTop="40dp">
         <TextView
