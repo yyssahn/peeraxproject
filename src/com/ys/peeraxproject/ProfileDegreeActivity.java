@@ -38,16 +38,19 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class ProfileDegreeActivity extends Activity {
-	EditText input;
+	Spinner input;
 	Button confirmBtn;
 	DatabaseHandler db;
 	JSONParser jsonParser = new JSONParser();
@@ -55,6 +58,8 @@ public class ProfileDegreeActivity extends Activity {
     static Bitmap profile_picture;
     LayoutInflater inflater;
     Dialog dil;
+    int dint=0;
+    String degreeint;
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_DEGREE = "degree";
@@ -84,8 +89,49 @@ public class ProfileDegreeActivity extends Activity {
 		db = new DatabaseHandler(getApplicationContext());
 		Intent i = getIntent();
 		String about_text = i.getStringExtra(TAG_DEGREE);
-		input = (EditText) findViewById(R.id.degreeinput);
-        input.setText(about_text);
+		switch(about_text){
+		case "0":
+			dint=0;			
+			break;
+case "1":		
+		dint=1;
+break;
+		
+case "2":dint=2;
+break;
+
+case "3":
+	dint=3;
+	break;
+
+case "4":
+
+	dint=4;
+
+break;
+
+case "5":
+
+	dint=5;
+	
+break;
+
+case "6":
+
+	dint=6;
+	break;
+case "7":
+
+dint =7;
+break;
+
+
+		}
+
+		input = (Spinner) findViewById(R.id.degreespinner);
+		
+		input.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+		input.setSelection(dint);
 		confirmBtn = (Button) findViewById(R.id.degreeconfirmbtn);
 		
 		confirmBtn.setOnClickListener(new OnClickListener(){
@@ -109,13 +155,13 @@ public class ProfileDegreeActivity extends Activity {
  
           @Override
 		protected String doInBackground(String... args) {
-        	String degree= input.getText().toString();
+        	//String degree= input.getText().toString();
         	String phonenumber= db.getPhoneNumber();
         	
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            
-            params.add(new BasicNameValuePair("degree", degree));
+          
+            params.add(new BasicNameValuePair("degree", degreeint));
             params.add(new BasicNameValuePair("phonenumber", phonenumber));
             params.add(new BasicNameValuePair("tag", KEY_DEGREE));
            
@@ -342,5 +388,18 @@ public class ProfileDegreeActivity extends Activity {
             about.setText(user_name);
         }
     }
+	public class CustomOnItemSelectedListener implements OnItemSelectedListener {
+		 
+		  public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
+			degreeint= ""+pos;
+
+		  }
+		 
+		  @Override
+		  public void onNothingSelected(AdapterView<?> arg0) {
+			// TODO Auto-generated method stub
+		  }
+		 
+		}
 
 }

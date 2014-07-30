@@ -3,5 +3,15 @@
 
     <string name="app_name">PeerAXproject</string>
     <string name="hello_world">Hello world!</string>
-
+ <string name="degree_prompt">Choose Your Education</string>
+    <string-array name="degree">
+        <item>Secondary School</item>
+        <item>Post Secondary - 1st Year</item>
+        <item>Post Secondary - 2nd Year</item>
+        <item>Post Secondary - 3rd Year</item>
+        <item>Post Secondary - 4th Year</item>
+        <item>Bachelor Degree</item>
+        <item>Master student / Master Degree</item>
+        <item>PHD Student / PHD Degree</item>
+    </string-array>
 </resources>

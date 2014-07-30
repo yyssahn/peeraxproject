@@ -459,7 +459,9 @@ public class ProfilePageActivity extends Activity {
                 		about_text = "";
                 	if(subject_text == "null")
                 		subject_text = "";
-                	if(degree_text == "null")
+                	if(degree_text  == "null")
+                		
+                		
                 		degree_text = "";
                 } else {
                     // failed to create product
@@ -485,7 +487,50 @@ public class ProfilePageActivity extends Activity {
     		subject.setText(subject_text);
     		
     		TextView degree = (TextView) findViewById(R.id.profileeducation);
-    		degree.setText(degree_text);
+    		String degreet = null;
+    		switch(degree_text){
+    		case "0":
+    			degreet ="Secondary School";		
+    		    			
+    			break;
+case "1":
+	degreet ="Post Secondary - 1st Year";		
+    		
+	break;
+    		
+case "2":
+	degreet = "Post Secondary - 2nd Year";		
+    
+	break;
+
+case "3":
+
+	degreet = "Post Secondary - 3rd Year";
+	break;
+
+case "4":
+
+	degreet = "Post Secondary - 4th Year";
+	
+	break;
+
+case "5":
+
+	degreet = "Bachelor Degree";
+	break;
+
+case "6":
+
+	degreet = "Master student/ Master Degree";	
+	break;
+case "7":
+
+	degreet = "PHD student / PHD Degree";
+	break;
+
+	
+    		}
+    		degree.setText(degreet);
         }
 	}
 }
