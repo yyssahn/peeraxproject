@@ -1,26 +1,22 @@
 package com.ys.peeraxproject;
 
-
-import com.ys.peeraxproject.ViewSubjectsActivity.SubjectAdapter;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 import com.ys.peeraxproject.helper.JSONParser;
+import com.ys.peeraxproject.location.LocationService;
 import com.ys.peeraxproject.view.PeopleListItem;
-import com.ys.peeraxproject.view.SubjectListItem;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,15 +24,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,7 +40,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -56,91 +48,63 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class HomePageActivity extends Activity {
+public class HomePageActivity extends FragmentActivity {
 
-    LayoutInflater inflater;
-    DatabaseHandler db;
-    Dialog dil;
-    ListView peopleList;
-    static Bitmap profile_picture;
-    static String user_name;
-	private static String KEY_SUCCESS = "success";
-    private static String KEY_ERROR = "error";
-    private static String KEY_ERROR_MSG = "error_msg";
-    private static String KEY_UID = "unique_id";
-    private static String KEY_NAME = "name";
-    private static String KEY_EMAIL = "email";
-    private static final String KEY_ID = "uid";
-    private static final String KEY_ABOUT = "about";;
-    private static final String KEY_DEGREE = "degree";;
-    private static String register_tag = "register";
+    private LayoutInflater inflater;
+    private DatabaseHandler db;
+    private Dialog dil;
+    private Button locationBtn;
+    private Button stopLocationBtn;
+    private ListView peopleList;
+    
+    private static Bitmap profile_picture;
+    private static String user_name;
+
+    private final static String LOCATION = "location";
 
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
-	private static final String TAG_CRITERIA = "criteria";
-	private static final String TAG_SUBJECT = "subject";
-	private String criteria;
-	private String subject;
-	ArrayList<HashMap<String, String>> pList;
+
+	private ArrayList<HashMap<String, String>> pList;
     
     private static String getpeopleURL = "http://104.131.141.54/lny_project/get_people.php";
-    JSONParser jsonParser =new JSONParser();
+    private JSONParser jsonParser =new JSONParser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tempmainscreen);
-         db = new DatabaseHandler(getApplicationContext());
-         peopleList = (ListView) findViewById(R.id.peoplelist);
-         pList = new ArrayList<HashMap<String, String>>();
-         Log.d("shit","eat");
-         new GetPeople().execute();
-		/*
-		if (db.getRowCount()==0){
-        	Intent i = new Intent(HomePageActivity.this, StartScreenActivity.class);
-        	startActivity(i);
+        db = new DatabaseHandler(getApplicationContext());
+        
+        // Temporary for location
+        locationBtn = (Button)findViewById(R.id.locationbutton);
+		locationBtn.setOnClickListener(new OnClickListener(){
 
+			@Override
+			public void onClick(View v) {
+				startService(new Intent(getApplicationContext(), LocationService.class));
+			}
+		});
+		stopLocationBtn = (Button)findViewById(R.id.stoplocationbutton);
+		stopLocationBtn.setOnClickListener(new OnClickListener(){
 
-        }
-		 */
+			@Override
+			public void onClick(View v) {
+				stopService(new Intent(getApplicationContext(), LocationService.class));
+			}
+		});
+		
+        peopleList = (ListView) findViewById(R.id.peoplelist);
+        pList = new ArrayList<HashMap<String, String>>();
+        Log.d("shit","eat");
+        new GetPeople().execute();
+	
+        
 
     }
 
-    class GetInfo extends AsyncTask<String, String, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected String doInBackground(String... args) {
-
-            user_name = db.getPhoneNumber();
-
-            try {
-                profile_picture = BitmapFactory.decodeStream((InputStream) new URL("http://104.131.141.54/lny_project/" + user_name + ".jpg").getContent());
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String file_url) {
-            if(profile_picture != null) {
-                ImageView picture = (ImageView) dil.findViewById(R.id.optionpicture);
-                picture.setImageBitmap(profile_picture);
-            }
-
-            TextView about = (TextView) dil.findViewById(R.id.optionid);
-            about.setText(user_name);
-        }
-    }
+    
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -151,7 +115,7 @@ public class HomePageActivity extends Activity {
 		// Set up your ActionBar
 
         inflater = getLayoutInflater();
-		final LinearLayout mainpage = (LinearLayout)findViewById(R.id.tempmainscreen);
+		final RelativeLayout mainpage = (RelativeLayout)findViewById(R.id.tempmainscreen);
 		final ActionBar actionBar = getActionBar();
 
         actionBar.setDisplayShowHomeEnabled(false);
@@ -427,4 +391,39 @@ public class HomePageActivity extends Activity {
         	}
 
 	}
+	
+	class GetInfo extends AsyncTask<String, String, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... args) {
+
+            user_name = db.getPhoneNumber();
+
+            try {
+                profile_picture = BitmapFactory.decodeStream((InputStream) new URL("http://104.131.141.54/lny_project/" + user_name + ".jpg").getContent());
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String file_url) {
+            if(profile_picture != null) {
+                ImageView picture = (ImageView) dil.findViewById(R.id.optionpicture);
+                picture.setImageBitmap(profile_picture);
+            }
+
+            TextView about = (TextView) dil.findViewById(R.id.optionid);
+            about.setText(user_name);
+        }
+    }
 }

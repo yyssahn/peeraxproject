@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tempmainscreen"
     android:layout_width="match_parent"
@@ -8,11 +8,26 @@
     tools:context="${relativePackage}.${activityClass}"
     android:paddingTop="40dp">
     
+  <Button
+        android:id="@+id/locationbutton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Begin Tracking" />
 
+    <Button
+        android:id="@+id/stoplocationbutton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/locationbutton"
+        android:text="Stop Tracking" />
   <ListView
       android:id="@+id/peoplelist"
       android:layout_height="wrap_content"
       android:layout_width="match_parent"
       android:divider="@null"
+      android:layout_below="@+id/locationbutton"
       android:layout_margin="10dp"/>
-</LinearLayout>
+</RelativeLayout>
