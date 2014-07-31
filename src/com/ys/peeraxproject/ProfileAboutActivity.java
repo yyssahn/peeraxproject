@@ -59,19 +59,8 @@ public class ProfileAboutActivity extends Activity {
 	LayoutInflater inflater;
 	Dialog dil;
 	private static final String TAG_SUCCESS = "success";
-	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_ABOUT = "about";
-	
-	private static String KEY_SUCCESS = "success";
-    private static String KEY_ERROR = "error";
-    private static String KEY_ERROR_MSG = "error_msg";
-    private static String KEY_UID = "unique_id";
-    private static String KEY_NAME = "name";
-    private static String KEY_EMAIL = "email";
-    private static String KEY_about = "about";
     
-    private static final String KEY_ABOUT = "about";
-    private static final String KEY_DEGREE = "degree";
     private static String about_tag = "about";
     private static String get_about_tag = "get_about";
     
