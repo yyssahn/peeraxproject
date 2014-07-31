@@ -28,20 +28,12 @@ import android.widget.Toast;
 public class SignUpActivity extends Activity {
 	JSONParser jsonParser = new JSONParser();
 	private static final String TAG_SUCCESS = "success";
-	private static final String TAG_MESSAGE = "message";
-	DatabaseHandler db;
-	private static String TAG = "SignUpActivity";
+	private DatabaseHandler db;
+	private final String LOG_TAG = "SignUpActivity";
     private EditText idInput;
     private EditText pwInput;
 	
     private EditText pnInput;
-	private static String KEY_SUCCESS = "success";
-    private static String KEY_ERROR = "error";
-    private static String KEY_ERROR_MSG = "error_msg";
-    private static String KEY_UID = "uid";
-    private static String KEY_NAME = "name";
-    private static String KEY_EMAIL = "email";
-    private static String register_tag = "register";
     
     private static String registerURL = "http://104.131.141.54/lny_project/create_user.php";
 	Button registerButton;
@@ -114,7 +106,6 @@ public class SignUpActivity extends Activity {
             String name = idInput.getText().toString();
             String phonenumber = pnInput.getText().toString();
             String password = pwInput.getText().toString();
-            //Log.d("some error", email);
             Log.d("some error", phonenumber);
             
             
@@ -124,14 +115,14 @@ public class SignUpActivity extends Activity {
             params.add(new BasicNameValuePair("name", name));
             params.add(new BasicNameValuePair("phonenumber", phonenumber));
             params.add(new BasicNameValuePair("password", password));
-            Log.d("signup", name);
-            Log.d("signup", phonenumber);
+            Log.d(LOG_TAG, name);
+            Log.d(LOG_TAG, phonenumber);
             // getting JSON Object
             // Note that create product url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(registerURL,
                     "POST", params);
             
-            // check log cat fro response
+            // check log cat for response
             Log.d("Create Response", json.toString());
  
             // check for success tag
@@ -139,7 +130,7 @@ public class SignUpActivity extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-                	db.addUser(json.getInt("uid"), json.getString("unique_id"), json.getString("name"), json.getInt("phonenumber"), json.getString("about"), json.getString("degree"));
+                	db.addUser(json.getInt("phonenumber") , json.getString("name"), json.getString("about"), json.getString("degree"));
                     if(json.getInt("seen")== 0)
                     {
                 	Intent i = new Intent(getApplicationContext(), FirstChoiceActivity.class);

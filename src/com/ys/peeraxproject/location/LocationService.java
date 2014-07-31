@@ -1,9 +1,5 @@
 package com.ys.peeraxproject.location;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,15 +8,12 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.ys.peeraxproject.ProfilePageActivity;
-import com.ys.peeraxproject.R;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 import com.ys.peeraxproject.helper.JSONParser;
 
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -28,8 +21,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 
 public class LocationService extends Service{
 	private LocationManager locationManager;
@@ -40,8 +32,8 @@ public class LocationService extends Service{
 	private JSONParser jsonParser;
 	private final String LOG_TAG = "LocationService";
 	
-	private static final int TIME = 900000;
-	private static final int DISTANCE = 25;
+	private static final int TIME = 900000; //15min
+	private static final int DISTANCE = 25;	//25m
 	private static final String LOCATION_TAG = "location";
 	private static final String loginURL = "http://104.131.141.54/lny_project/update_location.php";
 	private static final String TAG_SUCCESS = "success";
@@ -57,8 +49,6 @@ public class LocationService extends Service{
 	 
 	    db = new DatabaseHandler(getApplicationContext());
 	    jsonParser = new JSONParser();
-	    
-	    new UpdateLocation().execute();
 	}
 	
 	@Override
@@ -133,6 +123,7 @@ public class LocationService extends Service{
 		@Override
 		public void onLocationChanged(Location location) {
 			Log.d("GPS", "location changed: lat="+location.getLatitude()+", lon="+location.getLongitude());
+			new UpdateLocation().execute();
 		}
 
 		@Override

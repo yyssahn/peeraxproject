@@ -59,16 +59,9 @@ public class PriceSelectScreen extends Activity {
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
 	
-	private static String KEY_SUCCESS = "success";
-    private static String KEY_ERROR = "error";
-    private static String KEY_ERROR_MSG = "error_msg";
-    private static String KEY_UID = "unique_id";
-    private static String KEY_NAME = "name";
-    private static String KEY_EMAIL = "email";
     private static final String KEY_ID = "uid";
     private static final String KEY_ABOUT = "about";;
     private static final String KEY_DEGREE = "degree";;
-    private static String register_tag = "register";
 
 	private static final String TAG_CRITERIA = "criteria";
 	private static final String TAG_SUBJECT = "subject";
@@ -123,10 +116,6 @@ public class PriceSelectScreen extends Activity {
          * */
         @Override
 		protected String doInBackground(String... args) {
-//        	 Log.d("some error", email);
-//            Log.d("some error", password);
-            
-            
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             String phonenumber = db.getPhoneNumber();

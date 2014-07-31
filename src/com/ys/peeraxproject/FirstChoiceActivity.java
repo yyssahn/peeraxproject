@@ -27,33 +27,17 @@ public class FirstChoiceActivity extends Activity {
 	DatabaseHandler db;
 	JSONParser jsonParser = new JSONParser();
 	private static final String TAG_SUCCESS = "success";
-	private static final String TAG_MESSAGE = "message";
-	
-	private static String KEY_SUCCESS = "success";
-    private static String KEY_ERROR = "error";
-    private static String KEY_ERROR_MSG = "error_msg";
-    private static String KEY_UID = "unique_id";
-    private static String KEY_NAME = "name";
-    private static String KEY_EMAIL = "email";
-    private static String KEY_about = "about";
-    
-    private static final String KEY_ABOUT = "about";;
-    private static final String KEY_DEGREE = "degree";;
-    private static String about_tag = "about";
-
 
     private static String loginURL = "http://104.131.141.54/lny_project/change_info.php";
 	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		db = new DatabaseHandler(getApplicationContext());
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.firstchoicescreen);
-       
-        
+ 
         toCreateSessionBtn = (Button) findViewById(R.id.tutorbutton);
         toHomeBtn = (Button) findViewById(R.id.homebutton);
         

@@ -65,27 +65,13 @@ public class ViewSubjectsActivity extends Activity {
 	JSONParser jsonParser = new JSONParser();
 	Button addBtn;
 	private static final String TAG_SUCCESS = "success";
-	private static final String TAG_MESSAGE = "message";
+
 	ListView list;
 	LayoutInflater inflater;
 
     static Bitmap profile_picture;
 	Dialog dil;
-	private static String KEY_SUCCESS = "success";
-    private static String KEY_ERROR = "error";
-    private static String KEY_ERROR_MSG = "error_msg";
-    private static String KEY_UID = "unique_id";
-    private static String KEY_NAME = "name";
-    private static String KEY_EMAIL = "email";
-    private static final String KEY_ID = "uid";
-    private static final String KEY_ABOUT = "about";;
-    private static final String KEY_DEGREE = "degree";;
-    private static String register_tag = "register";
 
-	private static final String TAG_CRITERIA = "criteria";
-	private static final String TAG_SUBJECT = "subject";
-	private String criteria;
-	private String subject;
 	AlertDialog.Builder abuilder;
 	AlertDialog adialog;
 	ArrayList<HashMap<String, String>> subjectList;
@@ -322,8 +308,6 @@ public class ViewSubjectsActivity extends Activity {
          * */
         @Override
 		protected String doInBackground(String... args) {
-//        	 Log.d("some error", email);
-//            Log.d("some error", password);
             JSONArray subjectarray = null;
             
             // Building Parameters

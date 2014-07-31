@@ -68,7 +68,7 @@ public class HomePageActivity extends FragmentActivity {
 	private ArrayList<HashMap<String, String>> pList;
     
     private static String getpeopleURL = "http://104.131.141.54/lny_project/get_people.php";
-    private JSONParser jsonParser =new JSONParser();
+    private JSONParser jsonParser = new JSONParser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +76,7 @@ public class HomePageActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tempmainscreen);
         db = new DatabaseHandler(getApplicationContext());
+        //db.resetTables();
         
         // Temporary for location
         locationBtn = (Button)findViewById(R.id.locationbutton);
@@ -99,9 +100,6 @@ public class HomePageActivity extends FragmentActivity {
         pList = new ArrayList<HashMap<String, String>>();
         Log.d("shit","eat");
         new GetPeople().execute();
-	
-        
-
     }
 
     
@@ -319,8 +317,6 @@ public class HomePageActivity extends FragmentActivity {
          * */
         @Override
 		protected String doInBackground(String... args) {
-//        	 Log.d("some error", email);
-//            Log.d("some error", password);
             Log.d("shit","eat3");
             JSONArray peoplearray = null;
             

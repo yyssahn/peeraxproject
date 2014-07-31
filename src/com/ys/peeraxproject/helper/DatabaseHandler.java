@@ -22,12 +22,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_LOGIN = "login";
  
     // Login Table Columns names
-    private static final String KEY_ID = "id";
-    private static final String KEY_NAME = "name";
     private static final String KEY_PHONE = "phone";
-    private static final String KEY_UID = "uid";
+    private static final String KEY_NAME = "name";
     private static final String KEY_ABOUT = "userabout";
     private static final String KEY_DEGREE = "userdegree";
+    
+    public final String LOG_TAG = "DatabaseHandler";
  
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -36,23 +36,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
+    	Log.d(LOG_TAG, "onCreate()");
         String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_LOGIN + "("
-                + KEY_ID + " INTEGER PRIMARY KEY,"
-                + KEY_UID + " TEXT,"
-               
+        		+ KEY_PHONE + " INTEGER UNIQUE,"
                 + KEY_NAME + " TEXT,"
                 + KEY_ABOUT + " TEXT,"
-                + KEY_DEGREE + " TEXT,"
-                + KEY_PHONE + " INTEGER UNIQUE" + ")";
-                
-                
-                
+                + KEY_DEGREE + " TEXT" + ")";
+      
         db.execSQL(CREATE_LOGIN_TABLE);
     }
  
     // Upgrading database
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    	Log.d(LOG_TAG, "onUpgrade()");
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOGIN);
  
@@ -63,19 +60,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(int uid, String uuid, String name, int phone, String about, String degree) {
+    public void addUser(int phone, String name, String about, String degree) {
+    	Log.d(LOG_TAG, "addUser()");
         SQLiteDatabase db = this.getWritableDatabase();
-        Log.d("error","place 1");
         ContentValues values = new ContentValues();
-        values.put(KEY_ID, uid); // Email
-        values.put(KEY_UID, uuid);
-        values.put(KEY_NAME, name); // Name
+        values.put(KEY_PHONE, phone);
+        values.put(KEY_NAME, name); 
         values.put(KEY_ABOUT, about); 
-        values.put(KEY_PHONE, phone); // Email
-       // Name
-        values.put(KEY_DEGREE, degree); // Email
+        values.put(KEY_DEGREE, degree); 
         
-         // Created At
+        // Created At
         // Inserting Row
         db.insert(TABLE_LOGIN, null, values);
 
@@ -86,6 +80,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * Getting user data from database
      * */
     public HashMap<String, String> getUserDetails(){
+    	Log.d(LOG_TAG, "getUserDetails()");
         HashMap<String,String> user = new HashMap<String,String>();
         String selectQuery = "SELECT  * FROM " + TABLE_LOGIN;
           
@@ -95,10 +90,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         cursor.moveToFirst();
         
         if(cursor.getCount() > 0){
+        	user.put("phone", cursor.getString(0));
             user.put("name", cursor.getString(1));
-            user.put("email", cursor.getString(2));
-            user.put("uid", cursor.getString(3));
-            user.put("created_at", cursor.getString(4));
+            user.put("created_at", cursor.getString(2));
         }
         cursor.close();
         db.close();
@@ -106,6 +100,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return user;
     }
     public String getPhoneNumber(){
+    	Log.d(LOG_TAG, "getPhonenumber()");
         String user;
         String selectQuery = "SELECT  * FROM " + TABLE_LOGIN;
           
@@ -114,7 +109,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Move to first row
         cursor.moveToFirst();
         
-        user =cursor.getString(5);
+        user =cursor.getString(0);
         cursor.close();
         db.close();
         // return user
@@ -126,6 +121,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * return true if rows are there in table
      * */
     public int getRowCount() {
+    	Log.d(LOG_TAG, "getRowCount()");
         String countQuery = "SELECT  * FROM " + TABLE_LOGIN;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
@@ -142,17 +138,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * Delete all tables and create them again
      * */
     public void resetTables(){
+    	Log.d(LOG_TAG, "resetTables()");
         SQLiteDatabase db = this.getWritableDatabase();
         // Delete All Rows
         db.delete(TABLE_LOGIN, null, null);
         db.close();
     }
-    public void updateAbout(String email, String about) {
+    public void updateAbout(String phone, String about) {
+    	Log.d(LOG_TAG, "updateAbout()");
     	SQLiteDatabase db = this.getWritableDatabase();
 
     ContentValues args = new ContentValues();
-    args.put(KEY_ABOUT, about);
+    args.put(KEY_ABOUT, phone);
 
-    db.update(TABLE_LOGIN, args, "id=" + email, null);
+    db.update(TABLE_LOGIN, args, "id=" + phone, null);
 }
 }

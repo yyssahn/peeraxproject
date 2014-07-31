@@ -31,17 +31,6 @@ public class LoginScreenActivity extends Activity {
 		private EditText passwordInput;
 		private static final String TAG_SUCCESS = "success";
 		private static final String TAG_MESSAGE = "message";
-		
-		private static String KEY_SUCCESS = "success";
-	    private static String KEY_ERROR = "error";
-	    private static String KEY_ERROR_MSG = "error_msg";
-	    private static String KEY_UID = "unique_id";
-	    private static String KEY_NAME = "name";
-	    private static String KEY_EMAIL = "email";
-	    private static final String KEY_ID = "uid";
-	    private static final String KEY_ABOUT = "about";;
-	    private static final String KEY_DEGREE = "degree";;
-	    private static String register_tag = "register";
 	    
 	    private static String loginURL = "http://104.131.141.54/lny_project/login_user.php";
 		
@@ -92,11 +81,10 @@ public class LoginScreenActivity extends Activity {
          * */
         @Override
 		protected String doInBackground(String... args) {
-        	 String phonenumber = idInput.getText().toString();
+        	String phonenumber = idInput.getText().toString();
             String password = passwordInput.getText().toString();
-            Log.d("some error", phonenumber);
-            Log.d("some error", password);
-            
+            Log.d("LoginScreenActivity", "Phonenumber: " + phonenumber);
+            Log.d("LoginScreenActivity", "Password:" + password);
             
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -115,7 +103,8 @@ public class LoginScreenActivity extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-                	db.addUser(json.getInt("uid"), json.getString("unique_id"), json.getString("name"), json.getInt("phonenumber"), json.getString("about"), json.getString("degree"));                    
+                	db.addUser(json.getInt("phonenumber"), json.getString("name"), json.getString("about"), json.getString("degree") );                    
+                	Log.d("login", "User added to local db");
                 	if (json.getInt("seen") == 0){
                 	
                 	Intent i = new Intent(getApplicationContext(), FirstChoiceActivity.class);

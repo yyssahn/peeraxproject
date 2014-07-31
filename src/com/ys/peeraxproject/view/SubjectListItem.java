@@ -131,10 +131,6 @@ public class SubjectListItem extends LinearLayout {
          * */
         @Override
 		protected String doInBackground(String... args) {
-//        	 Log.d("some error", email);
-//            Log.d("some error", password);
-            
-            
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
            
