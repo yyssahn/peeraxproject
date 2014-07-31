@@ -9,31 +9,35 @@
 	    android:id="@+id/tutorbutton"
 	    android:layout_width="200dp"
 	    android:layout_height="60dp"
+	    android:layout_marginTop="30dp"
+	    android:textColor="#FFFFFFFF"
 	    android:layout_centerHorizontal="true"
 	    android:layout_below="@+id/choicetext1"
 	    android:text="Add Session"
 	    android:background="@drawable/button1"
-	    android:textSize="20dp"
+	    android:textSize="30sp"
 	     />
 	
 	<TextView
 	    android:id="@+id/choicetext1"
-	    android:layout_width="200dp"
+	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_centerHorizontal="true"
-	    android:textSize="20dp"
-	    android:layout_marginTop="20dp"
-	    android:text="First Time Here?\n Would You Like To"
+	    android:textSize="30sp"
+	    
+	    android:layout_marginTop="30dp"
+	    android:text="First Time Here?\n\nWould You Like To"
 	    android:gravity="center"
 	    />
 	<TextView
+	    android:layout_marginTop="30dp"
 	    android:id="@+id/choicetext2"
-	    android:layout_width="200dp"
+	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_centerHorizontal="true"
-	    android:textSize="20dp"
+	    android:textSize="30sp"
 	    android:layout_below="@+id/tutorbutton"
-	    android:text="Or\n\nWould You Like To Find Helps By Entering"
+	    android:text="Or\n\nWould You Like To\nFind Helps By\nEntering"
 	    android:gravity="center"
 	    />
 
@@ -41,10 +45,12 @@
 	    android:id="@+id/homebutton"
 	    android:layout_width="200dp"
 	    android:layout_height="60dp"
+	    android:layout_marginTop="30dp"
 	    android:layout_centerHorizontal="true"
 	    android:layout_below="@+id/choicetext2"
 	    android:text="Home Page"
-	    android:textSize="20dp"
+	  android:textColor="#FFFFFFFF"
+	    android:textSize="30sp"
 	    android:background="@drawable/button2"
 	     />
 	

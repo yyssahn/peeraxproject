@@ -3,21 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background3"
+    android:background="@drawable/bgyellow"
    >
      
     <EditText 
         android:layout_width="match_parent"
-		android:layout_height="200dp"
+		android:layout_height="400dp"
 		android:id="@+id/aboutinput"
+		android:gravity="top|left"
+		android:layout_marginLeft="15dp"
 		android:maxLength="50"
+		android:layout_marginRight="15dp"
+		android:padding="5dp"
+		android:layout_marginTop="60dp"
+		android:background="@drawable/profiletextbg2"
         />
 
     <Button
         android:id="@+id/aboutconfirmbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:background="@drawable/profilebutton3"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="25dp"
+        android:textColor="#FFFFFFFF"
         android:text="Confirm" />
  
 </LinearLayout>

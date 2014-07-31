@@ -21,6 +21,8 @@ import com.ys.peeraxproject.view.SubjectListItem;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -51,6 +53,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ViewSubjectsActivity extends Activity {
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		overridePendingTransition(0, 0);
+		super.onDestroy();
+		
+	}
+
 	DatabaseHandler db;
 	JSONParser jsonParser = new JSONParser();
 	Button addBtn;
@@ -76,6 +86,8 @@ public class ViewSubjectsActivity extends Activity {
 	private static final String TAG_SUBJECT = "subject";
 	private String criteria;
 	private String subject;
+	AlertDialog.Builder abuilder;
+	AlertDialog adialog;
 	ArrayList<HashMap<String, String>> subjectList;
     
     private static String getsubjectURL = "http://104.131.141.54/lny_project/get_subjects.php";
@@ -85,6 +97,7 @@ public class ViewSubjectsActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.subjectviewscreen);
+		
 		db = new DatabaseHandler(getApplicationContext());
 		addBtn = (Button) findViewById(R.id.subjectaddbtn);
 		new GetSubject().execute();
@@ -96,7 +109,11 @@ public class ViewSubjectsActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
+				
+				
+				
 				Intent i = new Intent(getApplicationContext(), CriteriaSelectActivity.class);
+				
 				startActivity(i);
 			}
 			
@@ -413,7 +430,7 @@ public class ViewSubjectsActivity extends Activity {
 		public View getView(int arg0, View arg1, ViewGroup arg2) {
 			// TODO Auto-generated method stub
 		
-			SubjectListItem list = new SubjectListItem(getApplicationContext(),sList.get(arg0).get("criteria"), sList.get(arg0).get("subject"),sList.get(arg0).get("price"), db.getPhoneNumber());
+			SubjectListItem list = new SubjectListItem(ViewSubjectsActivity.this,sList.get(arg0).get("criteria"), sList.get(arg0).get("subject"),sList.get(arg0).get("price"), db.getPhoneNumber());
 			list.setText1(sList.get(arg0).get("subject"));
 
 			list.setText2(sList.get(arg0).get("price"));

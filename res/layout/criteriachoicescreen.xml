@@ -13,18 +13,33 @@
         android:layout_centerHorizontal="true"
         android:text="Select the general area\n for your help session"
         android:gravity="center"
-        android:layout_margin="5dp"
+        android:textColor="#FFFFFFFF"
+        android:layout_margin="20dp"
+        
         android:background="@drawable/subjecttextbg1"
         android:textSize="20dp"
         android:id="@+id/criteriastring1"/>
-    <LinearLayout
+    <ScrollView 
+        
         android:layout_below="@+id/criteriastring1"
+       	android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    <LinearLayout
+        
+      
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <Button
             android:layout_height="wrap_content"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:textColor="#FFFFFFFF"
+            android:drawableRight="@drawable/rightgrayarrow"
             android:layout_width="match_parent"
+            
             android:textSize="20dp"
             android:text="Arts"
             android:background="@drawable/subjectbutton1"
@@ -34,6 +49,10 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="20dp"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:drawableRight="@drawable/rightgrayarrow"
+            android:textColor="#FFFFFFFF"
             
             android:background="@drawable/subjectbutton1"
             android:text="Business"
@@ -44,6 +63,10 @@
             android:layout_width="match_parent"
             android:textSize="20dp"
             android:text="Languages"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:textColor="#FFFFFFFF"
+            android:drawableRight="@drawable/rightgrayarrow"
             android:id="@+id/criterialanguage"
             
             android:background="@drawable/subjectbutton1"
@@ -53,6 +76,10 @@
             android:layout_width="match_parent"
             android:textSize="20dp"
             android:text="Science"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:textColor="#FFFFFFFF"
+            android:drawableRight="@drawable/rightgrayarrow"
             
             android:background="@drawable/subjectbutton1"
             android:id="@+id/criteriascience"
@@ -62,7 +89,11 @@
             android:layout_width="match_parent"
             android:textSize="20dp"
             android:text="Engineering"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:textColor="#FFFFFFFF"
             
+            android:drawableRight="@drawable/rightgrayarrow"
             android:background="@drawable/subjectbutton1"
             android:id="@+id/criteriaengineering"
             />
@@ -72,6 +103,11 @@
             android:textSize="20dp"
             android:text="Math"
             
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            
+            android:drawableRight="@drawable/rightgrayarrow"
+            android:textColor="#FFFFFFFF"
             android:background="@drawable/subjectbutton1"
             android:id="@+id/criteriamath"
             />
@@ -79,9 +115,14 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="20dp"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:textColor="#FFFFFFFF"
             
             android:background="@drawable/subjectbutton1"
             android:text="Sports"
+            
+            android:drawableRight="@drawable/rightgrayarrow"
             android:id="@+id/criteriasports"
             />
         <Button
@@ -90,13 +131,20 @@
             android:textSize="20dp"
             android:text="/Instrument lessons"
             android:id="@+id/criteriainstrument"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:textColor="#FFFFFFFF"
             
+            android:drawableRight="@drawable/rightgrayarrow"
             android:background="@drawable/subjectbutton1"
             />
         <Button
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:drawableRight="@drawable/rightgrayarrow"
+            android:textColor="#FFFFFFFF"
             android:background="@drawable/subjectbutton1"
             android:textSize="20dp"
             android:text="Game"
@@ -105,7 +153,7 @@
         
         
     </LinearLayout>
-   
+   </ScrollView>
 
     
 </RelativeLayout>

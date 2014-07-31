@@ -52,7 +52,7 @@ public class PriceSelectScreen extends Activity {
 	JSONParser jsonParser = new JSONParser();
 	DatabaseHandler db;
 	LayoutInflater inflater;
-
+	TextView subjectText;
     static Bitmap profile_picture;
 	Dialog dil;
 	
@@ -89,6 +89,8 @@ public class PriceSelectScreen extends Activity {
 		subject = i.getStringExtra(TAG_SUBJECT);
 		Log.d("",criteria);
 		Log.d("",subject);
+		subjectText = (TextView) findViewById(R.id.pricesubjecttext);
+		subjectText.setText(subject);
 		confirmbtn = (Button) findViewById(R.id.sessionconfirmbtn);
 		priceinput = (EditText) findViewById(R.id.priceinput);
 		confirmbtn.setOnClickListener(new OnClickListener(){
@@ -298,7 +300,7 @@ public class PriceSelectScreen extends Activity {
         });
 
 		final TextView actionBarStaff = (TextView) findViewById(R.id.optiontitle);
-		actionBarStaff.setText("Home Page");
+		actionBarStaff.setText("Session Detail");
 
 		return super.onCreateOptionsMenu(menu);
 	}
