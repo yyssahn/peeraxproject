@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import com.ys.peeraxproject.CriteriaSelectActivity.GetInfo;
+import com.ys.peeraxproject.helper.ActionBarHelper;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 
 import android.app.ActionBar;
@@ -115,138 +116,102 @@ public class SubjectSelectActivity extends Activity {
 		i.putExtra(TAG_SUBJECT, subject);
 		startActivity(i);
 		finish();
-	}
-	@Override
+	}@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
-		final ViewGroup actionBarLayout = (ViewGroup) getLayoutInflater().inflate(
-				R.layout.actionbar,
-				null);
+		
+		final Context cont = SubjectSelectActivity.this;
 		// Set up your ActionBar
 
         inflater = getLayoutInflater();
-		final LinearLayout mainpage = (LinearLayout)findViewById(R.id.tempmainscreen);
-		final ActionBar actionBar = getActionBar();
-		actionBar.setDisplayShowHomeEnabled(false);
-		actionBar.setDisplayShowTitleEnabled(false);
-		actionBar.setDisplayShowCustomEnabled(true);
-		actionBar.setCustomView(actionBarLayout);
-        actionBar.setBackgroundDrawable(new ColorDrawable(00000000));
-        actionBarLayout.setBackgroundResource(R.drawable.optionbg2);
-		final Button actionBarBack = (Button) findViewById(R.id.optionbackbutton);
-        actionBarBack.setBackgroundResource(R.drawable.pillplainalt);
-        actionBarBack.setText("Back");
 
-        final Context con = SubjectSelectActivity.this;
+		final ActionBar actionBar = getActionBar();
 		
-		actionBarBack.setOnClickListener(new OnClickListener(){
+		dil = new Dialog(cont);
+		dil.setTitle(null);
+        dil.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+		dil.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dil.setContentView(R.layout.optionbar);
+
+		
+        new GetInfo().execute();
+
+        Button homeButton = (Button)dil.findViewById(R.id.optionhomebtn);
+		homeButton.setOnClickListener(new OnClickListener(){
 
 			@Override
-			public void onClick(View arg0) {
+			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
-	        	Toast.makeText(con, "Back", Toast.LENGTH_SHORT).show();
-	           
 			}
 			
+		});
+		Button profileButton = (Button)dil.findViewById(R.id.optionprofilebtn);
+		profileButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(cont, ProfilePageActivity.class);
+				startActivity(i);
+				finish();
+			}
+			
+		});
+		Button convButton = (Button)dil.findViewById(R.id.optionconversationbtn);
+		convButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+			}
+			
+		});
+		Button sesButton = (Button)dil.findViewById(R.id.optionsessionbtn);
+		sesButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+			}
 			
 		});
 
-		final Button actionBarInflate = (Button) findViewById(R.id.createoptionbutton);
-        actionBarInflate.setBackgroundResource(R.drawable.pillalt);
-
-		actionBarInflate.setOnClickListener(new OnClickListener(){
+		Button settingButton = (Button)dil.findViewById(R.id.optionsetting);
+		settingButton.setOnClickListener(new OnClickListener(){
 
 			@Override
-			public void onClick(View arg0) {
+			public void onClick(View v) {
+				Intent i = new Intent(cont, SettingStatusActivity.class);
+				startActivity(i);
 				// TODO Auto-generated method stub
-				
-			dil = new Dialog(con);
-			dil.setTitle(null);
-            dil.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-			dil.requestWindowFeature(Window.FEATURE_NO_TITLE);
-			dil.setContentView(R.layout.optionbar);
-
-            new GetInfo().execute();
-
-            Button homeButton = (Button)dil.findViewById(R.id.optionhomebtn);
-			homeButton.setOnClickListener(new OnClickListener(){
-
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Intent i  = new Intent(con, HomePageActivity.class);
-					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-					startActivity(i);
-					finish();
-				}
-				
-			});
-			Button profileButton = (Button)dil.findViewById(R.id.optionprofilebtn);
-			profileButton.setOnClickListener(new OnClickListener(){
-
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Intent i = new Intent(con, ProfilePageActivity.class);
-					startActivity(i);
-					finish();
-				}
-				
-			});
-			Button convButton = (Button)dil.findViewById(R.id.optionconversationbtn);
-			convButton.setOnClickListener(new OnClickListener(){
-
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-				}
-				
-			});
-			Button sesButton = (Button)dil.findViewById(R.id.optionsessionbtn);
-			sesButton.setOnClickListener(new OnClickListener(){
-
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-				}
-				
-			});
-
-			Button settingButton = (Button)dil.findViewById(R.id.optionsetting);
-			settingButton.setOnClickListener(new OnClickListener(){
-
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-				}
-				
-			});
-
-			dil.show();
-
-            Window window = dil.getWindow();
-            WindowManager.LayoutParams wlp = window.getAttributes();
-
-            DisplayMetrics dimension = new DisplayMetrics();
-            getWindowManager().getDefaultDisplay().getMetrics(dimension);
-            int height = dimension.heightPixels - actionBar.getHeight();
-            int actionBarHeight = actionBar.getHeight() + 30;
-
-            wlp.y = actionBarHeight;
-            wlp.gravity=Gravity.TOP | Gravity.RIGHT;
-            wlp.height = height - actionBar.getHeight();
-
-            window.setAttributes(wlp);
-            }
+			}
+			
+		});
 
 
-        });
+        Window window = dil.getWindow();
+        WindowManager.LayoutParams wlp = window.getAttributes();
 
-		final TextView actionBarStaff = (TextView) findViewById(R.id.optiontitle);
-		actionBarStaff.setText("Add Session");
+        DisplayMetrics dimension = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dimension);
+        int height = dimension.heightPixels - actionBar.getHeight();
+        int actionBarHeight = actionBar.getHeight() + 30;
 
+        wlp.y = actionBarHeight;
+        wlp.gravity=Gravity.TOP | Gravity.RIGHT;
+        wlp.height = height - actionBar.getHeight();
+
+        window.setAttributes(wlp);
+        
+		final ActionBarHelper ahelper = new ActionBarHelper(cont, inflater, actionBar, db.getPhoneNumber(), dil);
+    
+        ahelper.setBackGround(R.drawable.optionbg2);
+        ahelper.setButton1BackGround(R.drawable.pillplainalt);
+        ahelper.setButton1Text("back");
+        ahelper.setButton2BackGround(R.drawable.pillalt);
+       ahelper.setTitle("Add Session");
+ 
 		return super.onCreateOptionsMenu(menu);
 	}
 

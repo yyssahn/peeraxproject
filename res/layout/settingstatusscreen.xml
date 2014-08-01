@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    
+    android:background="@drawable/settingbg"
+    tools:context="${relativePackage}.${activityClass}" >
+    
+    <Button
+        android:id="@+id/pricetext1"
+        android:layout_width="fill_parent"
+        android:background="@drawable/subjecttextbg1"
+        android:layout_centerHorizontal="true"
+		android:gravity="center"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="20dp"
+        android:text="Filter Options"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="#FFFFFFFF"
+	/>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="20dp"
+       
+       android:gravity="center_horizontal"
+       android:id="@+id/pricebubble"
+       android:layout_below="@+id/pricetext1"
+       android:orientation="vertical"
+       android:background="@drawable/redrectangle"
+        >
+
+        
+    
+    
+    
+    </RelativeLayout>
+
+ 	
+
+</RelativeLayout>
