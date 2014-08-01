@@ -41,6 +41,14 @@
         <activity android:name=".SettingStatusActivity" />
         
         <service android:name="com.ys.peeraxproject.location.LocationService" />
+        <service android:name="com.ys.peeraxproject.location.NearbyUsersService" />
+        
+        <receiver android:name="CoordinatesReceiver">
+	      <intent-filter>
+	         <action android:name="com.ys.peeraxproject.location.NearbyUsersService.CoordinatesReceiver">
+	      </action>
+	      </intent-filter>
+	   </receiver>
     </application>
 
 </manifest>

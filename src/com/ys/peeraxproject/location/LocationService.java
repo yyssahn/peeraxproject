@@ -123,6 +123,15 @@ public class LocationService extends Service{
 		@Override
 		public void onLocationChanged(Location location) {
 			Log.d("GPS", "location changed: lat="+location.getLatitude()+", lon="+location.getLongitude());
+			
+			Intent i = new Intent();
+			i.setAction("com.ys.peeraxproject.CUSTOM_INTENT");
+			double[] location_array = new double[2];
+			location_array[0] = location.getLatitude();
+			location_array[1] = location.getLongitude();
+			i.putExtra(LOCATION_TAG,location_array);
+			sendBroadcast(i);
+			
 			new UpdateLocation().execute();
 		}
 
