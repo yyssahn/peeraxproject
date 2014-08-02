@@ -38,8 +38,11 @@
         <activity android:name=".ProfileDegreeActivity" />
         <activity android:name=".ProfileAboutActivity" />
         
+        <activity android:name=".GetUserActivity" />
+        
         <activity android:name=".SettingStatusActivity" />
         
+        <activity android:name=".SettingOptionActivity" />
         <service android:name="com.ys.peeraxproject.location.LocationService" />
         <service android:name="com.ys.peeraxproject.location.NearbyUsersService" />
         

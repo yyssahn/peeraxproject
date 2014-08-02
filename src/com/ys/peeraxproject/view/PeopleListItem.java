@@ -80,6 +80,10 @@ public class PeopleListItem extends LinearLayout {
 		new GetInfo().execute();
 		
 	}
+	public String getPhonenumber(){
+		return phonenumber;
+		
+	}
 	class GetInfo extends AsyncTask<String, String, String> {
 
         @Override
