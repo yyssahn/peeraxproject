@@ -35,6 +35,7 @@ public class LocationService extends Service{
 	private static final int TIME = 900000; //15min
 	private static final int DISTANCE = 25;	//25m
 	private static final String LOCATION_TAG = "location";
+	private static final String NEARBY_TAG = "nearby";
 	private static final String loginURL = "http://104.131.141.54/lny_project/update_location.php";
 	private static final String TAG_SUCCESS = "success";
 
@@ -124,12 +125,15 @@ public class LocationService extends Service{
 		public void onLocationChanged(Location location) {
 			Log.d("GPS", "location changed: lat="+location.getLatitude()+", lon="+location.getLongitude());
 			
+			startService(new Intent(getApplicationContext(), NearbyUsersService.class));
+			
+			//Broadcast location for NearbyUsersService
 			Intent i = new Intent();
 			i.setAction("com.ys.peeraxproject.CUSTOM_INTENT");
 			double[] location_array = new double[2];
 			location_array[0] = location.getLatitude();
 			location_array[1] = location.getLongitude();
-			i.putExtra(LOCATION_TAG,location_array);
+			i.putExtra(NEARBY_TAG,location_array);
 			sendBroadcast(i);
 			
 			new UpdateLocation().execute();

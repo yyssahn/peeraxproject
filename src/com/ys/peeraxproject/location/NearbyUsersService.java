@@ -39,7 +39,7 @@ public class NearbyUsersService extends Service{
 	    db = new DatabaseHandler(getApplicationContext());
 	    jsonParser = new JSONParser();
 	    new CoordinatesReceiver();
-	    new GetNearbyUsers();
+	    new GetNearbyUsers().execute();
 	}
 	
 	@Override

@@ -84,7 +84,6 @@ public class HomePageActivity extends FragmentActivity {
 			@Override
 			public void onClick(View v) {
 				startService(new Intent(getApplicationContext(), LocationService.class));
-				startService(new Intent(getApplicationContext(), NearbyUsersService.class));
 			}
 		});
 		stopLocationBtn = (Button)findViewById(R.id.stoplocationbutton);

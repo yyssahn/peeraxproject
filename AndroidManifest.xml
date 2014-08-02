@@ -43,12 +43,13 @@
         <service android:name="com.ys.peeraxproject.location.LocationService" />
         <service android:name="com.ys.peeraxproject.location.NearbyUsersService" />
         
-        <receiver android:name="CoordinatesReceiver">
+        <receiver android:name=".location.NearbyUsersService$CoordinatesReceiver">
 	      <intent-filter>
-	         <action android:name="com.ys.peeraxproject.location.NearbyUsersService.CoordinatesReceiver">
+	         <action android:name="com.ys.peeraxproject.CUSTOM_INTENT">
 	      </action>
 	      </intent-filter>
 	   </receiver>
+
     </application>
 
 </manifest>
