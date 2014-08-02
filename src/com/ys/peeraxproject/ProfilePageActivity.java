@@ -67,7 +67,7 @@ public class ProfilePageActivity extends Activity {
 	String KEY_ID= "id";
 	static String about_text;
 	static String subject_text;
-	static String degree_text;
+	static String degree_text="";
     static Bitmap profile_picture;
     LayoutInflater inflater;
     Dialog dil;
@@ -161,7 +161,7 @@ public class ProfilePageActivity extends Activity {
 		dil.setContentView(R.layout.optionbar);
 
 		
-        new GetInfo().execute();
+        new GetOptionInfo().execute();
 
         Button homeButton = (Button)dil.findViewById(R.id.optionhomebtn);
 		homeButton.setOnClickListener(new OnClickListener(){
@@ -498,4 +498,37 @@ case "7":
     		degree.setText(degreet);
         }
 	}
+	class GetOptionInfo extends AsyncTask<String, String, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... args) {
+
+
+            try {
+                profile_picture = BitmapFactory.decodeStream((InputStream) new URL("http://104.131.141.54/lny_project/" + db.getPhoneNumber() + ".jpg").getContent());
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String file_url) {
+            if(profile_picture != null) {
+                ImageView picture = (ImageView) dil.findViewById(R.id.optionpicture);
+                picture.setImageBitmap(profile_picture);
+            }
+
+            TextView about = (TextView) dil.findViewById(R.id.optionid);
+            about.setText(db.getPhoneNumber());
+        }
+    }
 }

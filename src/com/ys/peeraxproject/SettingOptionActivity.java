@@ -34,44 +34,19 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SettingStatusActivity extends Activity {
+public class SettingOptionActivity extends Activity {
 	Dialog dil;
 	LayoutInflater inflater;
 	DatabaseHandler db;
 	Bitmap profile_picture;
 	String user_name;
-	Context cont;
-	Button toOptionButton;
-	Spinner statusSpinner;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-        setContentView(R.layout.settingstatusscreen);
-        db = new DatabaseHandler(SettingStatusActivity.this);
-        toOptionButton = (Button)findViewById(R.id.settingoptionbtn);
-        toOptionButton.setOnClickListener(new OnClickListener(){
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent i = new Intent(SettingStatusActivity.this,SettingOptionActivity.class);
-				startActivity(i);
-				
-				
-			}
-        	
-        });
-	}
-	
+Context cont;
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		cont = SettingStatusActivity.this; 	
+		cont = SettingOptionActivity.this; 	
 		inflater = getLayoutInflater();
 
 			final ActionBar actionBar = getActionBar();
@@ -199,5 +174,14 @@ public class SettingStatusActivity extends Activity {
             about.setText(user_name);
         }
     }
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+        setContentView(R.layout.settingoptionscreen);
+        db = new DatabaseHandler(SettingOptionActivity.this);
+	}
+	
 	
 }

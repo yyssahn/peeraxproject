@@ -14,4 +14,8 @@
         <item>Master student / Master Degree</item>
         <item>PHD Student / PHD Degree</item>
     </string-array>
+       <string-array name="status">
+        <item>available</item>
+        <item>unavailable</item>
+        </string-array>
 </resources>

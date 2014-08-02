@@ -27,6 +27,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -101,6 +103,21 @@ public class HomePageActivity extends FragmentActivity {
         pList = new ArrayList<HashMap<String, String>>();
         Log.d("shit","eat");
         new GetPeople().execute();
+        peopleList.setOnItemClickListener(new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				Toast.makeText(getApplicationContext(), ((PeopleListItem) arg1).getPhonenumber(), Toast.LENGTH_SHORT).show();
+				Intent i = new Intent(HomePageActivity.this, GetUserActivity.class);
+				i.putExtra("userphone", ((PeopleListItem)arg1).getPhonenumber());
+				startActivity(i);
+				
+					
+			}
+        	
+        });
     }
 
     
@@ -356,6 +373,7 @@ public class HomePageActivity extends FragmentActivity {
                  	
                       }
              });
+        	 
         	}
 
 	}

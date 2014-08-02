@@ -95,7 +95,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             user.put("created_at", cursor.getString(2));
         }
         cursor.close();
-        db.close();
+   //     db.close();
         // return user
         return user;
     }
@@ -110,8 +110,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         cursor.moveToFirst();
         
         user =cursor.getString(0);
-        cursor.close();
-        db.close();
+      //  cursor.close();
+      //  db.close();
         // return user
         return user;
     }
@@ -126,7 +126,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
         int rowCount = cursor.getCount();
-        db.close();
+  //      db.close();
         cursor.close();
          
         // return row count
@@ -142,7 +142,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         // Delete All Rows
         db.delete(TABLE_LOGIN, null, null);
-        db.close();
+     //   db.close();
     }
     public void updateAbout(String phone, String about) {
     	Log.d(LOG_TAG, "updateAbout()");
