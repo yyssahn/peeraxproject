@@ -4,6 +4,7 @@ import com.ys.peeraxproject.helper.ActionBarHelper;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 import com.ys.peeraxproject.helper.JSONParser;
 import com.ys.peeraxproject.location.LocationService;
+import com.ys.peeraxproject.location.NearbyUsersService;
 import com.ys.peeraxproject.view.PeopleListItem;
 
 import android.app.ActionBar;
@@ -63,10 +64,7 @@ public class HomePageActivity extends FragmentActivity {
     private static Bitmap profile_picture;
     private static String user_name;
 
-    private final static String LOCATION = "location";
-
 	private static final String TAG_SUCCESS = "success";
-	private static final String TAG_MESSAGE = "message";
 
 	private ArrayList<HashMap<String, String>> pList;
     
