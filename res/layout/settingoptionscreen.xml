@@ -1,140 +1,244 @@
-
-<ScrollView 
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" 
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-<LinearLayout 
-    
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/settingbg"
-    android:orientation="vertical"
-    tools:context="${relativePackage}.${activityClass}" >
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="125dp"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="70dp"
-        android:background="@drawable/settingbubble2"
-        android:text="Subject Wanted"
-        android:textColor="#FFFFFFFF" />
-
-    <Button
-        
-        android:textSize="20dp"
-        android:layout_width="fill_parent"
-        android:layout_height="125dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/settingbubble2"
-        android:text="Education Level Required"
-        android:textColor="#FFFFFFFF" />
+    android:layout_height="wrap_content" >
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/settingbubble3"
-        android:orientation="vertical" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/settingbg"
+        android:orientation="vertical"
+        tools:context="${relativePackage}.${activityClass}" >
 
-        <TextView
+        <Button
             android:layout_width="fill_parent"
-            android:layout_height="62dp"
-            android:gravity="center"
-        android:textSize="20dp"
-            android:text="Average Rating"
-            android:textColor="#FFFFFFFF" />
+            android:layout_height="125dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/settingbubble2"
+            android:text="Subject Wanted"
+            android:id="@+id/settingsubjectbtn"
+            android:drawableRight="@drawable/rightwhitearrow"
+            android:textColor="#FFFFFFFF"
+            android:textSize="20dp" />
+
+        <Button
+            android:layout_width="fill_parent"
+            
+            android:drawableRight="@drawable/rightwhitearrow"
+            android:layout_height="125dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/settingbubble2"
+            android:text="Education Level Required"
+            android:textColor="#FFFFFFFF"
+            android:textSize="20dp" />
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="63dp"
-            android:gravity="center_vertical"
-            android:background="@drawable/settingbubble2"
-            android:orientation="horizontal" >
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/settingbubble3"
+            android:orientation="vertical" >
 
-            <EditText
-                android:layout_marginLeft="40dp"
-                android:background="@drawable/settingbubble4"
-                android:layout_width="60dp"
-                android:inputType="numberDecimal"
-                android:textColor="#FFFFFFFF"
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="62dp"
                 android:gravity="center"
-                android:textSize="35sp"
-                android:maxLength="1"
-                android:layout_height="40dp" />
+                android:text="Average Rating"
+                android:textColor="#FFFFFFFF"
+                android:textSize="20dp" />
 
-            <ImageView
-                android:layout_marginLeft="40dp"
-                android:background="@drawable/rightpointyarrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-			<EditText
-                android:inputType="numberDecimal"
-                android:maxLength="1"
-                android:gravity="center"
-                android:textSize="35sp"
-                android:layout_marginLeft="40dp"
-                android:background="@drawable/settingbubble4"
-                android:textColor="#FFFFFFFF"
-                android:layout_width="50dp"
-                android:layout_height="40dp" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="63dp"
+                android:background="@drawable/settingbubble2"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/settingbubble4"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:maxLength="1"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="35sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/rightpointyarrow" />
+
+                <EditText
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/settingbubble4"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:maxLength="1"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="35sp" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/settingbubble3"
-        android:orientation="vertical" >
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="62dp"
-            android:gravity="center"
-        android:textSize="20dp"
-            android:text="PeerAX Hours"
-            android:textColor="#FFFFFFFF" />
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="63dp"
-            android:gravity="center_vertical"
-            android:background="@drawable/settingbubble2"
-            android:orientation="horizontal" >
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/settingbubble3"
+            android:orientation="vertical" >
 
-<TextView 
-    android:layout_width="wrap_content"
-    android:layout_marginLeft="40dp"
-    android:textSize="20dp"
-    android:text="At Least"
-    android:textColor="#FFFFFFFF"
-    android:layout_height="wrap_content"
-    />
-            <EditText
-                android:inputType="numberDecimal"
-                android:maxLength="1"
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="62dp"
                 android:gravity="center"
-                android:textSize="35sp"
-                android:layout_marginLeft="80dp"
-                android:background="@drawable/settingbubble4"
+                android:text="PeerAX Hours"
                 android:textColor="#FFFFFFFF"
-                android:layout_width="60dp"
-                android:layout_height="40dp" />
+                android:textSize="20dp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="63dp"
+                android:background="@drawable/settingbubble2"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:text="At Least"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="80dp"
+                    android:background="@drawable/settingbubble4"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:maxLength="1"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="35sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/settingbubble3"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="62dp"
+                android:gravity="center"
+                android:text="Price Range"
+                android:textColor="#FFFFFFFF"
+                android:textSize="20dp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="63dp"
+                android:background="@drawable/settingbubble2"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/settingbubble4"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:maxLength="1"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="35sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/rightpointyarrow" />
+
+                <EditText
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/settingbubble4"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:maxLength="1"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="35sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/settingbubble3"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="62dp"
+                android:gravity="center"
+                android:text="Price Range"
+                android:textColor="#FFFFFFFF"
+                android:textSize="20dp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="63dp"
+                android:background="@drawable/settingbubble2"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+				<TextView 
+				    android:textColor="#FFFFFFFF"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="Yes/No"
+				    android:layout_gravity="center_vertical"
+				    android:layout_marginLeft="40dp"
+				    android:textSize="20dp"
+				    android:layout_marginRight="30dp"
+				  
+				    />
+                <Switch
+                    android:id="@+id/togglebutton"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textOff="Off"
+                    android:textOn="On" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
 </ScrollView>

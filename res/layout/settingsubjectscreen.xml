@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    
+    android:background="@drawable/bgyellow"
+    android:layout_height="match_parent"
+    android:paddingTop="40dp">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFFFF"
+        android:text="Select the Specific Area\n for your help session"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/subjecttextbg1"
+        android:id="@+id/criteriastring1"/>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/criteriastring1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:textColor="#FFFFFFFF"
+            android:drawableRight="@drawable/rightwhitearrow"
+            android:textSize="20dp"
+            android:background="@drawable/subjectbutton2"
+            android:text="subject1"
+            android:id="@+id/subject1"
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="subject2"
+            android:id="@+id/subject2"
+             android:drawableRight="@drawable/rightwhitearrow"
+android:textColor="#FFFFFFFF"
+            android:background="@drawable/subjectbutton2"            />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+             android:drawableRight="@drawable/rightwhitearrow"
+            android:layout_marginBottom="5dp"
+            android:textSize="20dp"
+            android:text="subject3"
+            android:id="@+id/subject3"
+            android:textColor="#FFFFFFFF"
+            android:background="@drawable/subjectbutton2"
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="20dp"
+            android:layout_marginBottom="5dp"
+             android:drawableRight="@drawable/rightwhitearrow"
+            android:text="subject4"
+            android:textColor="#FFFFFFFF"
+            android:background="@drawable/subjectbutton2"
+            android:id="@+id/subject4"
+            />
+
+        
+        
+    </LinearLayout>
+   
+
+    
+</RelativeLayout>

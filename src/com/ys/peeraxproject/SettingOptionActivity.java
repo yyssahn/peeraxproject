@@ -44,6 +44,7 @@ public class SettingOptionActivity extends Activity {
 	Bitmap profile_picture;
 	String user_name;
 Context cont;
+Button toCriteriaBtn;
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		cont = SettingOptionActivity.this; 	
@@ -181,6 +182,8 @@ Context cont;
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.settingoptionscreen);
         db = new DatabaseHandler(SettingOptionActivity.this);
+        toCriteriaBtn = (Button) findViewById(R.id.settingsubjectbtn);
+        
 	}
 	
 	

@@ -38,6 +38,10 @@
         <activity android:name=".ProfileDegreeActivity" />
         <activity android:name=".ProfileAboutActivity" />
         
+        <activity android:name=".SettingCriteriaActivity" />
+        
+        <activity android:name=".SettingSubjectActivity" />
+        
         <activity android:name=".GetUserActivity" />
         
         <activity android:name=".SettingStatusActivity" />
