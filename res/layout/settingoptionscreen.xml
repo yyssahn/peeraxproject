@@ -26,7 +26,7 @@
 
         <Button
             android:layout_width="fill_parent"
-            
+            android:id="@+id/settingdegreebtn"
             android:drawableRight="@drawable/rightwhitearrow"
             android:layout_height="125dp"
             android:layout_gravity="center"
@@ -69,6 +69,8 @@
                     android:layout_marginLeft="40dp"
                     android:background="@drawable/settingbubble4"
                     android:gravity="center"
+                    android:id="@+id/minrating"
+                    
                     android:inputType="numberDecimal"
                     android:maxLength="1"
                     android:textColor="#FFFFFFFF"
@@ -84,6 +86,8 @@
                     android:layout_width="50dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="40dp"
+                    android:id="@+id/maxratingedittext"
+
                     android:background="@drawable/settingbubble4"
                     android:gravity="center"
                     android:inputType="numberDecimal"
@@ -134,6 +138,7 @@
                     android:gravity="center"
                     android:inputType="numberDecimal"
                     android:maxLength="1"
+                    android:id="@+id/houredittext"
                     android:textColor="#FFFFFFFF"
                     android:textSize="35sp" />
             </LinearLayout>
@@ -170,10 +175,11 @@
                     android:layout_marginLeft="40dp"
                     android:background="@drawable/settingbubble4"
                     android:gravity="center"
+                    android:id="@+id/minpriceedittext"
                     android:inputType="numberDecimal"
-                    android:maxLength="1"
+                    android:maxLength="3"
                     android:textColor="#FFFFFFFF"
-                    android:textSize="35sp" />
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -188,9 +194,10 @@
                     android:background="@drawable/settingbubble4"
                     android:gravity="center"
                     android:inputType="numberDecimal"
-                    android:maxLength="1"
+                    android:maxLength="3"
+                    android:id="@+id/maxpriceedittext"
                     android:textColor="#FFFFFFFF"
-                    android:textSize="35sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -208,7 +215,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="62dp"
                 android:gravity="center"
-                android:text="Price Range"
+                android:text="Show Free Lesson Only"
                 android:textColor="#FFFFFFFF"
                 android:textSize="20dp" />
 

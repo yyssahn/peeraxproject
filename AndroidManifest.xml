@@ -46,6 +46,8 @@
         
         <activity android:name=".SettingStatusActivity" />
         
+        <activity android:name=".SettingDegreeActivity" />
+        
         <activity android:name=".SettingOptionActivity" />
         <service android:name="com.ys.peeraxproject.location.LocationService" />
         <service android:name="com.ys.peeraxproject.location.NearbyUsersService" />

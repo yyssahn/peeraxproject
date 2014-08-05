@@ -101,6 +101,7 @@ public class HomePageActivity extends FragmentActivity {
         pList = new ArrayList<HashMap<String, String>>();
         Log.d("shit","eat");
         new GetPeople().execute();
+       
         peopleList.setOnItemClickListener(new OnItemClickListener(){
 
 			@Override

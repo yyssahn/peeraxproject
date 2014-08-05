@@ -4,10 +4,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.ys.peeraxproject.ViewSubjectsActivity.GetInfo;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.ys.peeraxproject.ProfileAboutActivity.GetInfo;
 import com.ys.peeraxproject.helper.ActionBarHelper;
 import com.ys.peeraxproject.helper.DatabaseHandler;
+import com.ys.peeraxproject.helper.JSONParser;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -31,145 +39,119 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SettingCriteriaActivity extends Activity {
-	Button artsBtn;
-	Button busBtn;
-	Button langBtn;
-	Button sciBtn;
-	Button engiBtn;
-	Button mathBtn;
-	Button sportBtn;
-	LayoutInflater inflater;
-
-    static Bitmap profile_picture;
-	Dialog dil;
+public class SettingDegreeActivity extends Activity {
+	Spinner input;
+	Button confirmBtn;
 	DatabaseHandler db;
-	Button instBtn;
-	Button gameBtn;
-	private static final String TAG_CRITERIA = "criteria";
-	private static final String TAG_SUBJECT = "subject";
+	JSONParser jsonParser = new JSONParser();
+	String id;
+    static Bitmap profile_picture;
+    LayoutInflater inflater;
+    Dialog dil;
+    int dint=0;
+    String degreeint;
+	private static final String TAG_SUCCESS = "success";
+	private static final String TAG_MESSAGE = "message";
+	private static final String TAG_DEGREE = "degree";
+
+    static String user_name;
+	private static String KEY_SUCCESS = "success";
+    private static String KEY_ERROR = "error";
+    private static String KEY_ERROR_MSG = "error_msg";
+    private static String KEY_UID = "unique_id";
+    private static String KEY_NAME = "name";
+    private static String KEY_phonenumber = "phonenumber";
+    private static String KEY_about = "about";
+    
+    private static final String KEY_ABOUT = "about";
+    private static final String KEY_DEGREE = "degree";
+    private static String about_tag = "about";
+    
+    private static String loginURL = "http://104.131.141.54/lny_project/change_info.php";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.criteriachoicescreen);
-		artsBtn = (Button)findViewById(R.id.criteriaarts);
-		busBtn = (Button) findViewById(R.id.criteriabusiness);
-		langBtn = (Button) findViewById(R.id.criterialanguage);
-		sciBtn = (Button) findViewById(R.id.criteriascience);
-		engiBtn = (Button) findViewById(R.id.criteriaengineering);
-		mathBtn = (Button) findViewById(R.id.criteriamath);
-		sportBtn = (Button) findViewById(R.id.criteriasports);
-		instBtn = (Button) findViewById(R.id.criteriainstrument);
-		gameBtn = (Button) findViewById(R.id.criteriagame);
+		setContentView(R.layout.settingdegreescreen);
+		//id = (String)savedInstanceState.get(KEY_ID);
+		//Log.d("something", id);
 		db = new DatabaseHandler(getApplicationContext());
-		artsBtn.setOnClickListener(new OnClickListener(){
+		Intent i = getIntent();
+		String about_text = db.getMinEducation();
+		switch(about_text){
+		case "0":
+			dint=0;			
+			break;
+case "1":		
+		dint=1;
+break;
+		
+case "2":dint=2;
+break;
+
+case "3":
+	dint=3;
+	break;
+
+case "4":
+
+	dint=4;
+
+break;
+
+case "5":
+
+	dint=5;
+	
+break;
+
+case "6":
+
+	dint=6;
+	break;
+case "7":
+
+dint =7;
+break;
+
+
+		}
+
+		input = (Spinner) findViewById(R.id.degreespinner);
+		
+		input.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+		input.setSelection(dint);
+		confirmBtn = (Button) findViewById(R.id.settingdegreebtn);
+		
+		confirmBtn.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(SettingCriteriaActivity.this, SubjectSelectActivity.class);
-				i.putExtra(TAG_CRITERIA, "arts");
-				startActivity(i);
+				db.setMinEducation(degreeint);
 				finish();
 			}
 			
 		});
-		busBtn.setOnClickListener(new OnClickListener(){
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				startSubject("bus");
-			}
-			
-		});
-		langBtn.setOnClickListener(new OnClickListener(){
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				startSubject("lang");
-			}
-			
-		});
-		sciBtn.setOnClickListener(new OnClickListener(){
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				startSubject("sci");
-			}
-			
-		});
-		engiBtn.setOnClickListener(new OnClickListener(){
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				startSubject("engl");
-			}
-			
-		});
-		mathBtn.setOnClickListener(new OnClickListener(){
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				startSubject("math");
-			}
-			
-		});
-		sportBtn.setOnClickListener(new OnClickListener(){
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				startSubject("sport");
-			}
-			
-		});
-		instBtn.setOnClickListener(new OnClickListener(){
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				startSubject("instrum");
-				
-				
-			}
-			
-		});
-		gameBtn.setOnClickListener(new OnClickListener(){
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				startSubject("game");
-			}
-			
-		});
-       
+		
 	}
-	
-	public void startSubject(String criteria){		
-		Intent i = new Intent(SettingCriteriaActivity.this, SettingSubjectActivity.class);
-		i.putExtra(TAG_CRITERIA,criteria);
-		startActivity(i);
-		finish();
-	}
-	@Override
+		@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
 		
-		final Context cont = SettingCriteriaActivity.this;
+		final Context cont = SettingDegreeActivity.this;
 		// Set up your ActionBar
 
         inflater = getLayoutInflater();
@@ -259,7 +241,7 @@ public class SettingCriteriaActivity extends Activity {
         ahelper.setButton1BackGround(R.drawable.pillplainalt);
         ahelper.setButton1Text("back");
         ahelper.setButton2BackGround(R.drawable.pillalt);
-       ahelper.setTitle("Add Session");
+       ahelper.setTitle("Education Level");
  
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -283,6 +265,7 @@ public class SettingCriteriaActivity extends Activity {
             return super.onOptionsItemSelected(item);
         }
     }
+	
 	class GetInfo extends AsyncTask<String, String, String> {
 
         @Override
@@ -293,9 +276,10 @@ public class SettingCriteriaActivity extends Activity {
         @Override
         protected String doInBackground(String... args) {
 
+            user_name = db.getPhoneNumber();
 
             try {
-                profile_picture = BitmapFactory.decodeStream((InputStream) new URL("http://104.131.141.54/lny_project/" + db.getPhoneNumber() + ".jpg").getContent());
+                profile_picture = BitmapFactory.decodeStream((InputStream) new URL("http://104.131.141.54/lny_project/" + user_name + ".jpg").getContent());
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -313,7 +297,21 @@ public class SettingCriteriaActivity extends Activity {
             }
 
             TextView about = (TextView) dil.findViewById(R.id.optionid);
-            about.setText(db.getPhoneNumber());
+            about.setText(user_name);
         }
     }
+	public class CustomOnItemSelectedListener implements OnItemSelectedListener {
+		 
+		  public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
+			degreeint= ""+pos;
+
+		  }
+		 
+		  @Override
+		  public void onNothingSelected(AdapterView<?> arg0) {
+			// TODO Auto-generated method stub
+		  }
+		 
+		}
+
 }
