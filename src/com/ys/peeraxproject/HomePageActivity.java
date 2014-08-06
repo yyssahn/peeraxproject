@@ -1,5 +1,6 @@
 package com.ys.peeraxproject;
 
+import com.ys.peeraxproject.gcm.GCMHelper;
 import com.ys.peeraxproject.helper.ActionBarHelper;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 import com.ys.peeraxproject.location.LocationService;
@@ -61,12 +62,18 @@ public class HomePageActivity extends FragmentActivity {
 	private static JSONArray peopleArray;
     private static Bitmap profile_picture;
     private static String user_name;
+    private GCMHelper gcmHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tempmainscreen);
         db = new DatabaseHandler(getApplicationContext());
+        gcmHelper = new GCMHelper(HomePageActivity.this);
+        
+        if (gcmHelper.checkPlayServices()){
+        	
+        }
         
         // Temporary for location
         locationBtn = (Button)findViewById(R.id.locationbutton);
@@ -119,6 +126,7 @@ public class HomePageActivity extends FragmentActivity {
 		dil.setContentView(R.layout.optionbar);
 
 		
+	
         new GetInfo().execute();
 
         Button homeButton = (Button)dil.findViewById(R.id.optionhomebtn);
