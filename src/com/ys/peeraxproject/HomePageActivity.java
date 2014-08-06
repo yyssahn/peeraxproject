@@ -3,7 +3,6 @@ package com.ys.peeraxproject;
 import com.ys.peeraxproject.helper.ActionBarHelper;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 import com.ys.peeraxproject.location.LocationService;
-import com.ys.peeraxproject.location.NearbyUsersService;
 import com.ys.peeraxproject.view.PeopleListItem;
 
 import android.app.ActionBar;
@@ -54,22 +53,18 @@ public class HomePageActivity extends FragmentActivity {
     private Dialog dil;
     private Button locationBtn;
     private Button stopLocationBtn;
-    private ListView peopleList;
-	
-    private static ArrayList<HashMap<String, String>> pList =new ArrayList<HashMap<String,String>>();
+    private static Context homeContext;
+    private static ListView peopleList;
+    private static ArrayList<HashMap<String, String>> pList = new ArrayList<HashMap<String,String>>();
 	private static JSONArray peopleArray;
     private static Bitmap profile_picture;
     private static String user_name;
 
-	private static final String TAG_SUCCESS = "success";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tempmainscreen);
         db = new DatabaseHandler(getApplicationContext());
-        //db.resetTables();
         
         // Temporary for location
         locationBtn = (Button)findViewById(R.id.locationbutton);
@@ -88,6 +83,9 @@ public class HomePageActivity extends FragmentActivity {
 				stopService(new Intent(getApplicationContext(), LocationService.class));
 			}
 		});
+		
+		homeContext = getApplicationContext();
+		
 		startService(new Intent(getApplicationContext(), LocationService.class));
         peopleList = (ListView) findViewById(R.id.peoplelist);
     }
@@ -207,21 +205,12 @@ public class HomePageActivity extends FragmentActivity {
         }
     }
 	
-	public void startPeopleAdapter(){
-		runOnUiThread(new Runnable() {
-            public void run() {
-                //Updating parsed JSON data into ListView
-           	 	PeopleAdapter adapter = new PeopleAdapter(pList);
-            	peopleList.setAdapter(adapter);
-            }
-        });
-   	}
-	
 	public static void addToMap(){
 		Log.d("HomePageActivity", "In addToMap");
-		for(int i=0; i<peopleArray.length(); i++){
-			JSONObject p;
-			try {
+		try {
+			for(int i=0; i<peopleArray.length(); i++){
+				JSONObject p;
+			
 				p = peopleArray.getJSONObject(i);
 				String name = p.getString("name");
 				String about = p.getString("about");
@@ -235,42 +224,14 @@ public class HomePageActivity extends FragmentActivity {
 		        map.put("name", name);
 		        // adding HashList to ArrayList
 		        pList.add(map);
-			} catch (JSONException e) {
-				e.printStackTrace();
+
+           	 	PeopleAdapter adapter = new PeopleAdapter(homeContext, pList);
+            	peopleList.setAdapter(adapter);
 			}
-		}
-	}
-	//=============================================================================================
-	public class PeopleAdapter extends BaseAdapter{
-
-		ArrayList<HashMap<String, String>> list;
-		public PeopleAdapter(ArrayList<HashMap<String, String>> pList) {
-			list = pList;
-		}
-
-		@Override
-		public int getCount() {
-			return list.size();
-		}
-
-		@Override
-		public Object getItem(int arg0) {
-			return list.get(arg0);
-		}
-
-		@Override
-		public long getItemId(int arg0) {
-			return arg0;	
-		}
- 
-		@Override
-		public View getView(int arg0, View arg1, ViewGroup arg2) {
-			PeopleListItem pitem = new PeopleListItem(getApplicationContext());
-			pitem.setAbout(list.get(arg0).get("about"));
-			pitem.setName(list.get(arg0).get("name"));
-			pitem.setPhonenumber(list.get(arg0).get("phonenumber"));
+			
 		
-			return pitem;
+		} catch (JSONException e) {
+			e.printStackTrace();
 		}
 	}
 	//=============================================================================================
@@ -311,8 +272,8 @@ public class HomePageActivity extends FragmentActivity {
 	//=============================================================================================
 	public static class UsersReceiver extends BroadcastReceiver {
 
-	   @Override
-	   public void onReceive(Context context, Intent intent) {
+	    @Override
+	    public void onReceive(Context context, Intent intent) {
 		   Log.d("HomePageActivity", "In UsersReceiver");
 		   String jsonArray = intent.getStringExtra("jsonArray");
 		   try{
@@ -321,7 +282,7 @@ public class HomePageActivity extends FragmentActivity {
 		   }catch(JSONException e){
 			   e.printStackTrace();
 		   }
-	   }
+	    }
 	}
 	//=============================================================================================
 }

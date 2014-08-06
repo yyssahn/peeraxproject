@@ -33,15 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class PeopleListItem extends LinearLayout {
-
-	private static final String TAG_SUCCESS = "success";
-	private static final String TAG_ABOUT = "about";
-	private static final String TAG_SUBJECT = "subject";
-	private static final String TAG_DEGREE = "degree";
 	JSONParser jsonParser = new JSONParser();
-	private static String loginURL = "http://104.131.141.54/lny_project/delete_subject.php";
-	private static String info_tag = "info";
-    private static final int GET_LOCAL_IMAGE = 8;
 	TextView abouttext;
 	TextView nametext;
 	TextView pricetext;
