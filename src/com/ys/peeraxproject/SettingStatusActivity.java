@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import com.ys.peeraxproject.HomePageActivity.GetInfo;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 
 import android.app.ActionBar;

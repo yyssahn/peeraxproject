@@ -45,10 +45,17 @@
         
         <receiver android:name=".location.NearbyUsersService$CoordinatesReceiver">
 	      <intent-filter>
-	         <action android:name="com.ys.peeraxproject.CUSTOM_INTENT">
+	         <action android:name="com.ys.peeraxproject.LOCATION_INTENT">
 	      </action>
 	      </intent-filter>
-	   </receiver>
+	    </receiver>
+	    
+        <receiver android:name=".HomePageActivity$UsersReceiver">
+	      <intent-filter>
+	         <action android:name="com.ys.peeraxproject.PEOPLE_INTENT">
+	      </action>
+	      </intent-filter>
+	    </receiver>
 
     </application>
 

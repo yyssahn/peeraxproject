@@ -2,13 +2,14 @@ package com.ys.peeraxproject;
 
 import com.ys.peeraxproject.helper.ActionBarHelper;
 import com.ys.peeraxproject.helper.DatabaseHandler;
-import com.ys.peeraxproject.helper.JSONParser;
 import com.ys.peeraxproject.location.LocationService;
 import com.ys.peeraxproject.location.NearbyUsersService;
 import com.ys.peeraxproject.view.PeopleListItem;
 
 import android.app.ActionBar;
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -32,15 +33,8 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -48,7 +42,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class HomePageActivity extends FragmentActivity {
 
@@ -58,16 +55,13 @@ public class HomePageActivity extends FragmentActivity {
     private Button locationBtn;
     private Button stopLocationBtn;
     private ListView peopleList;
-    
+	
+    private static ArrayList<HashMap<String, String>> pList =new ArrayList<HashMap<String,String>>();
+	private static JSONArray peopleArray;
     private static Bitmap profile_picture;
     private static String user_name;
 
 	private static final String TAG_SUCCESS = "success";
-
-	private ArrayList<HashMap<String, String>> pList;
-    
-    private static String getpeopleURL = "http://104.131.141.54/lny_project/get_people.php";
-    private JSONParser jsonParser = new JSONParser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,22 +88,13 @@ public class HomePageActivity extends FragmentActivity {
 				stopService(new Intent(getApplicationContext(), LocationService.class));
 			}
 		});
-		
+		startService(new Intent(getApplicationContext(), LocationService.class));
         peopleList = (ListView) findViewById(R.id.peoplelist);
-        pList = new ArrayList<HashMap<String, String>>();
-        Log.d("shit","eat");
-        new GetPeople().execute();
     }
-
-    
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// TODO Auto-generated method stub
-		
-			
-		// Set up your ActionBar
-
+		// Set up ActionBar
         inflater = getLayoutInflater();
 
 		final ActionBar actionBar = getActionBar();
@@ -197,7 +182,7 @@ public class HomePageActivity extends FragmentActivity {
         ahelper.setButton1BackGround(R.drawable.pill2);
 
         ahelper.setButton2BackGround(R.drawable.pill);
-       ahelper.setTitle("Home Page");
+        ahelper.setTitle("Home Page");
  
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -222,143 +207,74 @@ public class HomePageActivity extends FragmentActivity {
         }
     }
 	
-	class PeopleAdapter extends BaseAdapter{
+	public void startPeopleAdapter(){
+		runOnUiThread(new Runnable() {
+            public void run() {
+                //Updating parsed JSON data into ListView
+           	 	PeopleAdapter adapter = new PeopleAdapter(pList);
+            	peopleList.setAdapter(adapter);
+            }
+        });
+   	}
+	
+	public static void addToMap(){
+		Log.d("HomePageActivity", "In addToMap");
+		for(int i=0; i<peopleArray.length(); i++){
+			JSONObject p;
+			try {
+				p = peopleArray.getJSONObject(i);
+				String name = p.getString("name");
+				String about = p.getString("about");
+				String phone = p.getString("phonenumber");
+				
+				HashMap<String, String> map = new HashMap<String, String>();
+				
+		        // adding each child node to HashMap key => value
+		        map.put("about", about);
+		        map.put("phonenumber", phone);
+		        map.put("name", name);
+		        // adding HashList to ArrayList
+		        pList.add(map);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	//=============================================================================================
+	public class PeopleAdapter extends BaseAdapter{
 
 		ArrayList<HashMap<String, String>> list;
 		public PeopleAdapter(ArrayList<HashMap<String, String>> pList) {
-			// TODO Auto-generated constructor stub
 			list = pList;
 		}
 
-		//ArrayList<HashMap<String,String>> slist;
-		//SubjectAdapter(ArrayList<HashMap<String, String>> subjectList){
-		//	this.slist = subjectList;
-		//}
 		@Override
 		public int getCount() {
-			// TODO Auto-generated method stub
 			return list.size();
 		}
 
 		@Override
 		public Object getItem(int arg0) {
-			// TODO Auto-generated method stub
 			return list.get(arg0);
 		}
 
 		@Override
 		public long getItemId(int arg0) {
-			// TODO Auto-generated method stub
-			return arg0;
-			
+			return arg0;	
 		}
  
 		@Override
 		public View getView(int arg0, View arg1, ViewGroup arg2) {
-			// TODO Auto-generated method stub
-		
-//			SubjectListItem list = new SubjectListItem(getApplicationContext(),sList.get(arg0).get("criteria"), sList.get(arg0).get("subject"),sList.get(arg0).get("price"), db.getPhoneNumber());
-//			list.setText1(pList.get(arg0).get("subject"));
-
-//			list.setText2(pList.get(arg0).get("price"));
 			PeopleListItem pitem = new PeopleListItem(getApplicationContext());
 			pitem.setAbout(list.get(arg0).get("about"));
 			pitem.setName(list.get(arg0).get("name"));
 			pitem.setPhonenumber(list.get(arg0).get("phonenumber"));
+		
 			return pitem;
-		
 		}
-		
 	}
-	
-	class GetPeople extends AsyncTask<String, String, String> {
-		 
-        /**
-         * Before starting background thread Show Progress Dialog
-         * */
-        @Override
-        protected void onPreExecute() {
-            Log.d("shit","eat2");
-        	super.onPreExecute();
-         }
- 
-        /**
-         * Creating product
-         * */
-        @Override
-		protected String doInBackground(String... args) {
-            Log.d("shit","eat3");
-            JSONArray peoplearray = null;
-            
-            // Building Parameters
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("tag", "about"));
-           // getting JSON Object
-           JSONObject json = jsonParser.makeHttpRequest(getpeopleURL,
-                    "POST", params);
-            // check log cat fro response
-            Log.d("Create Response", json.toString());
- 
-            // check for success tag
-            try {
-                int success = json.getInt(TAG_SUCCESS);
- 
-                if (success == 1) {
-              		
-                    //finish();
-                	peoplearray = json.getJSONArray("people");
-                	
-                    // looping through All Products
-    
-                	for (int i = 0; i < peoplearray.length(); i++) {
-                        JSONObject c = peoplearray.getJSONObject(i);
- 
-                        // Storing each json item in variable
-                        String name = c.getString("name");
-                        String about = c.getString("about");
-                        String phonenumber = c.getString("phonenumber");
-                        // creating new HashMap
-                        HashMap<String, String> map = new HashMap<String, String>();
- 
-                        // adding each child node to HashMap key => value
-                        map.put("about", about);
-                        map.put("phonenumber", phonenumber);
-                        map.put("name", name);
-                        // adding HashList to ArrayList
-                        pList.add(map);
-                    }
-               } else {
-                    // failed to create product
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
- 
-            return null;
-        }
- 
-        /**
-         * After completing background task Dismiss the progress dialog
-         * **/
-        @Override
-		protected void onPostExecute(String file_url) {
-            // dismiss the dialog once done
-        //    pDialog.dismiss();
-        	 runOnUiThread(new Runnable() {
-                 public void run() {
-                     /**
-                      * Updating parsed JSON data into ListView
-                      * */
-                	 PeopleAdapter adapter = new PeopleAdapter(pList);
-                 	peopleList.setAdapter(adapter);
-                 	
-                      }
-             });
-        	}
-
-	}
-	
-	class GetInfo extends AsyncTask<String, String, String> {
+	//=============================================================================================
+	private class GetInfo extends AsyncTask<String, String, String> {
 
         @Override
         protected void onPreExecute() {
@@ -392,4 +308,20 @@ public class HomePageActivity extends FragmentActivity {
             about.setText(user_name);
         }
     }
+	//=============================================================================================
+	public static class UsersReceiver extends BroadcastReceiver {
+
+	   @Override
+	   public void onReceive(Context context, Intent intent) {
+		   Log.d("HomePageActivity", "In UsersReceiver");
+		   String jsonArray = intent.getStringExtra("jsonArray");
+		   try{
+			   peopleArray = new JSONArray(jsonArray);
+			   addToMap();
+		   }catch(JSONException e){
+			   e.printStackTrace();
+		   }
+	   }
+	}
+	//=============================================================================================
 }
