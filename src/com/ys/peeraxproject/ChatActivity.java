@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.util.Log;
 
@@ -21,7 +22,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ChatActivity extends Activity {
 
-    public static final String EXTRA_MESSAGE = "message";
     public static final String PROPERTY_REG_ID = "registration_id";
     private static final String PROPERTY_APP_VERSION = "appVersion";
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
@@ -29,6 +29,7 @@ public class ChatActivity extends Activity {
     static final String TAG = "GCMDemo";
 
     TextView mDisplay;
+    EditText mEdit;
     GoogleCloudMessaging gcm;
     AtomicInteger msgId = new AtomicInteger();
     SharedPreferences prefs;
@@ -43,6 +44,7 @@ public class ChatActivity extends Activity {
         setContentView(R.layout.chatscreen);
 
         mDisplay = (TextView) findViewById(R.id.display);
+        mEdit = (EditText) findViewById(R.id.messageText);
 
         context = getApplicationContext();
 
@@ -147,7 +149,7 @@ public class ChatActivity extends Activity {
                     String msg = "";
                     try {
                         Bundle data = new Bundle();
-                        data.putString("my_message", "Hello World");
+                        data.putString("my_message", mEdit.getText().toString());
                         data.putString("my_action", "com.google.android.gcm.demo.app.ECHO_NOW");
                         String id = Integer.toString(msgId.incrementAndGet());
                         gcm.send(SENDER_ID + "@gcm.googleapis.com", id, data);

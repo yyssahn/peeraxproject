@@ -2,12 +2,15 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/chatscreen">
 
-    <TextView
+    <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/display"
+        android:id="@+id/messageText"
+        android:layout_gravity="center_horizontal"
+        android:hint="Enter your message here"
         android:layout_marginTop="80dp" />
 
     <Button
@@ -26,4 +29,10 @@
         android:onClick="onClick"
         android:id="@+id/clear"
         android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/display" />
+
 </LinearLayout>
