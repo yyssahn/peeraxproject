@@ -65,6 +65,7 @@
 	      </action>
 	      </intent-filter>
 	   </receiver>
+	  
 
     </application>
 
