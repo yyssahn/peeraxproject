@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    
+    android:background="@drawable/settingbg"
+    android:layout_height="match_parent"
+    android:paddingTop="40dp">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Select the general area\n for your help session"
+        android:gravity="center"
+        android:textColor="#FFFFFFFF"
+        android:layout_margin="20dp"
+        
+        android:background="@drawable/subjecttextbg1"
+        android:textSize="20dp"
+        android:id="@+id/criteriastring1"/>
+    <ScrollView 
+        
+        android:layout_below="@+id/criteriastring1"
+       	android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    <LinearLayout
+        
+      
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Button
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:textColor="#FFFFFFFF"
+            android:drawableRight="@drawable/rightgrayarrow"
+            android:layout_width="match_parent"
+            
+            android:textSize="20dp"
+            android:text="Arts"
+            android:background="@drawable/redrectangle"
+            android:id="@+id/criteriaarts"
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="20dp"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:drawableRight="@drawable/rightgrayarrow"
+            android:textColor="#FFFFFFFF"
+            
+            android:background="@drawable/subjectbutton1"
+            android:text="Business"
+            android:id="@+id/criteriabusiness"
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="20dp"
+            android:text="Languages"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:textColor="#FFFFFFFF"
+            android:drawableRight="@drawable/rightgrayarrow"
+            android:id="@+id/criterialanguage"
+            
+            android:background="@drawable/subjectbutton1"
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="20dp"
+            android:text="Science"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:textColor="#FFFFFFFF"
+            android:drawableRight="@drawable/rightgrayarrow"
+            
+            android:background="@drawable/subjectbutton1"
+            android:id="@+id/criteriascience"
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="20dp"
+            android:text="Engineering"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:textColor="#FFFFFFFF"
+            
+            android:drawableRight="@drawable/rightgrayarrow"
+            android:background="@drawable/subjectbutton1"
+            android:id="@+id/criteriaengineering"
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="20dp"
+            android:text="Math"
+            
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            
+            android:drawableRight="@drawable/rightgrayarrow"
+            android:textColor="#FFFFFFFF"
+            android:background="@drawable/subjectbutton1"
+            android:id="@+id/criteriamath"
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="20dp"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:textColor="#FFFFFFFF"
+            
+            android:background="@drawable/subjectbutton1"
+            android:text="Sports"
+            
+            android:drawableRight="@drawable/rightgrayarrow"
+            android:id="@+id/criteriasports"
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="20dp"
+            android:text="/Instrument lessons"
+            android:id="@+id/criteriainstrument"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:textColor="#FFFFFFFF"
+            
+            android:drawableRight="@drawable/rightgrayarrow"
+            android:background="@drawable/subjectbutton1"
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:drawableRight="@drawable/rightgrayarrow"
+            android:textColor="#FFFFFFFF"
+            android:background="@drawable/subjectbutton1"
+            android:textSize="20dp"
+            android:text="Game"
+            android:id="@+id/criteriagame"
+            />
+        
+        
+    </LinearLayout>
+   </ScrollView>
+
+    
+</RelativeLayout>

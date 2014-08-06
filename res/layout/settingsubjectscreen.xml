@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    
+    android:background="@drawable/bgyellow"
+    android:layout_height="match_parent"
+    android:paddingTop="40dp">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFFFF"
+        android:text="Select the Specific Area\n for your help session"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/subjecttextbg1"
+        android:id="@+id/settingsubjecttext1"/>
+   <ListView
+       android:layout_width="fill_parent"
+   	   android:layout_below="@+id/settingsubjecttext1"
+       android:layout_height="wrap_content"
+       android:layout_above="@+id/confirmmultisubject"
+       android:id="@+id/multisubjectlist"/>
+   
+   <Button 
+       android:id="@+id/confirmmultisubject"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_centerInParent="true"
+       />
+
+    
+</RelativeLayout>

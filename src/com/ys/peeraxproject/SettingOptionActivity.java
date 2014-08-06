@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import com.ys.peeraxproject.HomePageActivity.GetInfo;
 import com.ys.peeraxproject.helper.ActionBarHelper;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 
@@ -32,8 +31,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,7 +46,16 @@ public class SettingOptionActivity extends Activity {
 	DatabaseHandler db;
 	Bitmap profile_picture;
 	String user_name;
-Context cont;
+	Switch freeSwitch;
+	Button toDegreeBtn;
+	EditText minPrice;
+	EditText maxPrice;
+	EditText minRating;
+	EditText maxRating;
+	EditText minHour;
+	Context cont;
+	Button toCriteriaBtn;
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		cont = SettingOptionActivity.this; 	
@@ -181,7 +193,66 @@ Context cont;
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.settingoptionscreen);
         db = new DatabaseHandler(SettingOptionActivity.this);
+        toCriteriaBtn = (Button) findViewById(R.id.settingsubjectbtn);
+        toCriteriaBtn.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(cont, SettingCriteriaActivity.class);
+				startActivity(i);
+			}
+        	
+        });
+        toDegreeBtn = (Button)findViewById(R.id.settingdegreebtn);
+        toDegreeBtn.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(cont, SettingDegreeActivity.class);
+				startActivity(i);
+			}
+        	
+        });
+        freeSwitch = (Switch) findViewById(R.id.togglebutton);
+        minPrice = (EditText) findViewById(R.id.minpriceedittext);
+        minPrice.setText(db.getMinMoney());
+        maxPrice = (EditText) findViewById(R.id.maxpriceedittext);
+        maxPrice.setText(db.getMaxMoney());
+        
+        freeSwitch.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+
+			@Override
+			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+				// TODO Auto-generated method stub
+				if (arg1){
+					minPrice.setText("0");
+
+					maxPrice.setText("0");
+				}
+			}
+        	
+        });
+        minRating = (EditText) findViewById(R.id.minrating);
+        minRating.setText(db.getMinRating());
+        maxRating = (EditText) findViewById(R.id.maxratingedittext);
+        maxRating.setText(db.getMaxMoney());
+        minHour = (EditText) findViewById(R.id.houredittext);
+        minHour.setText(db.getMinHour());
+        
 	}
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		db.setMinHour(minHour.getText().toString());
+		db.setMaxMoney(maxPrice.getText().toString());
+		db.setMinMoney(minPrice.getText().toString());
+		db.setMinRatin(minRating.getText().toString());
+		db.setMaxRating(maxRating.getText().toString());
+		super.onPause();
+	}
+	
 	
 	
 }
