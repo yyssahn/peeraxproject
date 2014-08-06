@@ -94,7 +94,6 @@ public class ProfilePageActivity extends Activity {
                 Intent i = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(i, GET_LOCAL_IMAGE);
             }
-
         });
 
 		aboutBtn = (Button)findViewById(R.id.profileaboutbtn);
@@ -229,7 +228,7 @@ public class ProfilePageActivity extends Activity {
         ahelper.setButton1BackGround(R.drawable.pillplainalt);
         ahelper.setButton1Text("back");
         ahelper.setButton2BackGround(R.drawable.pillalt);
-       ahelper.setTitle("Your Profile");
+        ahelper.setTitle("Your Profile");
  
 		return super.onCreateOptionsMenu(menu);
 	}
