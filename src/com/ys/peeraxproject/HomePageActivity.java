@@ -156,7 +156,6 @@ public class HomePageActivity extends FragmentActivity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent i = new Intent(HomePageActivity.this, ProfilePageActivity.class);
 				startActivity(i);
 				finish();
@@ -168,9 +167,11 @@ public class HomePageActivity extends FragmentActivity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+                Intent i = new Intent(HomePageActivity.this, ChatActivity.class);
+                startActivity(i);
+                finish();
 			}
-			
+
 		});
 		Button sesButton = (Button)dil.findViewById(R.id.optionsessionbtn);
 		sesButton.setOnClickListener(new OnClickListener(){
@@ -305,52 +306,52 @@ public class HomePageActivity extends FragmentActivity {
          * */
         @Override
 		protected String doInBackground(String... args) {
-            Log.d("shit","eat3");
-            JSONArray peoplearray = null;
-            
-            // Building Parameters
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("tag", "about"));
-           // getting JSON Object
-           JSONObject json = jsonParser.makeHttpRequest(getpeopleURL,
-                    "POST", params);
-            // check log cat fro response
-            Log.d("Create Response", json.toString());
- 
-            // check for success tag
-            try {
-                int success = json.getInt(TAG_SUCCESS);
- 
-                if (success == 1) {
-              		
-                    //finish();
-                	peoplearray = json.getJSONArray("people");
-                	
-                    // looping through All Products
-    
-                	for (int i = 0; i < peoplearray.length(); i++) {
-                        JSONObject c = peoplearray.getJSONObject(i);
- 
-                        // Storing each json item in variable
-                        String name = c.getString("name");
-                        String about = c.getString("about");
-                        String phonenumber = c.getString("phonenumber");
-                        // creating new HashMap
-                        HashMap<String, String> map = new HashMap<String, String>();
- 
-                        // adding each child node to HashMap key => value
-                        map.put("about", about);
-                        map.put("phonenumber", phonenumber);
-                        map.put("name", name);
-                        // adding HashList to ArrayList
-                        pList.add(map);
-                    }
-               } else {
-                    // failed to create product
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+//            Log.d("shit","eat3");
+//            JSONArray peoplearray = null;
+//
+//            // Building Parameters
+//            List<NameValuePair> params = new ArrayList<NameValuePair>();
+//            params.add(new BasicNameValuePair("tag", "about"));
+//           // getting JSON Object
+//           JSONObject json = jsonParser.makeHttpRequest(getpeopleURL,
+//                    "POST", params);
+//            // check log cat fro response
+//            Log.d("Create Response", json.toString());
+//
+//            // check for success tag
+//            try {
+//                int success = json.getInt(TAG_SUCCESS);
+//
+//                if (success == 1) {
+//
+//                    //finish();
+//                	peoplearray = json.getJSONArray("people");
+//
+//                    // looping through All Products
+//
+//                	for (int i = 0; i < peoplearray.length(); i++) {
+//                        JSONObject c = peoplearray.getJSONObject(i);
+//
+//                        // Storing each json item in variable
+//                        String name = c.getString("name");
+//                        String about = c.getString("about");
+//                        String phonenumber = c.getString("phonenumber");
+//                        // creating new HashMap
+//                        HashMap<String, String> map = new HashMap<String, String>();
+//
+//                        // adding each child node to HashMap key => value
+//                        map.put("about", about);
+//                        map.put("phonenumber", phonenumber);
+//                        map.put("name", name);
+//                        // adding HashList to ArrayList
+//                        pList.add(map);
+//                    }
+//               } else {
+//                    // failed to create product
+//                }
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
  
             return null;
         }
