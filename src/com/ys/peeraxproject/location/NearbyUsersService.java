@@ -1,10 +1,12 @@
 package com.ys.peeraxproject.location;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,6 +24,7 @@ import com.ys.peeraxproject.helper.JSONParser;
 public class NearbyUsersService extends Service{
 	private DatabaseHandler db;
 	private JSONParser jsonParser;
+	private ArrayList<HashMap<String, String>> pList;
 	
 	private static String latitude;
 	private static String longitude;
@@ -52,6 +55,10 @@ public class NearbyUsersService extends Service{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public ArrayList<HashMap<String, String>> getPeople(){
+		return pList;
+	}
 	//=============================================================================================
 	protected class GetNearbyUsers extends AsyncTask<String, String, String> {
 
@@ -75,8 +82,6 @@ public class NearbyUsersService extends Service{
             // getting JSON Object
             // Note that create product url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(loginURL, "POST", params);
-            // check log cat for response
-            Log.d("Create Response", json.toString());
  
             // check for success tag
             try {
@@ -84,6 +89,13 @@ public class NearbyUsersService extends Service{
  
                 if (success == 1) {
                 	Log.d(LOG_TAG, json.toString());
+
+                    JSONArray temp = json.getJSONArray("people");
+
+                	Intent i = new Intent();
+        			i.setAction("com.ys.peeraxproject.PEOPLE_INTENT");
+        			i.putExtra("jsonArray",temp.toString());
+        			sendBroadcast(i);
                 } else {
                     Log.d(LOG_TAG, "failed to retrieve users");
                 }
@@ -96,7 +108,7 @@ public class NearbyUsersService extends Service{
  
         @Override
 		protected void onPostExecute(String file_url) {
-
+        
         }
 	}
 	//=============================================================================================

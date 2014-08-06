@@ -60,7 +60,6 @@ public class LocationService extends Service{
 	
 	@Override
 	public IBinder onBind(Intent arg0) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
@@ -74,7 +73,7 @@ public class LocationService extends Service{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-         }
+        }
  
         @Override
 		protected String doInBackground(String... args) {
@@ -129,7 +128,7 @@ public class LocationService extends Service{
 			
 			//Broadcast location for NearbyUsersService
 			Intent i = new Intent();
-			i.setAction("com.ys.peeraxproject.CUSTOM_INTENT");
+			i.setAction("com.ys.peeraxproject.LOCATION_INTENT");
 			double[] location_array = new double[2];
 			location_array[0] = location.getLatitude();
 			location_array[1] = location.getLongitude();

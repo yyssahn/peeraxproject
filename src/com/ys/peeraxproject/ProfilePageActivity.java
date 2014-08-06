@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +18,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.ys.peeraxproject.HomePageActivity.GetInfo;
-import com.ys.peeraxproject.ProfileAboutActivity.UpdateUser;
 import com.ys.peeraxproject.helper.ActionBarHelper;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 import com.ys.peeraxproject.helper.JSONParser;
@@ -28,7 +25,6 @@ import com.ys.peeraxproject.helper.JSONParser;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -45,13 +41,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -101,7 +94,6 @@ public class ProfilePageActivity extends Activity {
                 Intent i = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(i, GET_LOCAL_IMAGE);
             }
-
         });
 
 		aboutBtn = (Button)findViewById(R.id.profileaboutbtn);
@@ -236,7 +228,7 @@ public class ProfilePageActivity extends Activity {
         ahelper.setButton1BackGround(R.drawable.pillplainalt);
         ahelper.setButton1Text("back");
         ahelper.setButton2BackGround(R.drawable.pillalt);
-       ahelper.setTitle("Your Profile");
+        ahelper.setTitle("Your Profile");
  
 		return super.onCreateOptionsMenu(menu);
 	}

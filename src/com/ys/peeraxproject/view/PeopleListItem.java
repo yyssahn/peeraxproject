@@ -2,6 +2,7 @@ package com.ys.peeraxproject.view;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -33,15 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class PeopleListItem extends LinearLayout {
-
-	private static final String TAG_SUCCESS = "success";
-	private static final String TAG_ABOUT = "about";
-	private static final String TAG_SUBJECT = "subject";
-	private static final String TAG_DEGREE = "degree";
 	JSONParser jsonParser = new JSONParser();
-	private static String loginURL = "http://104.131.141.54/lny_project/delete_subject.php";
-	private static String info_tag = "info";
-    private static final int GET_LOCAL_IMAGE = 8;
 	TextView abouttext;
 	TextView nametext;
 	TextView pricetext;
@@ -95,7 +88,18 @@ public class PeopleListItem extends LinearLayout {
         protected String doInBackground(String... args) {
 
             try {
-                profile_picture = BitmapFactory.decodeStream((InputStream) new URL("http://104.131.141.54/lny_project/" + phonenumber + ".jpg").getContent());
+            	String url = "http://104.131.141.54/lny_project/" + phonenumber + ".jpg";
+            	
+            	//Check if profile picture exits
+            	HttpURLConnection.setFollowRedirects(false);
+            	HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
+            	con.setRequestMethod("HEAD");
+            	if(con.getResponseCode() != HttpURLConnection.HTTP_OK){
+            		// Use default picture if picture doesn't exist
+            		url = "http://104.131.141.54/lny_project/default.jpg";
+            	}
+            	
+                profile_picture = BitmapFactory.decodeStream((InputStream) new URL(url).getContent());
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
