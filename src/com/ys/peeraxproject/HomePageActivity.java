@@ -135,7 +135,6 @@ public class HomePageActivity extends FragmentActivity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent i = new Intent(HomePageActivity.this, ProfilePageActivity.class);
 				startActivity(i);
 				finish();
@@ -147,9 +146,11 @@ public class HomePageActivity extends FragmentActivity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+                Intent i = new Intent(HomePageActivity.this, ChatActivity.class);
+                startActivity(i);
+                finish();
 			}
-			
+
 		});
 		Button sesButton = (Button)dil.findViewById(R.id.optionsessionbtn);
 		sesButton.setOnClickListener(new OnClickListener(){
@@ -247,6 +248,7 @@ public class HomePageActivity extends FragmentActivity {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+
 	}
 	//=============================================================================================
 	public class GetInfo extends AsyncTask<String, String, String> {
