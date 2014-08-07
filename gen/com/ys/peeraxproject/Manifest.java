@@ -9,6 +9,6 @@ package com.ys.peeraxproject;
 
 public final class Manifest {
     public static final class permission {
-        public static final String C2D_MESSAGE="com.ys.peeraxproject.permission.C2D_MESSAGE";
+        public static final String C2D_MESSAGE="com.androidhive.pushnotifications.permission.C2D_MESSAGE";
     }
 }

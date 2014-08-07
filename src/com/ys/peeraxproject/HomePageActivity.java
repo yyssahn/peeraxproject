@@ -72,7 +72,7 @@ public class HomePageActivity extends FragmentActivity {
         gcmHelper = new GCMHelper(HomePageActivity.this);
         
         if (gcmHelper.checkPlayServices()){
-        	
+        	gcmHelper.registerInBackground();
         }
         
         // Temporary for location
