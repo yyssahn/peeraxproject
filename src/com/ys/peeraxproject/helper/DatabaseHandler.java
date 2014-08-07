@@ -26,6 +26,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_NAME = "name";
     private static final String KEY_ABOUT = "userabout";
     private static final String KEY_DEGREE = "userdegree";
+
+    private static final String KEY_REGID = "regid";
     
     // subject table name 
     private static final String TABLE_SUBJECT = "subject";
@@ -59,6 +61,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         		+ KEY_PHONE + " INTEGER UNIQUE,"
                 + KEY_NAME + " TEXT,"
                 + KEY_ABOUT + " TEXT,"
+                + KEY_REGID + " TEXT,"
                 + KEY_DEGREE + " TEXT" + ")";
         String CREATE_SUBJECT_TABLE = "CREATE TABLE " + TABLE_SUBJECT + "("
         		+ KEY_SUBJECTNAME + " TEXT UNIQUE" + ")";
@@ -98,13 +101,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(int phone, String name, String about, String degree) {
+    public void addUser(int phone, String name, String about, String degree, String regid) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_PHONE, phone);
         values.put(KEY_NAME, name); 
         values.put(KEY_ABOUT, about); 
         values.put(KEY_DEGREE, degree); 
+        values.put(KEY_REGID, regid);
         
         // Created At
         // Inserting Row

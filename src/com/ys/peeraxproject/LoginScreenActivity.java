@@ -103,7 +103,7 @@ public class LoginScreenActivity extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-                	db.addUser(json.getInt("phonenumber"), json.getString("name"), json.getString("about"), json.getString("degree") );                    
+                //	db.addUser(json.getInt("phonenumber"), json.getString("name"), json.getString("about"), json.getString("degree") );                    
                 	Log.d("login", "User added to local db");
                 	if (json.getInt("seen") == 0){
                 	
