@@ -133,7 +133,7 @@ public class SignUpActivity extends Activity {
                     "POST", params);
             
             // check log cat for response
-            Log.d("Create Response", json.toString());
+//            Log.d("Create Response", json.toString());
  
             // check for success tag
             try {

@@ -30,6 +30,7 @@ public class ChatActivity extends Activity {
 
     TextView mDisplay;
     EditText mEdit;
+    EditText mPhone;
     GoogleCloudMessaging gcm;
     AtomicInteger msgId = new AtomicInteger();
     SharedPreferences prefs;
@@ -44,6 +45,7 @@ public class ChatActivity extends Activity {
         setContentView(R.layout.chatscreen);
 
         mDisplay = (TextView) findViewById(R.id.display);
+        mPhone = (EditText) findViewById(R.id.phone);
         mEdit = (EditText) findViewById(R.id.messageText);
 
         context = getApplicationContext();
@@ -150,6 +152,7 @@ public class ChatActivity extends Activity {
                     try {
                         Bundle data = new Bundle();
                         data.putString("my_message", mEdit.getText().toString());
+                        data.putString("to_user", mPhone.getText().toString());
                         data.putString("my_action", "com.google.android.gcm.demo.app.ECHO_NOW");
                         String id = Integer.toString(msgId.incrementAndGet());
                         gcm.send(SENDER_ID + "@gcm.googleapis.com", id, data);
