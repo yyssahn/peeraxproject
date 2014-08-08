@@ -300,7 +300,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.update(TABLE_SETTING, contentValues, null, null);
     	
     }
-    public void setMinRatin(String str){
+    public void setMinRating(String str){
     	SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(KEY_MINRATING, str);

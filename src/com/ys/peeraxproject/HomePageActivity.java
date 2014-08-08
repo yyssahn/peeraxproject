@@ -3,6 +3,7 @@ package com.ys.peeraxproject;
 import com.ys.peeraxproject.helper.ActionBarHelper;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 import com.ys.peeraxproject.location.LocationService;
+import com.ys.peeraxproject.view.OptionDialogHelper;
 import com.ys.peeraxproject.view.PeopleListItem;
 
 import android.app.ActionBar;
@@ -49,7 +50,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class HomePageActivity extends FragmentActivity {
-
+	private OptionDialogHelper dilHelper;
     private LayoutInflater inflater;
     private DatabaseHandler db;
     private Dialog dil;
@@ -110,7 +111,6 @@ public class HomePageActivity extends FragmentActivity {
         inflater = getLayoutInflater();
 
 		final ActionBar actionBar = getActionBar();
-		
 		dil = new Dialog(HomePageActivity.this);
 		dil.setTitle(null);
         dil.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
