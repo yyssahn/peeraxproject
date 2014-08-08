@@ -78,6 +78,11 @@ public class NearbyUsersService extends Service{
             params.add(new BasicNameValuePair("latitude", latitude));
             params.add(new BasicNameValuePair("longitude", longitude));
             params.add(new BasicNameValuePair("tag",NEARBY_TAG));
+            params.add(new BasicNameValuePair("filters[]", db.getMinEducation()));
+            params.add(new BasicNameValuePair("filters[]", db.getMinRating()));
+            params.add(new BasicNameValuePair("filters[]", db.getMaxRating()));
+            params.add(new BasicNameValuePair("filters[]", db.getMinMoney()));
+            params.add(new BasicNameValuePair("filters[]", db.getMaxMoney()));
            
             // getting JSON Object
             // Note that create product url accepts POST method
@@ -97,7 +102,7 @@ public class NearbyUsersService extends Service{
         			i.putExtra("jsonArray",temp.toString());
         			sendBroadcast(i);
                 } else {
-                    Log.d(LOG_TAG, "failed to retrieve users");
+                    Log.d(LOG_TAG, json.get("message").toString());
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

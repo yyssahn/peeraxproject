@@ -138,6 +138,7 @@ public class HomePageActivity extends FragmentActivity {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(HomePageActivity.this, ProfilePageActivity.class);
 				startActivity(i);
+				dil.dismiss();
 				finish();
 			}
 			
@@ -222,6 +223,9 @@ public class HomePageActivity extends FragmentActivity {
 	public static void addToMap(){
 		Log.d("HomePageActivity", "In addToMap");
 		try {
+			if(!pList.isEmpty())
+				pList.clear();
+			
 			for(int i=0; i<peopleArray.length(); i++){
 				JSONObject p;
 			

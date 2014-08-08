@@ -70,9 +70,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_MAXRATING + " INTEGER DEFAULT 0,"
                 + KEY_MINHOUR + " INTEGER DEFAULT 0,"
                 + KEY_MINEDUCATION + " INTEGER DEFAULT 0" + ")";
-                
-        		
-        		
+               
         db.execSQL(CREATE_LOGIN_TABLE);
         db.execSQL(CREATE_SUBJECT_TABLE);
         db.execSQL(CREATE_SETTING_TABLE);
@@ -212,8 +210,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
           Cursor cursor = db.rawQuery(selectQuery, null);
           // Move to first row
           cursor.moveToFirst();
-         setting = cursor.getString(2);
-          Log.d("setting", cursor.getString(2));    	
+          setting = cursor.getString(2);
+          Log.d("maxmoney", cursor.getString(2));    	
     	return setting;
     }
     public String getMinRating(){
@@ -225,7 +223,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
           // Move to first row
           cursor.moveToFirst();
           setting = cursor.getString(3);
-          Log.d("minmoney", cursor.getString(3));    	
+          Log.d("minrating", cursor.getString(3));    	
     	return setting;
     }
     public String getMaxRating(){
@@ -237,7 +235,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
           // Move to first row
           cursor.moveToFirst();
           setting = cursor.getString(4);
-          Log.d("minmoney", cursor.getString(4));    	
+          Log.d("maxrating", cursor.getString(4));    	
     	return setting;
     }
     public String getMinHour(){
@@ -249,7 +247,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
           // Move to first row
           cursor.moveToFirst();
           setting = cursor.getString(5);
-          Log.d("minmoney", cursor.getString(5));    	
+          Log.d("minhour", cursor.getString(5));    	
     	return setting;
     }
     public String getMinEducation(){
@@ -261,7 +259,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
           // Move to first row
           cursor.moveToFirst();
           setting = cursor.getString(6);
-          Log.d("minmoney", cursor.getString(6));    	
+          Log.d("mineducation", cursor.getString(6));    	
     	return setting;
     }
     public void setMinEducation(String str){

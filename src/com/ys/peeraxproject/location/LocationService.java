@@ -81,15 +81,15 @@ public class LocationService extends Service{
         	String phonenumber= db.getPhoneNumber();
         	String latitude = Double.toString(location.getLatitude());
         	String longitude = Double.toString(location.getLongitude());
+        	
         	Log.d(LOG_TAG, "Phone number: " + phonenumber + " Latitude: " + latitude + "Longitude: " + longitude);
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            
             params.add(new BasicNameValuePair("latitude", latitude));
             params.add(new BasicNameValuePair("longitude", longitude));
             params.add(new BasicNameValuePair("phonenumber", phonenumber));
             params.add(new BasicNameValuePair("tag",LOCATION_TAG));
-           
+            
             // getting JSON Object
             // Note that create product url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(loginURL, "POST", params);
