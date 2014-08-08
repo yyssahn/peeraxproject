@@ -65,9 +65,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String CREATE_SETTING_TABLE = "CREATE TABLE " + TABLE_SETTING + "("
         		+ KEY_UNIQUE + " INTEGER UNIQUE,"
         		+ KEY_MINMONEY + " INTEGER DEFAULT 0,"
-                + KEY_MAXMONEY + " INTEGER DEFAULT 0,"
+                + KEY_MAXMONEY + " INTEGER DEFAULT 999,"
                 + KEY_MINRATING + " INTEGER DEFAULT 0,"
-                + KEY_MAXRATING + " INTEGER DEFAULT 0,"
+                + KEY_MAXRATING + " INTEGER DEFAULT 5,"
                 + KEY_MINHOUR + " INTEGER DEFAULT 0,"
                 + KEY_MINEDUCATION + " INTEGER DEFAULT 0" + ")";
                
@@ -294,7 +294,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.update(TABLE_SETTING, contentValues, null, null);
     	
     }
-    public void setMinRatin(String str){
+    public void setMinRating(String str){
     	SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(KEY_MINRATING, str);

@@ -34,6 +34,7 @@ public class FirstChoiceActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		db = new DatabaseHandler(getApplicationContext());
+    	
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.firstchoicescreen);
@@ -75,7 +76,6 @@ public class FirstChoiceActivity extends Activity {
  
           @Override
 		protected String doInBackground(String... args) {
-        	
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("tag", "seen"));

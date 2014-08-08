@@ -237,7 +237,7 @@ public class SettingOptionActivity extends Activity {
         minRating = (EditText) findViewById(R.id.minrating);
         minRating.setText(db.getMinRating());
         maxRating = (EditText) findViewById(R.id.maxratingedittext);
-        maxRating.setText(db.getMaxMoney());
+        maxRating.setText(db.getMaxRating());
         minHour = (EditText) findViewById(R.id.houredittext);
         minHour.setText(db.getMinHour());
         
@@ -248,7 +248,7 @@ public class SettingOptionActivity extends Activity {
 		db.setMinHour(minHour.getText().toString());
 		db.setMaxMoney(maxPrice.getText().toString());
 		db.setMinMoney(minPrice.getText().toString());
-		db.setMinRatin(minRating.getText().toString());
+		db.setMinRating(minRating.getText().toString());
 		db.setMaxRating(maxRating.getText().toString());
 		super.onPause();
 	}
