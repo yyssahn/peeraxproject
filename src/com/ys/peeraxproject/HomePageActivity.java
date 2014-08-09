@@ -3,6 +3,7 @@ package com.ys.peeraxproject;
 import com.ys.peeraxproject.helper.ActionBarHelper;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 import com.ys.peeraxproject.location.LocationService;
+import com.ys.peeraxproject.view.OptionDialogHelper;
 import com.ys.peeraxproject.view.PeopleListItem;
 
 import android.app.ActionBar;
@@ -49,7 +50,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class HomePageActivity extends FragmentActivity {
-
+	private OptionDialogHelper dilHelper;
     private LayoutInflater inflater;
     private DatabaseHandler db;
     private Dialog dil;
@@ -110,7 +111,6 @@ public class HomePageActivity extends FragmentActivity {
         inflater = getLayoutInflater();
 
 		final ActionBar actionBar = getActionBar();
-		
 		dil = new Dialog(HomePageActivity.this);
 		dil.setTitle(null);
         dil.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -127,6 +127,7 @@ public class HomePageActivity extends FragmentActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				dil.dismiss();
 			}
 			
 		});
@@ -135,11 +136,11 @@ public class HomePageActivity extends FragmentActivity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent i = new Intent(HomePageActivity.this, ProfilePageActivity.class);
 				startActivity(i);
+
 				dil.dismiss();
-				finish();
+
 			}
 			
 		});
@@ -148,9 +149,10 @@ public class HomePageActivity extends FragmentActivity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-			}
-			
+                Intent i = new Intent(HomePageActivity.this, ChatActivity.class);
+                startActivity(i);
+                }
+
 		});
 		Button sesButton = (Button)dil.findViewById(R.id.optionsessionbtn);
 		sesButton.setOnClickListener(new OnClickListener(){
@@ -251,6 +253,7 @@ public class HomePageActivity extends FragmentActivity {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+
 	}
 	//=============================================================================================
 	public class GetInfo extends AsyncTask<String, String, String> {

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Select the general area\n for your help session"
+        android:text="Select the general area\n for the help session you want"
         android:gravity="center"
         android:textColor="#FFFFFFFF"
         android:layout_margin="20dp"
@@ -31,6 +31,8 @@
       
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        
+       	android:background="@drawable/settingred"
         android:orientation="vertical">
         <Button
             android:layout_height="wrap_content"
@@ -40,21 +42,23 @@
             android:drawableRight="@drawable/rightgrayarrow"
             android:layout_width="match_parent"
             
+            android:background="@drawable/settingred"
             android:textSize="20dp"
             android:text="Arts"
-            android:background="@drawable/redrectangle"
             android:id="@+id/criteriaarts"
             />
+        
         <Button
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="20dp"
+            
+            android:background="@drawable/settingred"
             android:gravity="center_vertical|left"
             android:paddingLeft="10dp"
             android:drawableRight="@drawable/rightgrayarrow"
             android:textColor="#FFFFFFFF"
             
-            android:background="@drawable/subjectbutton1"
             android:text="Business"
             android:id="@+id/criteriabusiness"
             />
@@ -69,7 +73,7 @@
             android:drawableRight="@drawable/rightgrayarrow"
             android:id="@+id/criterialanguage"
             
-            android:background="@drawable/subjectbutton1"
+            android:background="@drawable/settingred"
             />
         <Button
             android:layout_height="wrap_content"
@@ -81,7 +85,7 @@
             android:textColor="#FFFFFFFF"
             android:drawableRight="@drawable/rightgrayarrow"
             
-            android:background="@drawable/subjectbutton1"
+            android:background="@drawable/settingred"
             android:id="@+id/criteriascience"
             />
         <Button
@@ -94,7 +98,7 @@
             android:textColor="#FFFFFFFF"
             
             android:drawableRight="@drawable/rightgrayarrow"
-            android:background="@drawable/subjectbutton1"
+            android:background="@drawable/settingred"
             android:id="@+id/criteriaengineering"
             />
         <Button
@@ -108,7 +112,7 @@
             
             android:drawableRight="@drawable/rightgrayarrow"
             android:textColor="#FFFFFFFF"
-            android:background="@drawable/subjectbutton1"
+            android:background="@drawable/settingred"
             android:id="@+id/criteriamath"
             />
         <Button
@@ -119,7 +123,7 @@
             android:paddingLeft="10dp"
             android:textColor="#FFFFFFFF"
             
-            android:background="@drawable/subjectbutton1"
+            android:background="@drawable/settingred"
             android:text="Sports"
             
             android:drawableRight="@drawable/rightgrayarrow"
@@ -136,7 +140,7 @@
             android:textColor="#FFFFFFFF"
             
             android:drawableRight="@drawable/rightgrayarrow"
-            android:background="@drawable/subjectbutton1"
+            android:background="@drawable/settingred"
             />
         <Button
             android:layout_height="wrap_content"
@@ -145,7 +149,7 @@
             android:paddingLeft="10dp"
             android:drawableRight="@drawable/rightgrayarrow"
             android:textColor="#FFFFFFFF"
-            android:background="@drawable/subjectbutton1"
+            android:background="@drawable/settingred"
             android:textSize="20dp"
             android:text="Game"
             android:id="@+id/criteriagame"

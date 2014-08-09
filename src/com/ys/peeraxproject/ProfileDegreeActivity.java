@@ -13,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.ys.peeraxproject.ProfileAboutActivity.GetInfo;
+import com.ys.peeraxproject.ProfilePageActivity.GetOptionInfo;
 import com.ys.peeraxproject.helper.ActionBarHelper;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 import com.ys.peeraxproject.helper.JSONParser;
@@ -177,9 +178,7 @@ break;
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-                //	db.updateAbout(phonenumber, about);
-                	Intent i = new Intent(getApplicationContext(), ProfilePageActivity.class);
-                    startActivity(i);
+             	
  
                     finish();
                 	
@@ -200,19 +199,18 @@ break;
         }
         
 
-	}
-	@Override
+	}@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
 		
-		final Context cont = ProfileDegreeActivity.this;
+			
 		// Set up your ActionBar
 
         inflater = getLayoutInflater();
 
 		final ActionBar actionBar = getActionBar();
 		
-		dil = new Dialog(cont);
+		dil = new Dialog(ProfileDegreeActivity.this);
 		dil.setTitle(null);
         dil.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
@@ -228,6 +226,11 @@ break;
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Intent i = new Intent(ProfileDegreeActivity.this, HomePageActivity.class);
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            	startActivity(i);
+                dil.dismiss();
+                finish();
 			}
 			
 		});
@@ -237,8 +240,7 @@ break;
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(cont, ProfilePageActivity.class);
-				startActivity(i);
+				dil.dismiss();
 				finish();
 			}
 			
@@ -249,6 +251,12 @@ break;
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Intent i = new Intent(ProfileDegreeActivity.this, ChatActivity.class);
+				dil.dismiss();
+				startActivity(i);
+				
+
+				
 			}
 			
 		});
@@ -267,7 +275,7 @@ break;
 
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(cont, SettingStatusActivity.class);
+				Intent i = new Intent(ProfileDegreeActivity.this, SettingStatusActivity.class);
 				startActivity(i);
 				// TODO Auto-generated method stub
 			}
@@ -289,17 +297,26 @@ break;
 
         window.setAttributes(wlp);
         
-		final ActionBarHelper ahelper = new ActionBarHelper(cont, inflater, actionBar, db.getPhoneNumber(), dil);
+		final ActionBarHelper ahelper = new ActionBarHelper(ProfileDegreeActivity.this, inflater, actionBar, db.getPhoneNumber(), dil);
     
         ahelper.setBackGround(R.drawable.optionbg2);
         ahelper.setButton1BackGround(R.drawable.pillplainalt);
+        ahelper.setactionBarBackListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+        	
+        });
         ahelper.setButton1Text("back");
         ahelper.setButton2BackGround(R.drawable.pillalt);
-       ahelper.setTitle("Education Level");
+        ahelper.setTitle("Your Profile");
+        
  
 		return super.onCreateOptionsMenu(menu);
 	}
-
 	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Take appropriate action for each action item click

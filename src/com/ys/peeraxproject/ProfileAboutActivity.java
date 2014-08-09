@@ -122,8 +122,7 @@ public class ProfileAboutActivity extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-                	Intent i = new Intent(getApplicationContext(), ProfilePageActivity.class);
-                    startActivity(i);
+ 
  
                     finish();
                 } else {
@@ -167,6 +166,11 @@ public class ProfileAboutActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				Intent i = new Intent(ProfileAboutActivity.this, HomePageActivity.class);
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            	startActivity(i);
+                dil.dismiss();
+                finish();
 				// TODO Auto-generated method stub
 			}
 			
@@ -177,8 +181,7 @@ public class ProfileAboutActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(ProfileAboutActivity.this, ProfilePageActivity.class);
-				startActivity(i);
+				dil.dismiss();
 				finish();
 			}
 			
@@ -198,6 +201,9 @@ public class ProfileAboutActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Intent i = new Intent(ProfileAboutActivity.this, ChatActivity.class);
+				dil.dismiss();
+				startActivity(i);
 			}
 			
 		});
@@ -208,6 +214,7 @@ public class ProfileAboutActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(ProfileAboutActivity.this, SettingStatusActivity.class);
+				dil.dismiss();
 				startActivity(i);
 				// TODO Auto-generated method stub
 			}
@@ -234,6 +241,15 @@ public class ProfileAboutActivity extends Activity {
         ahelper.setBackGround(R.drawable.optionbg2);
         ahelper.setButton1BackGround(R.drawable.pillplainalt);
         ahelper.setButton1Text("back");
+        ahelper.setactionBarBackListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+        	
+        });
         ahelper.setButton2BackGround(R.drawable.pillalt);
        ahelper.setTitle("Your Profile");
  

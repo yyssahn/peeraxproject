@@ -47,7 +47,7 @@ public class SettingCriteriaActivity extends Activity {
 	Button mathBtn;
 	Button sportBtn;
 	LayoutInflater inflater;
-
+Context cont;
     static Bitmap profile_picture;
 	Dialog dil;
 	DatabaseHandler db;
@@ -59,7 +59,7 @@ public class SettingCriteriaActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.criteriachoicescreen);
+		setContentView(R.layout.settingcriteriascreen);
 		artsBtn = (Button)findViewById(R.id.criteriaarts);
 		busBtn = (Button) findViewById(R.id.criteriabusiness);
 		langBtn = (Button) findViewById(R.id.criterialanguage);
@@ -75,10 +75,9 @@ public class SettingCriteriaActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(SettingCriteriaActivity.this, SubjectSelectActivity.class);
-				i.putExtra(TAG_CRITERIA, "arts");
-				startActivity(i);
-				finish();
+				startSubject("arts");
+				
+				
 			}
 			
 		});
@@ -191,6 +190,11 @@ public class SettingCriteriaActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				Intent i = new Intent(cont, HomePageActivity.class);
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            	startActivity(i);
+                dil.dismiss();
+                finish();
 				// TODO Auto-generated method stub
 			}
 			
@@ -203,7 +207,7 @@ public class SettingCriteriaActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(cont, ProfilePageActivity.class);
 				startActivity(i);
-				finish();
+				dil.dismiss();
 			}
 			
 		});
@@ -222,6 +226,9 @@ public class SettingCriteriaActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Intent i = new Intent(cont, ChatActivity.class);
+				dil.dismiss();
+				startActivity(i);
 			}
 			
 		});
@@ -231,8 +238,8 @@ public class SettingCriteriaActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(cont, SettingStatusActivity.class);
-				startActivity(i);
+				dil.dismiss();
+				finish();
 				// TODO Auto-generated method stub
 			}
 			
@@ -258,12 +265,20 @@ public class SettingCriteriaActivity extends Activity {
         ahelper.setBackGround(R.drawable.optionbg2);
         ahelper.setButton1BackGround(R.drawable.pillplainalt);
         ahelper.setButton1Text("back");
+        ahelper.setactionBarBackListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+        	
+        });
         ahelper.setButton2BackGround(R.drawable.pillalt);
-       ahelper.setTitle("Add Session");
+       ahelper.setTitle("Your Profile");
  
 		return super.onCreateOptionsMenu(menu);
 	}
-
 	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Take appropriate action for each action item click

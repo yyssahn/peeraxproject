@@ -67,8 +67,7 @@ public class ActionBarHelper extends Activity{
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 
-	        	Toast.makeText(cont, "Refresh", Toast.LENGTH_SHORT).show();
-	           
+	        		           
 			}
 			
 			
@@ -80,9 +79,9 @@ public class ActionBarHelper extends Activity{
 			@Override
 			public void onClick(View arg0) {
 			
-            dil.show();
+                dil.show();
             
-			}
+            }
 
         });
 
@@ -113,6 +112,9 @@ public class ActionBarHelper extends Activity{
 	public Button getactionBarBack(){
 		return actionBarBack;
 		
+	}
+	public void setactionBarBackListener(OnClickListener listener){
+		actionBarBack.setOnClickListener(listener);
 	}
 	
 	public Button getactionBarInflate(){
