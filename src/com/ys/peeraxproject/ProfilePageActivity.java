@@ -50,6 +50,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class ProfilePageActivity extends Activity {
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+
+		super.onResume();
+		new GetInfo().execute();
+	}
 	JSONParser jsonParser = new JSONParser();
 	Button pictureBtn;
 	Button aboutBtn;
@@ -161,6 +168,11 @@ public class ProfilePageActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Intent i = new Intent(ProfilePageActivity.this, HomePageActivity.class);
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            	startActivity(i);
+                dil.dismiss();
+                finish();
 			}
 			
 		});
@@ -170,9 +182,7 @@ public class ProfilePageActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(ProfilePageActivity.this, ProfilePageActivity.class);
-				startActivity(i);
-				finish();
+				dil.dismiss();
 			}
 			
 		});
@@ -182,6 +192,11 @@ public class ProfilePageActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Intent i = new Intent(ProfilePageActivity.this, ChatActivity.class);
+				startActivity(i);
+				
+				dil.dismiss();
+				
 			}
 			
 		});

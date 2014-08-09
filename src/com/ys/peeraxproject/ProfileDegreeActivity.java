@@ -177,9 +177,7 @@ break;
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-                //	db.updateAbout(phonenumber, about);
-                	Intent i = new Intent(getApplicationContext(), ProfilePageActivity.class);
-                    startActivity(i);
+             	
  
                     finish();
                 	
@@ -228,6 +226,11 @@ break;
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Intent i = new Intent(getApplicationContext(), HomePageActivity.class);
+            	i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            	startActivity(i);
+                finish();	
+        		
 			}
 			
 		});

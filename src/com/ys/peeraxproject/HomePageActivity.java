@@ -127,6 +127,7 @@ public class HomePageActivity extends FragmentActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				dil.dismiss();
 			}
 			
 		});
@@ -137,7 +138,7 @@ public class HomePageActivity extends FragmentActivity {
 			public void onClick(View v) {
 				Intent i = new Intent(HomePageActivity.this, ProfilePageActivity.class);
 				startActivity(i);
-				finish();
+				
 			}
 			
 		});
@@ -148,8 +149,7 @@ public class HomePageActivity extends FragmentActivity {
 			public void onClick(View v) {
                 Intent i = new Intent(HomePageActivity.this, ChatActivity.class);
                 startActivity(i);
-                finish();
-			}
+                }
 
 		});
 		Button sesButton = (Button)dil.findViewById(R.id.optionsessionbtn);

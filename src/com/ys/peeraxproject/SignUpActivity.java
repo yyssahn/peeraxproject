@@ -141,20 +141,14 @@ public class SignUpActivity extends Activity {
  
                 if (success == 1) {
                 	db.addUser(json.getInt("phonenumber") , json.getString("name"), json.getString("about"), json.getString("degree"), json.getString("regid"));
-                    if(json.getInt("seen")== 0)
-                    {
+                    
                 	Intent i = new Intent(getApplicationContext(), FirstChoiceActivity.class);
-                    startActivity(i);
+                	i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                	
+                	startActivity(i);
  
                     finish();
-                    }else{
-                    	Intent i = new Intent(getApplicationContext(), HomePageActivity.class);
-                        startActivity(i);
-     
-                        finish();
-                        	
-                    	
-                    }
+                    
                     
                 } else {
                     // failed to create product

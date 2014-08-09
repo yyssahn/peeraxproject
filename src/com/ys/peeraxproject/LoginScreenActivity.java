@@ -183,7 +183,6 @@ private String LOG_TAG = "LoginScreenActivity";
                     gcm = GoogleCloudMessaging.getInstance(LoginScreenActivity.this);
                 }
                 regId = gcm.register(GCMHelper.SENDER_ID);
-                db.addUser(pn, name, about, degree, regId);
                 msg = "Device registered, registration ID=" + regId;
                 new UpdateUser().execute();
                 // You should send the registration ID to your server over HTTP,
@@ -233,6 +232,8 @@ private String LOG_TAG = "LoginScreenActivity";
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
+                	db.addUser(pn, name, about, degree, regId);
+                    
                 	Intent i = new Intent(getApplicationContext(), HomePageActivity.class);
                 	i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 	startActivity(i);

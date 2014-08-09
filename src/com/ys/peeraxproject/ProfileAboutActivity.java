@@ -122,8 +122,7 @@ public class ProfileAboutActivity extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
  
                 if (success == 1) {
-                	Intent i = new Intent(getApplicationContext(), ProfilePageActivity.class);
-                    startActivity(i);
+ 
  
                     finish();
                 } else {
