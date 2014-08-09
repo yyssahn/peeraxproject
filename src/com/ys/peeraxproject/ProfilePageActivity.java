@@ -193,9 +193,10 @@ public class ProfilePageActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(ProfilePageActivity.this, ChatActivity.class);
+				dil.dismiss();
 				startActivity(i);
 				
-				dil.dismiss();
+
 				
 			}
 			
@@ -241,9 +242,19 @@ public class ProfilePageActivity extends Activity {
     
         ahelper.setBackGround(R.drawable.optionbg2);
         ahelper.setButton1BackGround(R.drawable.pillplainalt);
+        ahelper.setactionBarBackListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+        	
+        });
         ahelper.setButton1Text("back");
         ahelper.setButton2BackGround(R.drawable.pillalt);
         ahelper.setTitle("Your Profile");
+        
  
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -253,15 +264,12 @@ public class ProfilePageActivity extends Activity {
         switch (item.getItemId()) {
         case R.id.optionbackbutton:
             // search action
-        	Log.d("back","back");
-        	Toast.makeText(getApplicationContext(), "Refresh", Toast.LENGTH_SHORT).show();
+        	finish();
             return true;
         case R.id.createoptionbutton:
             // refresh
 
-        	Log.d("back","create");
-        	Toast.makeText(getApplicationContext(), "create", Toast.LENGTH_SHORT).show();
-            return true;
+             return true;
         default:
             return super.onOptionsItemSelected(item);
         }

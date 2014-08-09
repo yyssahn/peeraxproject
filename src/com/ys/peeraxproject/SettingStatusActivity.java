@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import com.ys.peeraxproject.ProfileAboutActivity.GetInfo;
 import com.ys.peeraxproject.helper.ActionBarHelper;
 import com.ys.peeraxproject.helper.DatabaseHandler;
 
@@ -67,102 +68,118 @@ public class SettingStatusActivity extends Activity {
         	
         });
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		cont = SettingStatusActivity.this; 	
-		inflater = getLayoutInflater();
+		// TODO Auto-generated method stub
+		
+		final Context cont = SettingStatusActivity.this;
+		// Set up your ActionBar
 
-			final ActionBar actionBar = getActionBar();
+        inflater = getLayoutInflater();
+
+		final ActionBar actionBar = getActionBar();
+		
+		dil = new Dialog(cont);
+		dil.setTitle(null);
+        dil.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+		dil.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dil.setContentView(R.layout.optionbar);
+
+		
+        new GetInfo().execute();
+
+        Button homeButton = (Button)dil.findViewById(R.id.optionhomebtn);
+		homeButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				
+                finish();
+				// TODO Auto-generated method stub
+			}
 			
-			dil = new Dialog(cont);
-			dil.setTitle(null);
-	        dil.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+		});
+		Button profileButton = (Button)dil.findViewById(R.id.optionprofilebtn);
+		profileButton.setOnClickListener(new OnClickListener(){
 
-			dil.requestWindowFeature(Window.FEATURE_NO_TITLE);
-			dil.setContentView(R.layout.optionbar);
-
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(cont, ProfilePageActivity.class);
+				startActivity(i);
+				dil.dismiss();
+			}
 			
-	        new GetInfo().execute();
+		});
+		Button convButton = (Button)dil.findViewById(R.id.optionconversationbtn);
+		convButton.setOnClickListener(new OnClickListener(){
 
-	        Button homeButton = (Button)dil.findViewById(R.id.optionhomebtn);
-			homeButton.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+			}
+			
+		});
+		Button sesButton = (Button)dil.findViewById(R.id.optionsessionbtn);
+		sesButton.setOnClickListener(new OnClickListener(){
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-				}
-				
-			});
-			Button profileButton = (Button)dil.findViewById(R.id.optionprofilebtn);
-			profileButton.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(cont, ChatActivity.class);
+				dil.dismiss();
+				startActivity(i);
+			}
+			
+		});
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Intent i = new Intent(cont, ProfilePageActivity.class);
-					startActivity(i);
-					finish();
-				}
-				
-			});
-			Button convButton = (Button)dil.findViewById(R.id.optionconversationbtn);
-			convButton.setOnClickListener(new OnClickListener(){
+		Button settingButton = (Button)dil.findViewById(R.id.optionsetting);
+		settingButton.setOnClickListener(new OnClickListener(){
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-				}
-				
-			});
-			Button sesButton = (Button)dil.findViewById(R.id.optionsessionbtn);
-			sesButton.setOnClickListener(new OnClickListener(){
-
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-				}
-				
-			});
-
-			Button settingButton = (Button)dil.findViewById(R.id.optionsetting);
-			settingButton.setOnClickListener(new OnClickListener(){
-
-				@Override
-				public void onClick(View v) {
-					Intent i = new Intent(cont, SettingStatusActivity.class);
-					startActivity(i);
-					// TODO Auto-generated method stub
-				}
-				
-			});
+			@Override
+			public void onClick(View v) {
+				dil.dismiss();
+				// TODO Auto-generated method stub
+			}
+			
+		});
 
 
-	        Window window = dil.getWindow();
-	        WindowManager.LayoutParams wlp = window.getAttributes();
+        Window window = dil.getWindow();
+        WindowManager.LayoutParams wlp = window.getAttributes();
 
-	        DisplayMetrics dimension = new DisplayMetrics();
-	        getWindowManager().getDefaultDisplay().getMetrics(dimension);
-	        int height = dimension.heightPixels - actionBar.getHeight();
-	        int actionBarHeight = actionBar.getHeight() + 30;
+        DisplayMetrics dimension = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dimension);
+        int height = dimension.heightPixels - actionBar.getHeight();
+        int actionBarHeight = actionBar.getHeight() + 30;
 
-	        wlp.y = actionBarHeight;
-	        wlp.gravity=Gravity.TOP | Gravity.RIGHT;
-	        wlp.height = height - actionBar.getHeight();
+        wlp.y = actionBarHeight;
+        wlp.gravity=Gravity.TOP | Gravity.RIGHT;
+        wlp.height = height - actionBar.getHeight();
 
-	        window.setAttributes(wlp);
-	        
-			final ActionBarHelper ahelper = new ActionBarHelper(cont, inflater, actionBar, db.getPhoneNumber(), dil);
-	    
-	        ahelper.setBackGround(R.drawable.settingoptionbar1);
-	        ahelper.setButton1BackGround(R.drawable.settingpill2);
-	        ahelper.setButton1Text("back");
-	        ahelper.setButton2BackGround(R.drawable.settingpill);
-	       ahelper.setTitle("User Settings");
-	 
-			return super.onCreateOptionsMenu(menu);
+        window.setAttributes(wlp);
+        
+		final ActionBarHelper ahelper = new ActionBarHelper(cont, inflater, actionBar, db.getPhoneNumber(), dil);
+    
+        ahelper.setBackGround(R.drawable.optionbg2);
+        ahelper.setButton1BackGround(R.drawable.pillplainalt);
+        ahelper.setButton1Text("back");
+        ahelper.setactionBarBackListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+        	
+        });
+        ahelper.setButton2BackGround(R.drawable.pillalt);
+       ahelper.setTitle("Your Profile");
+ 
+		return super.onCreateOptionsMenu(menu);
 	}
-
 	
 	class GetInfo extends AsyncTask<String, String, String> {
 

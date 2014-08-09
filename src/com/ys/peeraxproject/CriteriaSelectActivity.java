@@ -164,8 +164,7 @@ public class CriteriaSelectActivity extends Activity {
 		i.putExtra(TAG_CRITERIA,criteria);
 		startActivity(i);
 		finish();
-	}
-	@Override
+	}@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
 		
@@ -191,6 +190,11 @@ public class CriteriaSelectActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				Intent i = new Intent(cont, HomePageActivity.class);
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            	startActivity(i);
+                dil.dismiss();
+                finish();
 				// TODO Auto-generated method stub
 			}
 			
@@ -201,8 +205,7 @@ public class CriteriaSelectActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(cont, ProfilePageActivity.class);
-				startActivity(i);
+				dil.dismiss();
 				finish();
 			}
 			
@@ -222,6 +225,9 @@ public class CriteriaSelectActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Intent i = new Intent(cont, ChatActivity.class);
+				dil.dismiss();
+				startActivity(i);
 			}
 			
 		});
@@ -232,7 +238,9 @@ public class CriteriaSelectActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(cont, SettingStatusActivity.class);
+				dil.dismiss();
 				startActivity(i);
+				finish();
 				// TODO Auto-generated method stub
 			}
 			
@@ -258,8 +266,17 @@ public class CriteriaSelectActivity extends Activity {
         ahelper.setBackGround(R.drawable.optionbg2);
         ahelper.setButton1BackGround(R.drawable.pillplainalt);
         ahelper.setButton1Text("back");
+        ahelper.setactionBarBackListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+        	
+        });
         ahelper.setButton2BackGround(R.drawable.pillalt);
-       ahelper.setTitle("Add Session");
+       ahelper.setTitle("Your Profile");
  
 		return super.onCreateOptionsMenu(menu);
 	}

@@ -102,6 +102,7 @@ public class ViewSubjectsActivity extends Activity {
 				Intent i = new Intent(getApplicationContext(), CriteriaSelectActivity.class);
 				
 				startActivity(i);
+				finish();
 			}
 			
 		});
@@ -133,6 +134,11 @@ public class ViewSubjectsActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				Intent i = new Intent(cont, HomePageActivity.class);
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            	startActivity(i);
+                dil.dismiss();
+                finish();
 				// TODO Auto-generated method stub
 			}
 			
@@ -143,8 +149,7 @@ public class ViewSubjectsActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(cont, ProfilePageActivity.class);
-				startActivity(i);
+				dil.dismiss();
 				finish();
 			}
 			
@@ -164,6 +169,9 @@ public class ViewSubjectsActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Intent i = new Intent(cont, ChatActivity.class);
+				dil.dismiss();
+				startActivity(i);
 			}
 			
 		});
@@ -174,6 +182,7 @@ public class ViewSubjectsActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(cont, SettingStatusActivity.class);
+				dil.dismiss();
 				startActivity(i);
 				// TODO Auto-generated method stub
 			}
@@ -200,12 +209,20 @@ public class ViewSubjectsActivity extends Activity {
         ahelper.setBackGround(R.drawable.optionbg2);
         ahelper.setButton1BackGround(R.drawable.pillplainalt);
         ahelper.setButton1Text("back");
+        ahelper.setactionBarBackListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+        	
+        });
         ahelper.setButton2BackGround(R.drawable.pillalt);
-       ahelper.setTitle("add or edit");
+       ahelper.setTitle("Your Profile");
  
 		return super.onCreateOptionsMenu(menu);
 	}
-
 	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Take appropriate action for each action item click

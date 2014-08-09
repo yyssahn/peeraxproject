@@ -163,101 +163,122 @@ Context cont;
 		i.putExtra(TAG_CRITERIA,criteria);
 		startActivity(i);
 		finish();
-	}@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		cont = SettingCriteriaActivity.this; 	
-		inflater = getLayoutInflater();
-
-			final ActionBar actionBar = getActionBar();
-			
-			dil = new Dialog(cont);
-			dil.setTitle(null);
-	        dil.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-			dil.requestWindowFeature(Window.FEATURE_NO_TITLE);
-			dil.setContentView(R.layout.optionbar);
-
-			
-	        new GetInfo().execute();
-
-	        Button homeButton = (Button)dil.findViewById(R.id.optionhomebtn);
-			homeButton.setOnClickListener(new OnClickListener(){
-
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-				}
-				
-			});
-			Button profileButton = (Button)dil.findViewById(R.id.optionprofilebtn);
-			profileButton.setOnClickListener(new OnClickListener(){
-
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Intent i = new Intent(cont, ProfilePageActivity.class);
-					startActivity(i);
-					finish();
-				}
-				
-			});
-			Button convButton = (Button)dil.findViewById(R.id.optionconversationbtn);
-			convButton.setOnClickListener(new OnClickListener(){
-
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-				}
-				
-			});
-			Button sesButton = (Button)dil.findViewById(R.id.optionsessionbtn);
-			sesButton.setOnClickListener(new OnClickListener(){
-
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-				}
-				
-			});
-
-			Button settingButton = (Button)dil.findViewById(R.id.optionsetting);
-			settingButton.setOnClickListener(new OnClickListener(){
-
-				@Override
-				public void onClick(View v) {
-					Intent i = new Intent(cont, SettingStatusActivity.class);
-					startActivity(i);
-					// TODO Auto-generated method stub
-				}
-				
-			});
-
-
-	        Window window = dil.getWindow();
-	        WindowManager.LayoutParams wlp = window.getAttributes();
-
-	        DisplayMetrics dimension = new DisplayMetrics();
-	        getWindowManager().getDefaultDisplay().getMetrics(dimension);
-	        int height = dimension.heightPixels - actionBar.getHeight();
-	        int actionBarHeight = actionBar.getHeight() + 30;
-
-	        wlp.y = actionBarHeight;
-	        wlp.gravity=Gravity.TOP | Gravity.RIGHT;
-	        wlp.height = height - actionBar.getHeight();
-
-	        window.setAttributes(wlp);
-	        
-			final ActionBarHelper ahelper = new ActionBarHelper(cont, inflater, actionBar, db.getPhoneNumber(), dil);
-	    
-	        ahelper.setBackGround(R.drawable.settingoptionbar1);
-	        ahelper.setButton1BackGround(R.drawable.settingpill2);
-	        ahelper.setButton1Text("back");
-	        ahelper.setButton2BackGround(R.drawable.settingpill);
-	       ahelper.setTitle("Filter Options");
-	 
-			return super.onCreateOptionsMenu(menu);
 	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		
+		final Context cont = SettingCriteriaActivity.this;
+		// Set up your ActionBar
 
+        inflater = getLayoutInflater();
+
+		final ActionBar actionBar = getActionBar();
+		
+		dil = new Dialog(cont);
+		dil.setTitle(null);
+        dil.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+		dil.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dil.setContentView(R.layout.optionbar);
+
+		
+        new GetInfo().execute();
+
+        Button homeButton = (Button)dil.findViewById(R.id.optionhomebtn);
+		homeButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(cont, HomePageActivity.class);
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            	startActivity(i);
+                dil.dismiss();
+                finish();
+				// TODO Auto-generated method stub
+			}
+			
+		});
+		Button profileButton = (Button)dil.findViewById(R.id.optionprofilebtn);
+		profileButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(cont, ProfilePageActivity.class);
+				startActivity(i);
+				dil.dismiss();
+			}
+			
+		});
+		Button convButton = (Button)dil.findViewById(R.id.optionconversationbtn);
+		convButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+			}
+			
+		});
+		Button sesButton = (Button)dil.findViewById(R.id.optionsessionbtn);
+		sesButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(cont, ChatActivity.class);
+				dil.dismiss();
+				startActivity(i);
+			}
+			
+		});
+
+		Button settingButton = (Button)dil.findViewById(R.id.optionsetting);
+		settingButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				dil.dismiss();
+				finish();
+				// TODO Auto-generated method stub
+			}
+			
+		});
+
+
+        Window window = dil.getWindow();
+        WindowManager.LayoutParams wlp = window.getAttributes();
+
+        DisplayMetrics dimension = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dimension);
+        int height = dimension.heightPixels - actionBar.getHeight();
+        int actionBarHeight = actionBar.getHeight() + 30;
+
+        wlp.y = actionBarHeight;
+        wlp.gravity=Gravity.TOP | Gravity.RIGHT;
+        wlp.height = height - actionBar.getHeight();
+
+        window.setAttributes(wlp);
+        
+		final ActionBarHelper ahelper = new ActionBarHelper(cont, inflater, actionBar, db.getPhoneNumber(), dil);
+    
+        ahelper.setBackGround(R.drawable.optionbg2);
+        ahelper.setButton1BackGround(R.drawable.pillplainalt);
+        ahelper.setButton1Text("back");
+        ahelper.setactionBarBackListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+        	
+        });
+        ahelper.setButton2BackGround(R.drawable.pillalt);
+       ahelper.setTitle("Your Profile");
+ 
+		return super.onCreateOptionsMenu(menu);
+	}
 	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Take appropriate action for each action item click
