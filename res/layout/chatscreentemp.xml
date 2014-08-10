@@ -1,0 +1,34 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:background="@drawable/bgblue"
+    tools:context="${relativePackage}.${activityClass}"
+    android:paddingTop="40dp">
+    <fragment
+        android:name="com.appsrox.instachat.MessagesFragment"
+        android:id="@+id/msg_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/chatinput"
+        android:layout_alignParentTop="true"
+        android:layout_weight="1" />
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:weightSum="6"
+       android:id="@+id/chatinput"
+       >
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+    </LinearLayout>
+    
+</RelativeLayout>
