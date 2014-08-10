@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:gravity="center_vertical"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/chatbubble1"
+    android:orientation="vertical" >
+    
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        
+        
+        >
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/pid"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/noimage"
+            />
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+           	android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >     
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:id="@+id/chatname"
+                android:text="shit"
+                android:textColor="#FFFFFFFF"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                                />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+         		android:gravity="right"
+                android:textSize="15sp"
+                android:text="timehjfghfgh"
+                android:id="@+id/chattime"
+                android:textColor="#FFFFFFFF"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                />
+            </LinearLayout>
+            
+            <TextView 
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/chattext"
+                android:textSize="15sp"
+                android:text="sometext"
+                android:layout_marginTop="15dp"
+                android:textColor="#FFFFFFFF"
+                android:layout_marginLeft="10dp"
+                />
+        </LinearLayout>
+        
+        
+        
+    </LinearLayout>
+
+      
+        
+        
+        
+        
+
+</LinearLayout>
