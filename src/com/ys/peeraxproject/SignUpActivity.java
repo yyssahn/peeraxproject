@@ -63,8 +63,11 @@ public class SignUpActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-
-		        if (idInput.getText().toString().length()==0 || pnInput.getText().toString().length()==0 || pwInput.getText().toString().length()==0){
+				if (pnInput.getText().toString().length()<10){
+					Toast.makeText(getApplicationContext(), "your phone number is too short", Toast.LENGTH_SHORT).show();
+		            
+				}
+			else if (idInput.getText().toString().length()==0 || pnInput.getText().toString().length()==0 || pwInput.getText().toString().length()==0){
 		        	Toast.makeText(getApplicationContext(), "id or password is not inputted", Toast.LENGTH_SHORT).show();
 		            
 		        }else{
